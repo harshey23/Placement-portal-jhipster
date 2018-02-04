@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { AdminComponent } from './admin.component';
 
 import {
     auditsRoute,
@@ -8,12 +9,16 @@ import {
     logsRoute,
     metricsRoute,
     userMgmtRoute,
-    userDialogRoute
+    userDialogRoute,
+    dashboardRoute,
+    tryRoute
 } from './';
 
 import { UserRouteAccessService } from '../shared';
 
 const ADMIN_ROUTES = [
+   // dashboardRoute,
+    tryRoute,
     auditsRoute,
     configurationRoute,
     docsRoute,
@@ -24,7 +29,8 @@ const ADMIN_ROUTES = [
 ];
 
 export const adminState: Routes = [{
-    path: '',
+    path: 'admin',
+    component: AdminComponent,
     data: {
         authorities: ['ROLE_ADMIN']
     },

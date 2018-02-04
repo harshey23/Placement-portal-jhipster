@@ -4,6 +4,10 @@ import { RouterModule } from '@angular/router';
 import { PlacementSharedModule } from '../shared';
 /* jhipster-needle-add-admin-module-import - JHipster will add admin modules imports here */
 
+import { FooterComponent } from './template/footer/footer.component';
+import { NavbarComponent } from './template/navbar/navbar.component';
+import { SidebarComponent } from './template/sidebar/sidebar.component';
+
 import {
     adminState,
     AuditsComponent,
@@ -27,7 +31,11 @@ import {
     LogsService,
     UserResolvePagingParams,
     UserResolve,
-    UserModalService
+    UserModalService,
+    AdminComponent,
+
+    DashboardComponent,
+    TryComponent,
 } from './';
 
 @NgModule({
@@ -50,7 +58,13 @@ import {
         JhiHealthModalComponent,
         JhiDocsComponent,
         JhiMetricsMonitoringComponent,
-        JhiMetricsMonitoringModalComponent
+        JhiMetricsMonitoringModalComponent,
+        DashboardComponent,
+        TryComponent,
+        AdminComponent,
+        FooterComponent,
+        NavbarComponent,
+        SidebarComponent
     ],
     entryComponents: [
         UserMgmtDialogComponent,

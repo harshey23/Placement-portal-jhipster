@@ -34,7 +34,8 @@ module.exports = webpackMerge(commonConfig({ env: ENV }), {
     entry: {
         polyfills: './src/main/webapp/app/polyfills',
         global: './src/main/webapp/content/scss/global.scss',
-        main: './src/main/webapp/app/app.main'
+        main: './src/main/webapp/app/app.main',
+        vendor: './src/main/webapp/app/vendor.ts'
     },
     output: {
         path: utils.root('target/www'),

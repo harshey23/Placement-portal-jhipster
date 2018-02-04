@@ -1,0 +1,8 @@
+.ct-chart{
+    height:280px;
+}
+.overflow {
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

@@ -3,6 +3,7 @@ import './vendor.ts';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Ng2Webstorage } from 'ngx-webstorage';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { PlacementSharedModule, UserRouteAccessService } from './shared';
 import { PlacementAppRoutingModule} from './app-routing.module';
@@ -12,21 +13,23 @@ import { PlacementAccountModule } from './account/account.module';
 import { PlacementEntityModule } from './entities/entity.module';
 import { customHttpProvider } from './blocks/interceptor/http.provider';
 import { PaginationConfig } from './blocks/config/uib-pagination.config';
+import { AppComponent } from './app.component';
 
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 
-import {
-    JhiMainComponent,
-    NavbarComponent,
-    FooterComponent,
-    ProfileService,
-    PageRibbonComponent,
-    ErrorComponent
-} from './layouts';
+ import {
+//     JhiMainComponent,
+     NavbarComponent,
+//     FooterComponent,
+     ProfileService,
+//     PageRibbonComponent,
+     ErrorComponent
+ } from './layouts';
 
 @NgModule({
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         PlacementAppRoutingModule,
         Ng2Webstorage.forRoot({ prefix: 'jhi', separator: '-'}),
         PlacementSharedModule,
@@ -37,11 +40,12 @@ import {
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [
-        JhiMainComponent,
-        NavbarComponent,
-        ErrorComponent,
-        PageRibbonComponent,
-        FooterComponent
+        // JhiMainComponent,
+         NavbarComponent,
+         ErrorComponent,
+        // PageRibbonComponent,
+        // FooterComponent,
+        AppComponent
     ],
     providers: [
         ProfileService,
@@ -49,6 +53,6 @@ import {
         PaginationConfig,
         UserRouteAccessService
     ],
-    bootstrap: [ JhiMainComponent ]
+    bootstrap: [ AppComponent ]
 })
 export class PlacementAppModule {}

@@ -1,0 +1,108 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="card">
+          <div class="card-header" data-background-color="red">
+            <h4 class="title">Add a new company</h4>
+            <!-- <p class="category">Complete your profile</p> -->
+          </div>
+          <div class="card-content">
+            <form (ngSubmit)="onSubmit()" [formGroup]="companyForm">
+              <div class="form-group form-black">
+                <label class="col-sm-2 control-label big-font" for="name" style="font-size:15px;">Name :</label>
+                <div class="col-sm-10" style="margin-top:7px;">
+                  <input type="text" class="form-control" id="name" placeholder="name"
+                  formControlName="name">
+                  <!-- <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+                    Name is required
+                  </div> -->
+                </div>
+              </div>
+              <div class="form-group form-black">
+                <label class="col-sm-2 control-label big-font" for="website" style="font-size:15px;">Website :</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="website" placeholder="website"
+                  formControlName="website">
+                </div>
+              </div>
+              <div class="form-group form-black">
+                <label class="col-sm-2 control-label big-font" for="inputtext3" style="font-size:15px;">Location :</label>
+                <div class="col-sm-10">
+                  <textarea class="form-control" placeholder="address" rows="3"
+                  formControlName="address"></textarea>
+                </div>
+              </div>
+              <div class="form-group form-black">
+                <label class="col-sm-2 control-label big-font" for="inputtext3" style="font-size:15px;">Description :</label>
+                <div class="col-sm-10">
+                  <textarea class="form-control" placeholder="description" rows="3"
+                  formControlName="description"></textarea>
+                </div>
+              </div>
+                <div class="form-group form-black">
+                  <label class="col-sm-2 control-label big-font" for="contact_name" style="font-size:15px;">Contact name:</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="contact_name" placeholder="contact_name" formControlName="contact">
+                  </div>
+                </div>
+                <div class="form-group form-black">
+                  <label class="col-sm-2 control-label big-font" for="contact_number" style="font-size:15px;">Contact number:</label>
+                  <div class="col-sm-10">
+                    <input type="number" class="form-control" id="contact_number" placeholder="contact_number" formControlName="number">
+                  </div>
+                </div>
+                <div class="form-group form-black">
+                  <label class="col-sm-2 control-label big-font" for="contact_email" style="font-size:15px;">Contact email:</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="contact_email" placeholder="contact_email" formControlName="email">
+                  </div>
+                </div>
+              <div class="form-group form-black">
+                <label class="col-sm-2 control-label big-font" for="type" style="font-size:15px;">Type :</label>
+                <div class="col-sm-10">
+                  <select class="form-control" id="type"
+                          required
+                          formControlName="type">
+                    <option *ngFor="let ty of types" [value]="ty">{{ty}}</option>
+                  </select>
+                  <!-- <input type="number" class="form-control" id="type" placeholder="type"
+                  [(ngModel)]="model.type" name="type"> -->
+                </div>
+              </div>
+              <div class="form-group form-black">
+                <label class="col-sm-2 control-label big-font" for="status" style="font-size:15px;">Status :</label>
+                <div class="col-sm-10">
+                  <select class="form-control" id="status"
+                          required
+                          formControlName="status">
+                    <option *ngFor="let st of status" [value]="st">{{st}}</option>
+                  </select>
+                  <!-- <input type="number" class="form-control" id="status" placeholder="status"
+                  [(ngModel)]="model.status" name="status"> -->
+                </div>
+              </div>
+
+              <div class="form-group" style="float:right;">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button class="btn btn-danger" type="submit">
+                    <i class="fa fa-check"></i> ADD</button>
+                </div>
+              </div>
+              
+            </form>
+
+            <div class="form-group" style="float:right;">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button (click)="goBack()" class="btn btn-danger my-tweak">
+                    <i class="fa fa-close"></i> Cancel</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
