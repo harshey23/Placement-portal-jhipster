@@ -1,0 +1,550 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header" data-background-color="blue">
+            <h4 class="title">Job / Internship Management</h4>
+            <p class="category">Define the company criteria and selection process</p>
+            <button class="btn btn-danger marg" data-toggle="tooltip" data-placement="bottom" title="Reschedule" style="float:right;margin-top: -45px;margin-top: -5px; margin-top:-47px;padding: 12px;">
+              <i class="fa fa-refresh"></i>
+              <div class="ripple-container"></div>
+            </button>
+          </div>
+          <div class="card-content">
+            <form (ngSubmit)="onSubmit()" style="margin:20px;">
+
+              <!-- Post new allowed -->
+              <div class="row">
+
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-lg-5">
+                      <h3>Post new :</h3>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="optionsCheckboxes2" [checked]="true" (change)="selectJob()"> Job
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="optionsCheckboxes2" (change)="selectInternship()"> Internship
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-8">
+                      <div class="row">
+                        <div class="col-lg-4">
+                          <label class="fadelabel">Campus Status : </label>
+                        </div>
+                        <div class="col-lg-3">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="campus" checked> On-Campus
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-lg-3">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="campus"> Off-Campus
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-8">
+
+                      <div *ngIf="isJob == true" class="row">
+                        <div class="col-lg-5">
+                          <label class="fadelabel">Is Internship mandatory for job :</label>
+                        </div>
+                        <div class="col-lg-3">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="job"> Yes
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-lg-4">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="job" [checked]="true"> No
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div *ngIf="isInternship == true" class="row">
+                        <div class="col-lg-5">
+                          <label class="fadelabel">Will Internship be converted to job :</label>
+                        </div>
+                        <div class="col-lg-3">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="internship" [checked]="true"> Yes
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-lg-4">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="internship"> No
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Company Select -->
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="row">
+                    <div class="col-lg-5">
+                      <h3>Select Company :</h3>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <select class="form-control" id="sel1">
+                        <option>Select a Company</option>
+                        <option>TCS</option>
+                        <option>Siemens</option>
+                        <option>TVS</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Date of visit -->
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="row">
+                    <div class="col-lg-5">
+                      <h3>Date of Visit : </h3>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <mat-form-field>
+                        <input matInput [matDatepicker]="dp3" placeholder="Date of visit" disabled>
+                        <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+                        <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- UG/PG -->
+              <div class="row">
+
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-lg-5">
+                      <h3>Select Degree</h3>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-8">
+                      <div class="row">
+                        <div class="col-lg-5">
+                          <label class="fadelabel">UG or PG : </label>
+                        </div>
+                        <div class="col-lg-2">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="degree" [checked]="true" (change)="selectUG(true)"> UG
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-lg-3">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="degree" (change)="selectUG(false)"> PG
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Branches allowed for ug-->
+              <div *ngIf="isUG == true" class="row">
+                <div class="col-md-12">
+                  <h3>Branches Allowed in ug:</h3>
+                  <ss-multiselect-dropdown [options]="branches" [texts]="branchesTexts" [settings]="branchesSettings" [(ngModel)]="branchesOptionsModel"
+                    [ngModelOptions]="{standalone: true}"></ss-multiselect-dropdown>
+                </div>
+              </div>
+
+              <!-- Branches allowed for pg-->
+              <div *ngIf="isUG == false" class="row">
+                <div class="col-md-12">
+                  <h3>Branches Allowed in pg:</h3>
+                  <ss-multiselect-dropdown class="btn btn-info" [options]="pgBranches" [texts]="pgBranchesTexts" [settings]="pgBranchesSettings" [(ngModel)]="pgBranchesOptionsModel"
+                    [ngModelOptions]="{standalone: true}"></ss-multiselect-dropdown>
+                </div>
+              </div>
+
+              <!-- Criteria -->
+              <div class="row">
+
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-lg-5">
+                      <h3>Criteria</h3>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group form-black label-floating is-empty">
+                        <label class="control-label">10th %</label>
+                        <input type="text" class="form-control">
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group form-black label-floating is-empty">
+                        <label class="control-label">12th %</label>
+                        <input type="text" class="form-control">
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group form-black label-floating is-empty">
+                        <label class="control-label">Diploma %</label>
+                        <input type="text" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="row">
+                    <div *ngIf="isUG == false" class="col-md-4">
+                      <div class="form-group form-black label-floating is-empty">
+                        <label class="control-label">PG aggragate CGPA</label>
+                        <input type="text" class="form-control">
+                      </div>
+                    </div>
+                    <div *ngIf="isUG == true" class="col-md-4">
+                      <div class="form-group form-black label-floating is-empty">
+                        <label class="control-label">BE aggragate CGPA</label>
+                        <input type="text" class="form-control">
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group form-black label-floating is-empty">
+                        <label class="control-label">Each sem %</label>
+                        <input type="text" class="form-control">
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group form-black label-floating is-empty">
+                        <label class="control-label">CET Rank</label>
+                        <input type="text" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div *ngIf="isUG == false" class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group form-black label-floating is-empty">
+                        <label class="control-label">BE degree percentage</label>
+                        <input type="text" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Backlogs -->
+              <div class="row">
+
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-lg-5">
+                      <h3>Backlogs</h3>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group form-black label-floating is-empty">
+                        <label class="control-label">Current Backlogs</label>
+                        <input type="text" class="form-control">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group form-black label-floating is-empty">
+                        <label class="control-label">History Backlogs</label>
+                        <input type="text" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-8">
+                      <div class="row">
+                        <div class="col-lg-5">
+                          <label class="fadelabel">YearBack Status : </label>
+                        </div>
+                        <div class="col-lg-2">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="yearback"> Allowed
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-lg-3">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="yearback"> Not-Allowed
+                            </label>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-8">
+                      <div class="row">
+                        <div class="col-lg-5">
+                          <label class="fadelabel">Discontinued Status : </label>
+                        </div>
+                        <div class="col-lg-2">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="discontinued"> Allowed
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-lg-3">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="discontinued"> Not-Allowed
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Groups allowed -->
+              <div class="row">
+                <div class="col-lg-8">
+
+                  <div class="row">
+                    <div class="col-lg-5">
+                      <h3>Groups Allowed :</h3>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="optionsCheckboxes2" checked> General
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="optionsCheckboxes2" checked> SC/ST
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="optionsCheckboxes2" checked> OBC
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Genders allowed -->
+              <div class="row">
+                <div class="col-lg-8">
+                
+                  <div class="row">
+                    <div class="col-lg-5">
+                      <h3>Gender Allowed :</h3>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="optionsCheckboxes2" checked> Male
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="optionsCheckboxes2" checked> Female
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="optionsCheckboxes2" checked> Non-Binary
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                
+                </div>
+              </div>
+
+              <!-- Companies Allowed -->
+              <div class="row">
+                <div class="col-md-12">
+                  <h3>Companies Allowed :</h3>
+                  <ss-multiselect-dropdown [options]="companies" [texts]="companiesTexts" [settings]="companiesSettings" [(ngModel)]="companiesOptionsModel"
+                    [ngModelOptions]="{standalone: true}"></ss-multiselect-dropdown>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="row">
+                    <div class="col-lg-8">
+                      <h3>Multiple Offers : </h3>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group form-black label-floating is-empty">
+                        <label class="control-label">Enter the no. of maximum offers one can have to register for this company</label>
+                        <input type="number" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Recrument process -->
+              <div class="row">
+              
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-lg-5">
+                      <h3>Recriument process</h3>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group form-black label-floating is-empty">
+                      <label class="control-label">Number of rounds</label>
+                      <input type="text" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-md-8">
+                  </div>
+                </div>
+                
+                <div class="row">
+                  <div class="col-md-2">
+                   <p class="mar">Round : 1</p>
+                  </div>
+                  <div class="col-md-4">
+                    <select class="form-control" id="round1">
+                      <option>Select a Process</option>
+                      <option>Written/Online</option>
+                      <option>Group Discussion</option>
+                      <option>Technical Interview</option>
+                      <option>HR Interview</option>
+                      <option>Psycometric Test</option>
+                      <option>Contest</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-2">
+                    <p class="mar">Round : 2</p>
+                  </div>
+                  <div class="col-md-4">
+                    <select class="form-control" id="round1">
+                      <option>Select a Process</option>
+                      <option>Written/Online</option>
+                      <option>Group Discussion</option>
+                      <option>Technical Interview</option>
+                      <option>HR Interview</option>
+                      <option>Psycometric Test</option>
+                      <option>Contest</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                  </div>
+                </div>
+              
+              </div>
+
+              <button (click)="goBack()" class="btn btn-info pull-left">Back</button>
+              <button type="submit" class="btn btn-info pull-right">Post</button>
+              <div class="clearfix"></div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

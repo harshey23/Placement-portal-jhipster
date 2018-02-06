@@ -1,0 +1,106 @@
+<div class="main-content">
+
+  <div class="container-fluid">
+
+    <div class="col-lg-10 col-md-12">
+  
+      <form role="search" style="margin-top:0px;">
+
+        <div class="input-group col-sm-10" style="margin-top:-15px;">
+          <input type="text" class="form-control" placeholder="Search Co-Ordinator by Name" aria-label="Recipient's username" aria-describedby="basic-addon2">
+          <div class="input-group-btn">
+            <button type="submit" id="wrap" class="btn btn-info btn-just-icon">
+              <i class="material-icons">search</i>
+              <div class="ripple-container"></div>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="card">
+      <div class="card-header" data-background-color="blue">
+        <button (click)="addCoordinator()" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Add Company" style="float:right;margin-top: -45px;margin-top: -5px;padding: 12px;">
+          <i class="fa fa-plus-square"></i>
+          <div class="ripple-container"></div>
+        </button>
+        <h4 class="title">
+          <b>List Of Coordinators</b>
+        </h4>
+
+        <p class="category"></p>
+      </div>
+      <div class="card-content table-responsive">
+        
+        <table class="table table-hover">
+         
+          <thead class="text-info">
+            <th class="pad">Coordinator Name</th>
+            <th class="pad">Contact</th>
+            <th class="pad">Department</th>
+            <th class="pad">Email</th>
+          </thead>
+          <tbody>
+            <tr (click)="gotoDetail(company)">
+              <td>Sharath Kumar S</td>
+              <td>9785689444</td>
+              <td>ISE</td>
+              <td>skumars@sit.ac.in</td>
+            </tr>
+            <tr (click)="gotoDetail(company)">
+              <td>Anuasclmn Edljncd</td>
+              <td>9785689</td>
+              <td>ISE</td>
+              <td>skumars@sit.ac.in</td>
+            </tr>
+            <tr (click)="gotoDetail(company)">
+              <td>Anuasclmn Edljncd</td>
+              <td>9785689</td>
+              <td>ISE</td>
+              <td>skumars@sit.ac.in</td>
+            </tr>
+            <tr (click)="gotoDetail(company)">
+              <td>Anuasclmn Edljncd</td>
+              <td>9785689</td>
+              <td>ISE</td>
+              <td>skumars@sit.ac.in</td>
+            </tr>
+            <tr (click)="gotoDetail(company)">
+              <td>Anuasclmn Edljncd</td>
+              <td>9785689</td>
+              <td>ISE</td>
+              <td>skumars@sit.ac.in</td>
+            </tr>
+            <tr (click)="gotoDetail(company)">
+              <td>Anuasclmn Edljncd</td>
+              <td>9785689</td>
+              <td>ISE</td>
+              <td>skumars@sit.ac.in</td>
+            </tr>
+            <tr (click)="gotoDetail(company)">
+              <td>Anuasclmn Edljncd</td>
+              <td>9785689</td>
+              <td>ISE</td>
+              <td>skumars@sit.ac.in</td>
+            </tr>
+            <tr (click)="gotoDetail(company)">
+              <td>Anuasclmn Edljncd</td>
+              <td>9785689</td>
+              <td>ISE</td>
+              <td>skumars@sit.ac.in</td>
+            </tr>
+            <tr (click)="gotoDetail(company)">
+              <td>Anuasclmn Edljncd</td>
+              <td>9785689</td>
+              <td>ISE</td>
+              <td>skumars@sit.ac.in</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

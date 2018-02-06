@@ -1,0 +1,163 @@
+<div class="main-content">
+  <div class="container-fluid">
+
+    <!-- <div class="row">
+          <div class="input-group col-sm-10">
+          <input type="text" class="form-control" placeholder="Search Student by USN" aria-label="Recipient's username" aria-describedby="basic-addon2">
+          <div class="input-group-btn">
+            <button type="submit" id="wrap" class="btn btn-info btn-just-icon">
+              <i class="material-icons">search</i>
+              <div class="ripple-container"></div>
+            </button>
+          </div>
+          </div>
+      </div> -->
+
+    <div class="row" style="margin-top:-15px;">
+
+      <div class="col-lg-6 col-md-8">
+        <form role="search" style="margin-top:0px;">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search Student by USN" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <div class="input-group-btn">
+              <button type="submit" id="wrap" class="btn btn-info btn-just-icon">
+                <i class="material-icons">search</i>
+                <div class="ripple-container"></div>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="col-lg-4 col-md-0">
+      </div>
+
+      <div class="col-lg-2 col-md-4">
+        <button (click)="addStudent()" type="submit" class="btn btn-info pull-right">Add Student
+          <i class="fa fa-plus-square" style="margin-left:10px;"></i>
+        </button>
+      </div>
+
+    </div>
+
+    
+    <div class="row">
+
+      <div class="col-lg-5">
+        <div class="card">
+
+          <div class="card-header" data-background-color="blue">
+            <h4 class="title">Search by Branch</h4>
+            <!-- <p class="category">Here is a subtitle for this card</p> -->
+          </div>
+
+          <div class="card-content">
+
+            <div class="row">
+              <div class="col-md-3">
+                <label style="margin-top: 20px;">
+                  Branch :
+                </label>
+              </div>
+              <div class="col-md-9">
+                <div class="form-group" style="margin-top: 12px;">
+                  <!-- <label for="sel1">Select list:</label> -->
+                  <select class="form-control" id="sel1">
+                    <option>Select a Branch</option>
+                    <option>CSE</option>
+                    <option>ISE</option>
+                    <option>Mech</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-3">
+                <label style="margin-top: 20px;">
+                  Batch :
+                </label>
+              </div>
+              <div class="col-md-9">
+                <div class="form-group" style="margin-top: 12px;">
+                  <!-- <label for="sel1">Select list:</label> -->
+                  <select class="form-control" id="sel1">
+                    <option>Select a Batch</option>
+                    <option>2014-15</option>
+                    <option>2015-16</option>
+                    <option>2016-17</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div>
+                <button (click)="listReport()" class="btn btn-md btn-info pull-right" type="submit" style="margin-right:10px;">
+                  <i class="material-icons">list</i> List</button>
+              </div>
+            </div>
+
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="col-lg-7">
+        <div class="card">
+          <div class="card-header" data-background-color="blue">
+            <h4 class="title">Search by Company</h4>
+            <!-- <p class="category">Here is a subtitle for this card</p> -->
+          </div>
+          <div class="card-content">
+
+            <div class="row">
+              <div class="col-md-3">
+                <label style="margin-top: 20px;">
+                  Company :
+                </label>
+              </div>
+              <div class="col-md-9">
+                <div class="form-group" style="margin-top: 12px;">
+                  <!-- <label for="sel1">Select list:</label> -->
+                  <select class="form-control" id="sel1">
+                    <option>Select a Company</option>
+                    <option>TCS</option>
+                    <option>Redbus</option>
+                    <option>L&T</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-3">
+                <label style="margin-top: 20px;">
+                  Batch :
+                </label>
+              </div>
+              <div class="col-md-9">
+                <div class="form-group" style="margin-top: 12px;">
+                  <!-- <label for="sel1">Select list:</label> -->
+                  <select class="form-control" id="sel1">
+                    <option>Select a Batch</option>
+                    <option>2014-15</option>
+                    <option>2015-16</option>
+                    <option>2016-17</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div>
+                <button (click)="listReport()" class="btn btn-md btn-info pull-right" type="submit" style="margin-right:10px;">
+                  <i class="material-icons">list</i> List</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

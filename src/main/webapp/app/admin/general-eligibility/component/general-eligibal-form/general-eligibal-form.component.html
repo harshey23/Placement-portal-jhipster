@@ -1,0 +1,315 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <!-- <div class="dropdown pull-right">
+          <a href="#" class="btn btn-info dropdown-toggle" data-toggle="dropdown" style="margin-bottom:22px;">
+            2018
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#">2017</a>
+            </li>
+            <li>
+              <a href="#">2016</a>
+            </li>
+            <li>
+              <a href="#">2015</a>
+            </li>
+          </ul>
+        </div> -->
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header" data-background-color="blue">
+            <h4 class="title">General Eligilibility list</h4>
+            <p class="category">Select the following criteria for general elogiblity list</p>
+          </div>
+          <div class="card-content">
+            <form>
+              <div class="row">
+                <div class="col-md-12">
+                  <p>Branches Allowed:</p>
+                  <ss-multiselect-dropdown style="color:#4082ee;" [options]="branches" [texts]="branchesTexts" [settings]="branchesSettings" [(ngModel)]="branchesOptionsModel"
+                    [ngModelOptions]="{standalone: true}"></ss-multiselect-dropdown>
+                </div>
+              </div>
+
+              <!-- UG/PG -->
+              <div class="row">
+
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-lg-5">
+                      <h3>Select Degree</h3>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-8">
+                      <div class="row">
+                        <div class="col-lg-5">
+                          <label class="fadelabel">UG or PG : </label>
+                        </div>
+                        <div class="col-lg-2">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="optionsRadios2" [checked]="true" (change)="selectUG(true)"> UG
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-lg-3">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="optionsRadios2" (change)="selectUG(false)"> PG
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Branches allowed for ug-->
+              <div *ngIf="isUG == true" class="row">
+                <div class="col-md-12">
+                  <h3>Branches Allowed in ug:</h3>
+                  <ss-multiselect-dropdown [options]="branches" [texts]="branchesTexts" [settings]="branchesSettings" [(ngModel)]="branchesOptionsModel"
+                    [ngModelOptions]="{standalone: true}"></ss-multiselect-dropdown>
+                </div>
+              </div>
+
+              <!-- Branches allowed for pg-->
+              <div *ngIf="isUG == false" class="row">
+                <div class="col-md-12">
+                  <h3>Branches Allowed in pg:</h3>
+                  <ss-multiselect-dropdown [options]="pgBranches" [texts]="pgBranchesTexts" [settings]="pgBranchesSettings" [(ngModel)]="pgBranchesOptionsModel"
+                    [ngModelOptions]="{standalone: true}"></ss-multiselect-dropdown>
+                </div>
+              </div>
+
+              
+              <!-- Criteria -->
+              <div class="row">
+
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-lg-5">
+                      <h3>Criteria</h3>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group form-black label-floating is-empty">
+                        <label class="control-label">10th %</label>
+                        <input type="text" class="form-control">
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group form-black label-floating is-empty">
+                        <label class="control-label">12th %</label>
+                        <input type="text" class="form-control">
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group form-black label-floating is-empty">
+                        <label class="control-label">Diploma %</label>
+                        <input type="text" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="col-md-12">
+                  <div class="row">
+                    <div *ngIf="isUG == false" class="col-md-4">
+                      <div class="form-group form-black label-floating is-empty">
+                        <label class="control-label">PG aggragate CGPA</label>
+                        <input type="text" class="form-control">
+                      </div>
+                    </div>
+                    <div *ngIf="isUG == true" class="col-md-4">
+                      <div class="form-group form-black label-floating is-empty">
+                        <label class="control-label">BE aggragate CGPA</label>
+                        <input type="text" class="form-control">
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group form-black label-floating is-empty">
+                        <label class="control-label">Each sem %</label>
+                        <input type="text" class="form-control">
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group form-black label-floating is-empty">
+                        <label class="control-label">CET Rank</label>
+                        <input type="text" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div *ngIf="isUG == false" class="col-md-12">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group form-black label-floating is-empty">
+                          <label class="control-label">BE degree percentage</label>
+                          <input type="text" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+              </div>
+
+              <!-- Backlogs -->
+              <div class="row">
+
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-lg-5">
+                      <h3>Backlogs</h3>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group form-black label-floating is-empty">
+                        <label class="control-label">Current Backlogs</label>
+                        <input type="text" class="form-control">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group form-black label-floating is-empty">
+                        <label class="control-label">History Backlogs</label>
+                        <input type="text" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-8">
+                      <div class="row">
+                        <div class="col-lg-5">
+                          <label class="fadelabel">YearBack Status : </label>
+                        </div>
+                        <div class="col-lg-2">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="optionsRadios2"> Allowed
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-lg-3">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="optionsRadios2"> Not-Allowed
+                            </label>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-8">
+                      <div class="row">
+                        <div class="col-lg-5">
+                          <label class="fadelabel">Discontinued Status : </label>
+                        </div>
+                        <div class="col-lg-2">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="optionsRadios2"> Allowed
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-lg-3">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="optionsRadios2"> Not-Allowed
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Groups allowed -->
+              <div class="row">
+                <div class="col-lg-8">
+
+                  <div class="row">
+                    <div class="col-lg-5">
+                      <h3>Groups Allowed :</h3>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="optionsCheckboxes2" checked> General
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="optionsCheckboxes2" checked> SC/ST
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="optionsCheckboxes2" checked> OBC
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Companies Allowed -->
+              <div class="row">
+                <div class="col-md-12">
+                  <h3>Companies Allowed:</h3>
+                  <ss-multiselect-dropdown [options]="companies" [texts]="companiesTexts" [settings]="companiesSettings" [(ngModel)]="companiesOptionsModel"
+                    [ngModelOptions]="{standalone: true}"></ss-multiselect-dropdown>
+                </div>
+              </div>
+
+              <button (click)="generateList()" type="submit" class="btn btn-info pull-right">Get Eligibility List</button>
+              <div class="clearfix"></div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

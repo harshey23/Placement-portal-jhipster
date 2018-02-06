@@ -1,0 +1,259 @@
+<div class="main-content">
+  <div class="container-fluid">
+
+    <div class="row">
+
+      <div class="col-lg-3">
+        <h4 style="margin-top:20px;">Current Openings -
+          <strong>2018</strong>
+        </h4>
+      </div>
+
+      <div class="col-lg-6 col-md-5"></div>
+
+      <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4">
+        <div style="margin-right:15px;">
+          <button (click)="post()" class="btn btn-info pull-right">Post new Opening
+            <i class="fa fa-plus-square" style="margin-left:10px;"></i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Dynamically add current cards here -->
+    <div class="row">
+
+      <div class="col-lg-3" (click)="gotoCurrentDetails()">
+        <div class="card card-stats">
+          <div class="card-header" data-background-color="green">
+            <i class="material-icons">done_all</i>
+          </div>
+          <div class="card-content">
+            <p class="category">fulltime</p>
+            <h3 class="title">Siemens
+              <small></small>
+            </h3>
+          </div>
+          <div class="card-footer">
+            <div>
+              <p>selection process :
+                <i class="text-success"> active</i>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3" (click)="gotoCurrentDetails()">
+        <div class="card card-stats">
+          <div class="card-header" data-background-color="green">
+            <i class="material-icons">done_all</i>
+          </div>
+          <div class="card-content">
+            <p class="category">fulltime</p>
+            <h3 class="title">Redbus
+              <small></small>
+            </h3>
+          </div>
+          <div class="card-footer">
+            <div>
+              <p>selection process :
+                <i class="text-success"> active</i>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3" (click)="gotoCurrentDetails()">
+        <div class="card card-stats">
+          <div class="card-header" data-background-color="green">
+            <i class="material-icons">done_all</i>
+          </div>
+          <div class="card-content">
+            <p class="category">fulltime</p>
+            <h3 class="title overflow">Tata-elexi group
+              <small></small>
+            </h3>
+          </div>
+          <div class="card-footer">
+            <div>
+              <p>selection process :
+                <i class="text-success"> active</i>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3" (click)="gotoCurrentDetails()">
+        <div class="card card-stats">
+          <div class="card-header" data-background-color="blue">
+            <i class="material-icons">done_all</i>
+          </div>
+          <div class="card-content">
+            <p class="category">internship</p>
+            <h3 class="title">TCS
+              <small></small>
+            </h3>
+          </div>
+          <div class="card-footer">
+            <div>
+              <p>selection process :
+                <i class="text-primary"> posted</i>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3" (click)="gotoCurrentDetails()">
+        <div class="card card-stats">
+          <div class="card-header" data-background-color="blue">
+            <i class="material-icons">done_all</i>
+          </div>
+          <div class="card-content">
+            <p class="category">internship</p>
+            <h3 class="title overflow">Informatica
+              <small></small>
+            </h3>
+          </div>
+          <div class="card-footer">
+            <div>
+              <p>selection process :
+                <i class="text-success"> active</i>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3" (click)="gotoCurrentDetails()">
+        <div class="card card-stats">
+          <div class="card-header" data-background-color="red">
+            <i class="material-icons">done_all</i>
+          </div>
+          <div class="card-content">
+            <p class="category">contest</p>
+            <h3 class="title overflow">Tech-Mahindra
+
+            </h3>
+          </div>
+          <div class="card-footer">
+            <div>
+              <p>selection process :
+                <i class="text-primary"> posted</i>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- Dynamically add completed into table here -->
+
+    <h3>Completed Job Offers</h3>
+    <div class="card">
+
+      <div class="card-content table-responsive my-border">
+        <table class="table table-hover">
+          <thead class="text-info">
+            <th class="pad">Sl No</th>
+            <th class="pad">Company Name</th>
+            <th class="pad">Package</th>
+          </thead>
+          <tbody>
+            <tr (click)="gotoDetail()">
+              <td class="pad">1</td>
+              <td class="pad">Tech Global</td>
+              <td class="pad">4.5</td>
+            </tr>
+            <tr (click)="gotoDetail()">
+              <td class="pad">2</td>
+              <td class="pad">T.V.S.</td>
+              <td class="pad">4.5</td>
+            </tr>
+            <tr (click)="gotoDetail()">
+              <td class="pad">3</td>
+              <td class="pad">Net crakers</td>
+              <td class="pad">5.5</td>
+            </tr>
+            <tr (click)="gotoDetail()">
+              <td class="pad">4</td>
+              <td class="pad">Informatica</td>
+              <td class="pad">5.5</td>
+            </tr>
+            <tr (click)="gotoDetail()">
+              <td class="pad">5</td>
+              <td class="pad">Z Scalar</td>
+              <td class="pad">9.5</td>
+            </tr>
+            <tr (click)="gotoDetail()">
+              <td class="pad">6</td>
+              <td class="pad">VMWare</td>
+              <td class="pad">9.5</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h3>Completed Internship Offers</h3>
+    <div class="card">
+
+      <div class="card-content table-responsive my-border">
+        <table class="table table-hover">
+          <thead class="text-info">
+            <th class="pad">Sl No</th>
+            <th class="pad">Company Name</th>
+            <th class="pad">Package</th>
+          </thead>
+          <tbody>
+            <tr (click)="gotoDetail()">
+              <td class="pad">1</td>
+              <td class="pad">Tech Global</td>
+              <td class="pad">4.5</td>
+            </tr>
+            <tr (click)="gotoDetail()">
+              <td class="pad">2</td>
+              <td class="pad">T.V.S.</td>
+              <td class="pad">4.5</td>
+            </tr>
+            <tr (click)="gotoDetail()">
+              <td class="pad">3</td>
+              <td class="pad">Net crakers</td>
+              <td class="pad">5.5</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h3>Contest Offers</h3>
+    <div class="card">
+
+      <div class="card-content table-responsive my-border">
+        <table class="table table-hover">
+          <thead class="text-info">
+            <th class="pad">Sl No</th>
+            <th class="pad">Company Name</th>
+            <th class="pad">Package</th>
+          </thead>
+          <tbody>
+            <tr (click)="gotoDetail()">
+              <td class="pad">1</td>
+              <td class="pad">JPMorgan</td>
+              <td class="pad">4.5</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+  </div>
+
+</div>

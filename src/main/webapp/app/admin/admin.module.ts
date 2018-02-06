@@ -34,8 +34,27 @@ import {
     UserModalService,
     AdminComponent,
 
-    DashboardComponent,
     TryComponent,
+
+    AnalyticsComponent,
+
+    AddComponent,
+    DetailsComponent,
+    HomeComponent,
+
+    AdminCoordinatorComponent,
+    AdminCoordinatorAddComponent,
+    AdminCoordinatorDetailComponent,
+
+    DashboardComponent,
+
+    GeneralEligibalFormComponent,
+    GeneralEligibalListComponent,
+
+    CompletedDetailComponent,
+    CurrentDetailComponent,
+    JobHomeComponent,
+    PostComponent
 } from './';
 
 @NgModule({
@@ -59,12 +78,26 @@ import {
         JhiDocsComponent,
         JhiMetricsMonitoringComponent,
         JhiMetricsMonitoringModalComponent,
-        DashboardComponent,
-        TryComponent,
-        AdminComponent,
+
         FooterComponent,
         NavbarComponent,
-        SidebarComponent
+        SidebarComponent,
+        AdminComponent,
+        TryComponent,
+        AnalyticsComponent,
+       // AddComponent,
+       // DetailsComponent,
+       // HomeComponent,
+        AdminCoordinatorComponent,
+        AdminCoordinatorAddComponent,
+        AdminCoordinatorDetailComponent,
+        DashboardComponent,
+        GeneralEligibalFormComponent,
+        GeneralEligibalListComponent,
+       // CompletedDetailComponent,
+       // CurrentDetailComponent,
+       // JobHomeComponent,
+       // PostComponent
     ],
     entryComponents: [
         UserMgmtDialogComponent,

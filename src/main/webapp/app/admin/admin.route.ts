@@ -10,15 +10,25 @@ import {
     metricsRoute,
     userMgmtRoute,
     userDialogRoute,
+    tryRoute,
+    analyticsRoute,
+    companiesRoute,
+    coordinatorRoute,
     dashboardRoute,
-    tryRoute
+    generalElgibalRoute,
+    jobsRoute
 } from './';
 
 import { UserRouteAccessService } from '../shared';
 
 const ADMIN_ROUTES = [
-   // dashboardRoute,
     tryRoute,
+    analyticsRoute,
+   // ...companiesRoute,
+    ...coordinatorRoute,
+    dashboardRoute,
+   // ...generalElgibalRoute,
+   // ...jobsRoute,
     auditsRoute,
     configurationRoute,
     docsRoute,

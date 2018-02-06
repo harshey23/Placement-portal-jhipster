@@ -1,0 +1,116 @@
+<div class="main-content">
+  <div class="container-fluid">
+     <div class="row">
+       <div class="col-lg-5">
+          <div class="card">
+              <div class="card-header" data-background-color="red">
+                <h4 class="title">Recruitment by Branch</h4>
+                <!-- <p class="category">Here is a subtitle for this card</p> -->
+              </div>
+              <div class="card-content">
+               
+                <div class="row">
+                  <div class="col-md-3">
+                    <label style="margin-top: 20px;">
+                      Branch :
+                    </label>
+                  </div>
+                  <div class="col-md-9">
+                      <div class="form-group" style="margin-top: 12px;">
+                          <!-- <label for="sel1">Select list:</label> -->
+                          <select class="form-control" id="sel1">
+                            <option>Select a Branch</option>
+                            <option>CSE</option>
+                            <option>ISE</option>
+                            <option>Mech</option>
+                          </select>
+                        </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                      <label style="margin-top: 20px;">
+                        Batch :
+                      </label>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="form-group" style="margin-top: 12px;">
+                            <!-- <label for="sel1">Select list:</label> -->
+                            <select class="form-control" id="sel1">
+                              <option>Select a Batch</option>
+                              <option>2014-15</option>
+                              <option>2015-16</option>
+                              <option>2016-17</option>
+                            </select>
+                          </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                      <div>
+                          <button (click)="gotoList()" class="btn btn-md btn-danger pull-right" type="submit"  style="margin-right:10px;">
+                              <i class="material-icons">list</i> List</button>
+                          </div>
+                      </div>
+                    </div>
+              </div>
+            </div>
+
+            <div class="col-lg-7">
+                <div class="card">
+                    <div class="card-header" data-background-color="red">
+                      <h4 class="title">Recruitment by Company</h4>
+                      <!-- <p class="category">Here is a subtitle for this card</p> -->
+                    </div>
+                    <div class="card-content">
+                     
+                      <div class="row">
+                        <div class="col-md-3">
+                          <label style="margin-top: 20px;">
+                            Branch :
+                          </label>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group" style="margin-top: 12px;">
+                                <!-- <label for="sel1">Select list:</label> -->
+                                <select class="form-control" id="sel1">
+                                  <option>Select a Company</option>
+                                  <option>CSE</option>
+                                  <option>ISE</option>
+                                  <option>Mech</option>
+                                </select>
+                              </div>
+                        </div>
+                      </div>
+      
+                      <div class="row">
+                          <div class="col-md-3">
+                            <label style="margin-top: 20px;">
+                              Batch :
+                            </label>
+                          </div>
+                          <div class="col-md-9">
+                              <div class="form-group" style="margin-top: 12px;">
+                                  <!-- <label for="sel1">Select list:</label> -->
+                                  <select class="form-control" id="sel1">
+                                    <option>Select a Batch</option>
+                                    <option>2014-15</option>
+                                    <option>2015-16</option>
+                                    <option>2016-17</option>
+                                  </select>
+                                </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                            <div>
+                                <button (click)="gotoList()" class="btn btn-md btn-danger pull-right" type="submit"  style="margin-right:10px;">
+                                    <i class="material-icons">list</i> List</button>
+                                </div>
+                            </div>
+                          </div>
+                    </div>
+                  </div>
+
+       </div>
+     </div>
+  </div>

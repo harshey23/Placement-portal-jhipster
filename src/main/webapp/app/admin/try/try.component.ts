@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
 
-declare var $:any;
+declare var $: any;
 
 @Component({
-    selector: 'jhi-try',
-    templateUrl: './try.component.html',
-    styleUrls: ['./try.component.css']
+  selector: 'jhi-try',
+  templateUrl: './try.component.html',
+  styleUrls: ['./try.component.css']
 })
 export class TryComponent implements OnInit {
 
-    constructor() {}
-  startAnimationForLineChart(chart){
+  constructor() { }
+  startAnimationForLineChart(chart) {
       let seq: any, delays: any, durations: any;
       seq = 0;
       delays = 80;
       durations = 500;
 
       chart.on('draw', function(data) {
-        if(data.type === 'line' || data.type === 'area') {
+        if (data.type === 'line' || data.type === 'area') {
           data.element.animate({
             d: {
               begin: 600,
@@ -28,7 +28,7 @@ export class TryComponent implements OnInit {
               easing: Chartist.Svg.Easing.easeOutQuint
             }
           });
-        } else if(data.type === 'point') {
+        } else if (data.type === 'point') {
               seq++;
               data.element.animate({
                 opacity: {
@@ -44,40 +44,39 @@ export class TryComponent implements OnInit {
 
       seq = 0;
   };
-  startAnimationForBarChart(chart){
-        let seq2: any, delays2: any, durations2: any;
+  startAnimationForBarChart(chart) {
+      let seq2: any, delays2: any, durations2: any;
 
-        seq2 = 0;
-        delays2 = 80;
-        durations2 = 500;
-        chart.on('draw', function(data) {
-          if(data.type === 'bar'){
-              seq2++;
-              data.element.animate({
-                opacity: {
-                  begin: seq2 * delays2,
-                  dur: durations2,
-                  from: 0,
-                  to: 1,
-                  easing: 'ease'
-                }
-              });
-          }
-        });
+      seq2 = 0;
+      delays2 = 80;
+      durations2 = 500;
+      chart.on('draw', function(data) {
+        if (data.type === 'bar') {
+            seq2++;
+            data.element.animate({
+              opacity: {
+                begin: seq2 * delays2,
+                dur: durations2,
+                from: 0,
+                to: 1,
+                easing: 'ease'
+              }
+            });
+        }
+      });
 
-        seq2 = 0;
-    };
-
-    ngOnInit() {
+      seq2 = 0;
+  };
+  ngOnInit() {
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
       // $('[data-toggle="tooltip"]').tooltip();
 
-      $(this).children(".description").hide();
+      $(this).children('.description').hide();
 
-      $(".register").mouseover(function() {
-        $(this).children(".description").show();
+      $('.register').mouseover(function() {
+        $(this).children('.description').show();
        }).mouseout(function() {
-        $(this).children(".description").hide();
+        $(this).children('.description').hide();
        });
 
 
@@ -99,7 +98,7 @@ export class TryComponent implements OnInit {
           chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
       }
 
-      var dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
+      const dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
 
       this.startAnimationForLineChart(dailySalesChart);
 
@@ -122,7 +121,7 @@ export class TryComponent implements OnInit {
           chartPadding: { top: 0, right: 0, bottom: 0, left: 0}
       }
 
-      var completedTasksChart = new Chartist.Line('#completedTasksChart', dataCompletedTasksChart, optionsCompletedTasksChart);
+      const completedTasksChart = new Chartist.Line('#completedTasksChart', dataCompletedTasksChart, optionsCompletedTasksChart);
 
       // start animation for the Completed Tasks Chart - Line Chart
       this.startAnimationForLineChart(completedTasksChart);
@@ -131,7 +130,7 @@ export class TryComponent implements OnInit {
 
       /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
 
-      var dataEmailsSubscriptionChart = {
+      const dataEmailsSubscriptionChart = {
         labels: ['2017', '2016', '2015', '2014', '2013', '2012', '2011', '2010', '2009', '2008', '2007', '2006'],
         series: [
           [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895],
@@ -139,7 +138,7 @@ export class TryComponent implements OnInit {
 
         ]
       };
-      var optionsEmailsSubscriptionChart = {
+      const optionsEmailsSubscriptionChart = {
           axisX: {
               showGrid: false
           },
@@ -147,7 +146,7 @@ export class TryComponent implements OnInit {
           high: 1000,
           chartPadding: { top: 0, right: 5, bottom: 0, left: 0}
       };
-      var responsiveOptions: any[] = [
+      const responsiveOptions: any[] = [
         ['screen and (max-width: 640px)', {
           seriesBarDistance: 5,
           axisX: {
@@ -157,9 +156,10 @@ export class TryComponent implements OnInit {
           }
         }]
       ];
-      var emailsSubscriptionChart = new Chartist.Bar('#emailsSubscriptionChart', dataEmailsSubscriptionChart, optionsEmailsSubscriptionChart, responsiveOptions);
+      const emailsSubscriptionChart = new Chartist.Bar('#emailsSubscriptionChart', dataEmailsSubscriptionChart, optionsEmailsSubscriptionChart, responsiveOptions);
 
-      //start animation for the Emails Subscription Chart
+      // start animation for the Emails Subscription Chart
       this.startAnimationForBarChart(emailsSubscriptionChart);
-    }
+  }
+
 }

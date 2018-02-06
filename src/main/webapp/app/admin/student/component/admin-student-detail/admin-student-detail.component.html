@@ -1,0 +1,359 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="container col-lg-8 col-lg-offset-2">
+        <div class="justify-content-center form-container">
+          <mat-card>
+
+            <mat-horizontal-stepper [linear]="true">
+
+              <div class="row justify-content-center" id="gg">
+                <mat-step [stepControl]="firstFormGroup">
+                  <form [formGroup]="firstFormGroup">
+                    <ng-template matStepLabel>Personal Information</ng-template>
+                    <div class="row">
+                      <div class="col-lg-4">
+
+
+                        <mat-form-field class="inputs" id="input-id">
+                          <input matInput placeholder="Full Name" formControlName="firstCtrl" required>
+                        </mat-form-field>
+                        <mat-form-field class="inputs">
+                          <input matInput placeholder="USN" name="usn">
+                        </mat-form-field>
+                        <mat-form-field class="inputs">
+                          <input matInput placeholder="Email" type="email" name="email">
+                        </mat-form-field>
+                        <mat-form-field class="inputs">
+                          <input matInput placeholder="Father's name" name="fatherName">
+                        </mat-form-field>
+                        <mat-form-field>
+                          <input matInput [matDatepicker]="dp3" placeholder="Date of Birth" disabled>
+                          <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+                          <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+                        </mat-form-field>
+                        <mat-form-field class="inputs">
+                          <input matInput placeholder="Contact number" type="number" name="phNumber">
+                        </mat-form-field>
+                        <mat-form-field class="inputs">
+                          <textarea matInput placeholder="Address"></textarea>
+                        </mat-form-field>
+                        <br>
+
+                        <div>
+                          <label class="fadelabel">Gender : </label>
+                          <br>
+                          <mat-radio-group class="row">
+                            <mat-radio-button class="radiobtn" value="1">Male</mat-radio-button>
+                            <mat-radio-button class="radiobtn" value="2">Female</mat-radio-button>
+                            <mat-radio-button class="radiobtn" value="3">Non-Binary</mat-radio-button>
+                          </mat-radio-group>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-lg-4">
+                        <mat-form-field>
+                          <mat-select placeholder="Nationality">
+                            <mat-option>None</mat-option>
+                            <mat-option value="option1">Option 1</mat-option>
+                            <mat-option value="option2">Option 2</mat-option>
+                            <mat-option value="option3">Option 3</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                      <div class="col-lg-4">
+                        <mat-form-field>
+                          <mat-select placeholder="Religion">
+                            <mat-option>None</mat-option>
+                            <mat-option value="option1">Option 1</mat-option>
+                            <mat-option value="option2">Option 2</mat-option>
+                            <mat-option value="option3">Option 3</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                      <div class="col-lg-4">
+                        <mat-form-field>
+                          <mat-select placeholder="Category">
+                            <mat-option>None</mat-option>
+                            <mat-option value="option1">Option 1</mat-option>
+                            <mat-option value="option2">Option 2</mat-option>
+                            <mat-option value="option3">Option 3</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+
+
+                    <div>
+                      <button id="nextbtn" class="primary" mat-raised-button matStepperNext type="button">Next</button>
+                    </div>
+                  </form>
+                </mat-step>
+                <mat-step [stepControl]="secondFormGroup">
+                  <form [formGroup]="secondFormGroup">
+                    <ng-template matStepLabel>Academic Information</ng-template>
+
+
+                    <div class="container cont">
+
+                      <div class="row fields">
+                        <div class="col fields">
+                          <label class="fadelabel">PUC/Diploma : </label>
+                        </div>
+                        <div class="col fields">
+                          <mat-radio-group>
+                            <mat-radio-button class="radiobtn2" value="1">PUC</mat-radio-button>
+                            <mat-radio-button class="radiobtn2" value="2">Diploma</mat-radio-button>
+                          </mat-radio-group>
+                        </div>
+                      </div>
+                      <div class="inputs">
+                        <div>
+                          <mat-form-field class="inputs fields">
+                            <input matInput placeholder="Name of 10th Board" name="10board" formControlName="secondCtrl" required>
+                          </mat-form-field>
+                        </div>
+                        <div>
+                          <mat-form-field class="inputs fields">
+                            <input matInput placeholder="Name of 12th Board" name="12board">
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col fields">
+                          <mat-form-field>
+                            <input matInput placeholder="10th %" type="number" name="10thmarks">
+                          </mat-form-field>
+                        </div>
+                        <div class="col fields">
+                          <mat-form-field>
+                            <input matInput placeholder="12th %" type="number" name="dipmarks">
+                          </mat-form-field>
+                        </div>
+                        <div class="col fields">
+                          <mat-form-field>
+                            <input matInput placeholder="Diploma %" type="number" name="12thmarks">
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="row fields">
+                        <div class="col-sm-4">
+                          <mat-form-field>
+                            <mat-select placeholder="10th Passed (year)">
+                              <mat-option>None</mat-option>
+                              <mat-option value="option1">Option 1</mat-option>
+                              <mat-option value="option2">Option 2</mat-option>
+                              <mat-option value="option3">Option 3</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        </div>
+                        <div class="col-sm-4">
+                          <mat-form-field>
+                            <mat-select placeholder="12th Passed (year)">
+                              <mat-option>None</mat-option>
+                              <mat-option value="option1">Option 1</mat-option>
+                              <mat-option value="option2">Option 2</mat-option>
+                              <mat-option value="option3">Option 3</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <mat-form-field>
+                            <mat-select placeholder="Course">
+                              <mat-option>None</mat-option>
+                              <mat-option value="option1">Option 1</mat-option>
+                              <mat-option value="option2">Option 2</mat-option>
+                              <mat-option value="option3">Option 3</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        </div>
+                        <div class="col">
+                          <mat-form-field>
+                            <mat-select placeholder="Semester">
+                              <mat-option>None</mat-option>
+                              <mat-option value="option1">Option 1</mat-option>
+                              <mat-option value="option2">Option 2</mat-option>
+                              <mat-option value="option3">Option 3</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        </div>
+                        <div class="col">
+                          <mat-form-field>
+                            <mat-select placeholder="Year of Passing">
+                              <mat-option>None</mat-option>
+                              <mat-option value="option1">Option 1</mat-option>
+                              <mat-option value="option2">Option 2</mat-option>
+                              <mat-option value="option3">Option 3</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        </div>
+                      </div>
+
+                      <div class="inputs fields">
+                        <label class="fadelabe">Semester-wise SGPA : </label>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <mat-form-field>
+                            <input matInput placeholder="I-SEM" type="number" name="sem1sgpa">
+                          </mat-form-field>
+                        </div>
+                        <div class="col-sm-3">
+                          <mat-form-field>
+                            <input matInput placeholder="II-SEM" type="number" name="sem2sgpa">
+                          </mat-form-field>
+                        </div>
+                        <div class="col-sm-3">
+                          <mat-form-field>
+                            <input matInput placeholder="III-SEM" type="number" name="sem3sgpa">
+                          </mat-form-field>
+                        </div>
+                        <div class="col-sm-3">
+                          <mat-form-field>
+                            <input matInput placeholder="IV-SEM" type="number" name="sem4sgpa">
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <mat-form-field>
+                            <input matInput placeholder="V-SEM" type="number" name="sem5sgpa">
+                          </mat-form-field>
+                        </div>
+                        <div class="col-sm-3">
+                          <mat-form-field>
+                            <input matInput placeholder="VI-SEM" type="number" name="sem6sgpa">
+                          </mat-form-field>
+                        </div>
+                        <div class="col-sm-3">
+                          <mat-form-field>
+                            <input matInput placeholder="VII-SEM" type="number" name="sem7sgpa">
+                          </mat-form-field>
+                        </div>
+                        <div class="col-sm-3">
+                          <mat-form-field>
+                            <input matInput placeholder="VIII-SEM" type="number" name="sem8sgpa">
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="fields">
+                        <mat-form-field class="inputs">
+                          <input matInput placeholder="Aggregate CGPA" type="number" name="cgpa">
+                        </mat-form-field>
+                      </div>
+                      <div class="row fields">
+                        <div class="col fields">
+                          <label class="fadelabel">Discontinuity in Education : </label>
+                        </div>
+                        <div class="col fields">
+                          <mat-radio-group>
+                            <mat-radio-button class="radiobtn2" value="1">Yes</mat-radio-button>
+                            <mat-radio-button class="radiobtn2" value="2">No</mat-radio-button>
+                          </mat-radio-group>
+                        </div>
+                      </div>
+                      <div class="row fields">
+                        <div class="col">
+                          <mat-form-field class="inputs">
+                            <input matInput placeholder="Current Backlogs(If any)" name="backlogs">
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="row fields">
+                        <div class="col">
+                          <mat-form-field class="inputs">
+                            <input matInput placeholder="Previous Attempts(If any)" name="attempts">
+                          </mat-form-field>
+                        </div>
+                      </div>
+
+
+                    </div>
+
+
+
+
+                    <div>
+                      <button mat-raised-button matStepperPrevious class="primary">Back</button>
+                      <button mat-raised-button matStepperNext class="primary" id="nextbtn">Next</button>
+                    </div>
+                  </form>
+                </mat-step>
+                <mat-step>
+                  <ng-template matStepLabel>Additional Information</ng-template>
+
+                  <div class="container">
+                    <div>
+                      <mat-form-field class="inputs" id="input-id">
+                        <input matInput placeholder="Alternative Email" type="email" name="altEmail">
+                      </mat-form-field>
+                    </div>
+                    <div>
+                      <mat-form-field class="inputs">
+                        <input matInput placeholder="Parent's Contact No." type="number" name="pcontactno">
+                      </mat-form-field>
+                    </div>
+                    <div>
+                      <mat-form-field class="inputs">
+                        <input matInput placeholder="Parent's Email" type="email" name="pemail">
+                      </mat-form-field>
+                    </div>
+                    <div>
+                      <mat-form-field class="inputs">
+                        <input matInput placeholder="Aadhar Number" name="aadharNo">
+                      </mat-form-field>
+                    </div>
+                    <div class="row fields">
+                      <div class="col fields">
+                        <label class="fadelabel">Physical Disability : </label>
+                      </div>
+                      <div class="col fields">
+                        <mat-radio-group>
+                          <mat-radio-button class="radiobtn2" value="1">Yes</mat-radio-button>
+                          <mat-radio-button class="radiobtn2" value="2">No</mat-radio-button>
+                        </mat-radio-group>
+                      </div>
+                    </div>
+
+                    <div>
+                      <mat-form-field class="inputs">
+                        <input matInput placeholder="New Password" type="password" name="password">
+                      </mat-form-field>
+                    </div>
+                    <div>
+                      <mat-form-field class="inputs">
+                        <input matInput placeholder="Confirm Password" type="password" name="cpassword">
+                      </mat-form-field>
+                    </div>
+                  </div>
+
+                  <div>
+                    <button mat-raised-button matStepperPrevious class="primary">Back</button>
+                    <button mat-raised-button matStepperNext class="primary" id="nextbtn">SUBMIT</button>
+                  </div>
+                </mat-step>
+              </div>
+
+            </mat-horizontal-stepper>
+
+
+            <div class="form-group" style="float:left;">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button (click)="goBack()" class="btn btn-primary">Exit</button>
+              </div>
+            </div>
+
+          </mat-card>
+
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
