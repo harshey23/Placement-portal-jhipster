@@ -3,7 +3,7 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes } from '@a
 import { ReportHomeComponent } from './component/report-home/report-home.component';
 import { ReportListComponent } from './component/report-list/report-list.component';
 
-export const coordinatorRoute: Routes = [
+export const reportRoute: Routes = [
     {
         path: 'report/home',
         component: ReportHomeComponent,

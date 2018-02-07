@@ -16,7 +16,10 @@ import {
     coordinatorRoute,
     dashboardRoute,
     generalElgibalRoute,
-    jobsRoute
+    jobsRoute,
+    reportRoute,
+    selectionProcessRoute,
+    studentRoute
 } from './';
 
 import { UserRouteAccessService } from '../shared';
@@ -27,8 +30,11 @@ const ADMIN_ROUTES = [
    // ...companiesRoute,
     ...coordinatorRoute,
     dashboardRoute,
-   // ...generalElgibalRoute,
-   // ...jobsRoute,
+    ...generalElgibalRoute,
+    ...jobsRoute,
+    ...reportRoute,
+    ...selectionProcessRoute,
+    ...studentRoute,
     auditsRoute,
     configurationRoute,
     docsRoute,

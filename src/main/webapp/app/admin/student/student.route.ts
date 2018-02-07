@@ -5,33 +5,33 @@ import { AdminStudentAddComponent } from './component/admin-student-add/admin-st
 import { AdminStudentDetailComponent } from './component/admin-student-detail/admin-student-detail.component';
 import { AdminStudentListComponent } from './component/admin-student-list/admin-student-list.component';
 
-export const coordinatorRoute: Routes = [
+export const studentRoute: Routes = [
     {
-        path: 'job/completed',
+        path: 'student',
         component: AdminStudentComponent,
         data: {
-            pageTitle: 'Stuudent'
+            pageTitle: 'Student'
         }
     },
     {
-        path: 'job/current',
+        path: 'student/add',
         component: AdminStudentAddComponent,
         data: {
-            pageTitle: 'Stuudent'
+            pageTitle: 'Student'
         }
     },
     {
-        path: 'job',
+        path: 'student/detail',
         component: AdminStudentDetailComponent,
         data: {
-            pageTitle: 'Stuudent'
+            pageTitle: 'Student'
         }
     },
     {
-        path: 'job/post',
+        path: 'student/list',
         component: AdminStudentListComponent,
         data: {
-            pageTitle: 'Stuudent'
+            pageTitle: 'Student'
         }
     }
 ];

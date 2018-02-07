@@ -3,7 +3,7 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes } from '@a
 import { SelectionProcessHomeComponent } from './component/selection-process-home/selection-process-home.component';
 import { SelectionProcessCompanyListComponent } from './component/selection-process-company-list/selection-process-company-list.component';
 
-export const coordinatorRoute: Routes = [
+export const selectionProcessRoute: Routes = [
     {
         path: 'selection/company',
         component: SelectionProcessHomeComponent,
