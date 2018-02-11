@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Company } from '../company';
+import { Company } from '../company.model';
 import { CompanyService } from '../company.services';
 
 declare var $: any;

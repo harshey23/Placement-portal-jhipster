@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { Company, Contact } from '../company';
+import { Company } from '../company.model';
 import { CompanyService } from '../company.services';
 
 @Component({

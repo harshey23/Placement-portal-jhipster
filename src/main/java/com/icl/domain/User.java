@@ -6,11 +6,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.validator.constraints.Email;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -23,7 +22,7 @@ import java.time.Instant;
  * A user.
  */
 
-@org.springframework.data.mongodb.core.mapping.Document(collection = "jhi_user")
+@org.springframework.data.mongodb.core.mapping.Document(collection = "com.icl.placement.user")
 public class User extends AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -32,15 +31,13 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Id
     private String id;
 
+    @DBRef
+    private Status status;
+
     @NotNull
-    @Pattern(regexp = Constants.LOGIN_REGEX)
-    @Size(min = 1, max = 50)
-    @Indexed
     private String login;
 
-    @JsonIgnore
     @NotNull
-    @Size(min = 60, max = 60)
     private String password;
 
     @Size(max = 50)
@@ -52,26 +49,20 @@ public class User extends AbstractAuditingEntity implements Serializable {
     private String lastName;
 
     @Email
-    @Size(min = 5, max = 100)
-    @Indexed
     private String email;
 
     private boolean activated = false;
 
-    @Size(min = 2, max = 6)
     @Field("lang_key")
     private String langKey;
 
-    @Size(max = 256)
     @Field("image_url")
     private String imageUrl;
 
-    @Size(max = 20)
     @Field("activation_key")
     @JsonIgnore
     private String activationKey;
 
-    @Size(max = 20)
     @Field("reset_key")
     @JsonIgnore
     private String resetKey;
@@ -212,9 +203,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
             ", firstName='" + firstName + '\'' +
             ", lastName='" + lastName + '\'' +
             ", email='" + email + '\'' +
-            ", imageUrl='" + imageUrl + '\'' +
             ", activated='" + activated + '\'' +
-            ", langKey='" + langKey + '\'' +
             ", activationKey='" + activationKey + '\'' +
             "}";
     }

@@ -5,18 +5,20 @@ $fa-font-path: '~font-awesome/fonts';
 put Sass variables here:
 eg $input-color: red;
 ****************************/
+
 // Override Boostrap variables
 // @import "bootstrap-variables";
+
 // Import Bootstrap source files from node_modules
 // @import 'node_modules/bootstrap/scss/bootstrap';
-// @import 'node_modules/bootstrap-material-design/dist/css/bootstrap-material-design';
-// @import 'node_modules/font-awesome/scss/font-awesome';
+//// @import 'node_modules/bootstrap-material-design/dist/css/bootstrap-material-design';
+ @import 'node_modules/font-awesome/scss/font-awesome';
 
 
  @import 'node_modules/bootstrap/dist/css/bootstrap';
  @import 'node_modules/perfect-scrollbar/css/perfect-scrollbar';
- @import '../../assets/sass/material-dashboard';
  @import '../../assets/css/demo';
+ @import '../../assets/sass/material-dashboard';
  @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 /* jhipster-needle-scss-add-vendor JHipster will add new css style */
