@@ -266,4 +266,29 @@ public class UserService {
         return authorityRepository.findAll().stream().map(Authority::getName).collect(Collectors.toList());
     }
 
+    /**
+     * @return a list of all the batches
+     */
+    public List<String> getBatches() {
+        return authorityRepository.findAll().stream().map(Authority::getName).collect(Collectors.toList());
+    }
+
+    /**
+     * @return a list of all the courses
+     */
+    public List<String> getCourses() {
+        return authorityRepository.findAll().stream().map(Authority::getName).collect(Collectors.toList());
+    }
+
+    /**
+     * @return a list of all the course types
+     */
+    public List<String> getCourseTypes() {
+        return authorityRepository.findAll().stream().map(Authority::getName).collect(Collectors.toList());
+    }
+
+    public Page<UserDTO> getAllUsersByRole(Pageable pageable, String role) {
+        return userRepository.findAllByLoginNot(pageable, Constants.ANONYMOUS_USER).map(UserDTO::new);
+    }
+
 }

@@ -151,7 +151,7 @@ public class UserResource {
     /**
      * @return a string list of the all of the roles
      */
-    @GetMapping("/users/authorities")
+    @GetMapping("/users/roles")
     @Timed
     @Secured(AuthoritiesConstants.ADMIN)
     public List<String> getAuthorities() {
@@ -187,4 +187,90 @@ public class UserResource {
         userService.deleteUser(login);
         return ResponseEntity.ok().headers(HeaderUtil.createAlert( "A user is deleted with identifier " + login, login)).build();
     }
+
+    /**
+     * @return a string list of the all of the roles
+     */
+    @GetMapping("/users/batch")
+    @Timed
+    @Secured(AuthoritiesConstants.ADMIN)
+    public List<String> getBatches() {
+        return userService.getBatches();
+    }
+
+    /**
+     * @return a string list of the all of the roles
+     */
+    @GetMapping("/users/batch")
+    @Timed
+    @Secured(AuthoritiesConstants.ADMIN)
+    public List<String> getCourses() {
+        return userService.getCourses();
+    }
+
+    /**
+     * @return a string list of the all of the roles
+     */
+    @GetMapping("/users/batch")
+    @Timed
+    @Secured(AuthoritiesConstants.ADMIN)
+    public List<String> getCourseTypes() {
+        return userService.getCourseTypes();
+    }
+
+//    /**
+//     * GET /users/:login : get the "login" user.
+//     *
+//     * @param role the login of the user to find
+//     * @return the ResponseEntity with status 200 (OK) and with body the "login" user, or with status 404 (Not Found)
+//     */
+//    @GetMapping("/users/role/{role}")
+//    @Timed
+//    public ResponseEntity<UserDTO> getUsersByRole(Pageable pageable, @PathVariable String role) {
+//        final Page<UserDTO> page = userService.getAllUsersByRole(pageable, role);
+//        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/users/role");
+//        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+//    }
+//
+//    /**
+//     * GET /users/:login : get the "login" user.
+//     *
+//     * @param batch the login of the user to find
+//     * @return the ResponseEntity with status 200 (OK) and with body the "login" user, or with status 404 (Not Found)
+//     */
+//    @GetMapping("/users/batch/{batch}")
+//    @Timed
+//    public ResponseEntity<UserDTO> getUsersByBatch(Pageable pageable, @PathVariable String batch) {
+//        final Page<UserDTO> page = userService.getAllUsersByBatch(pageable, batch);
+//        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/users/batch");
+//        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+//    }
+//
+//    /**
+//     * GET /users/:login : get the "login" user.
+//     *
+//     * @param batch the login of the user to find
+//     * @return the ResponseEntity with status 200 (OK) and with body the "login" user, or with status 404 (Not Found)
+//     */
+//    @GetMapping("/users/batch/{batch}/course/{course}")
+//    @Timed
+//    public ResponseEntity<UserDTO> getAllUsersByBatchAndCourse(Pageable pageable, @PathVariable String batch, String course) {
+//        final Page<UserDTO> page = userService.getAllUsersByBatchAndCourse(pageable, batch, course);
+//        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/users/batch");
+//        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+//    }
+//
+//    /**
+//     * GET /users/:login : get the "login" user.
+//     *
+//     * @param batch the login of the user to find
+//     * @return the ResponseEntity with status 200 (OK) and with body the "login" user, or with status 404 (Not Found)
+//     */
+//    @GetMapping("/users/batch/{batch}/company/{company}")
+//    @Timed
+//    public ResponseEntity<UserDTO> getAllUsersByBatchAndCompany(Pageable pageable, @PathVariable String batch, String company) {
+//        final Page<UserDTO> page = userService.getAllUsersByBatchAndCompany(pageable, batch, company);
+//        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/users/batch");
+//        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+//    }
 }
