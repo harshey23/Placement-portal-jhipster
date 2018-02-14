@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
 import { MatFormFieldModule} from '@angular/material';
-
 // importing Material UI components
 import {
   MatButtonModule,
@@ -23,10 +22,11 @@ import { MatSelectModule } from '@angular/material/select';
 
 import { PlacementSharedModule } from '../shared';
 /* jhipster-needle-add-admin-module-import - JHipster will add admin modules imports here */
-
 import { FooterComponent } from './template/footer/footer.component';
 import { NavbarComponent } from './template/navbar/navbar.component';
 import { SidebarComponent } from './template/sidebar/sidebar.component';
+import { CompanyService } from './companies/company.services';
+import { CompanyPopupService } from './companies/company-popup.service';
 
 import {
     adminState,
@@ -61,7 +61,8 @@ import {
     AddComponent,
     DetailsComponent,
     HomeComponent,
-
+    CompanyPopupComponent,
+    
     AdminCoordinatorComponent,
     AdminCoordinatorAddComponent,
     AdminCoordinatorDetailComponent,
@@ -86,7 +87,6 @@ import {
     AdminStudentAddComponent,
     AdminStudentDetailComponent,
     AdminStudentListComponent
-
 
 } from './';
 
@@ -130,16 +130,16 @@ import {
         JhiDocsComponent,
         JhiMetricsMonitoringComponent,
         JhiMetricsMonitoringModalComponent,
-
+        
         FooterComponent,
         NavbarComponent,
         SidebarComponent,
         AdminComponent,
         TryComponent,
         AnalyticsComponent,
-       // AddComponent,
-       // DetailsComponent,
-       // HomeComponent,
+        AddComponent,
+        DetailsComponent,
+        HomeComponent,
         AdminCoordinatorComponent,
         AdminCoordinatorAddComponent,
         AdminCoordinatorDetailComponent,
@@ -174,7 +174,9 @@ import {
         LogsService,
         UserResolvePagingParams,
         UserResolve,
-        UserModalService
+        UserModalService,
+        CompanyService,
+        CompanyPopupService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

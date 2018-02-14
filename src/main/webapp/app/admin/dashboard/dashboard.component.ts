@@ -79,9 +79,6 @@ export class DashboardComponent implements OnInit {
         $(this).children('.description').hide();
        });
 
-
-
-
       const dataDailySalesChart: any = {
           labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
           series: [
@@ -101,7 +98,6 @@ export class DashboardComponent implements OnInit {
       const dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
 
       this.startAnimationForLineChart(dailySalesChart);
-
 
       /* ----------==========     Completed Tasks Chart initialization    ==========---------- */
 
@@ -126,8 +122,6 @@ export class DashboardComponent implements OnInit {
       // start animation for the Completed Tasks Chart - Line Chart
       this.startAnimationForLineChart(completedTasksChart);
 
-
-
       /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
 
       const dataEmailsSubscriptionChart = {
@@ -150,7 +144,7 @@ export class DashboardComponent implements OnInit {
         ['screen and (max-width: 640px)', {
           seriesBarDistance: 5,
           axisX: {
-            labelInterpolationFnc: function (value) {
+            labelInterpolationFnc: function(value) {
               return value[0];
             }
           }

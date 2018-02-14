@@ -9,14 +9,14 @@ import * as Chartist from 'chartist';
 export class AnalyticsComponent implements OnInit {
 
   constructor() { }
-  startAnimationForLineChart(chart){
+  startAnimationForLineChart(chart) {
       let seq: any, delays: any, durations: any;
       seq = 0;
       delays = 80;
       durations = 500;
 
       chart.on('draw', function(data) {
-        if(data.type === 'line' || data.type === 'area') {
+        if (data.type === 'line'  || data.type === 'area') {
           data.element.animate({
             d: {
               begin: 600,
@@ -26,7 +26,7 @@ export class AnalyticsComponent implements OnInit {
               easing: Chartist.Svg.Easing.easeOutQuint
             }
           });
-        } else if(data.type === 'point') {
+        } else if ( data.type === 'point' ) {
               seq++;
               data.element.animate({
                 opacity: {
@@ -42,14 +42,14 @@ export class AnalyticsComponent implements OnInit {
 
       seq = 0;
   };
-  startAnimationForBarChart(chart){
+  startAnimationForBarChart(chart) {
       let seq2: any, delays2: any, durations2: any;
 
       seq2 = 0;
       delays2 = 80;
       durations2 = 500;
       chart.on('draw', function(data) {
-        if(data.type === 'bar'){
+        if (data.type === 'bar' ) {
             seq2++;
             data.element.animate({
               opacity: {
@@ -85,10 +85,9 @@ export class AnalyticsComponent implements OnInit {
           chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
       }
 
-      var dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
+      const dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
 
       this.startAnimationForLineChart(dailySalesChart);
-
 
       /* ----------==========     Completed Tasks Chart initialization    ==========---------- */
 
@@ -108,16 +107,14 @@ export class AnalyticsComponent implements OnInit {
           chartPadding: { top: 0, right: 0, bottom: 0, left: 0}
       }
 
-      var completedTasksChart = new Chartist.Line('#completedTasksChart', dataCompletedTasksChart, optionsCompletedTasksChart);
+      const completedTasksChart = new Chartist.Line('#completedTasksChart', dataCompletedTasksChart, optionsCompletedTasksChart);
 
       // start animation for the Completed Tasks Chart - Line Chart
       this.startAnimationForLineChart(completedTasksChart);
 
-
-
       /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
 
-      var dataEmailsSubscriptionChart = {
+      const dataEmailsSubscriptionChart = {
         labels: ['Boys', 'Girls'],
         series: [
           [542, 368],
@@ -125,7 +122,7 @@ export class AnalyticsComponent implements OnInit {
         ]
       };
 
-      var dataEmailsSubscriptionChart1 = {
+      const dataEmailsSubscriptionChart1 = {
         labels: ['2018', '2017', '2016', '2015', '2014', '2013', '2012', '2011'],
         series: [
           [240, 368, 320, 420, 250, 553, 453, 560],
@@ -134,7 +131,7 @@ export class AnalyticsComponent implements OnInit {
         ]
       };
 
-      var optionsEmailsSubscriptionChart = {
+      const optionsEmailsSubscriptionChart = {
           axisX: {
               showGrid: false
           },
@@ -142,19 +139,20 @@ export class AnalyticsComponent implements OnInit {
           high: 1000,
           chartPadding: { top: 0, right: 5, bottom: 0, left: 0}
       };
-      var responsiveOptions: any[] = [
+
+      const responsiveOptions: any[] = [
         ['screen and (max-width: 640px)', {
           seriesBarDistance: 5,
           axisX: {
-            labelInterpolationFnc: function (value) {
+            labelInterpolationFnc: function(value) {
               return value[0];
             }
           }
         }]
       ];
-      var emailsSubscriptionChart = new Chartist.Bar('#emailsSubscriptionChart', dataEmailsSubscriptionChart, optionsEmailsSubscriptionChart, responsiveOptions);
-      var emailsSubscriptionChart1 = new Chartist.Bar('#emailsSubscriptionChart1', dataEmailsSubscriptionChart1, optionsEmailsSubscriptionChart, responsiveOptions);
-      //start animation for the Emails Subscription Chart
+      const emailsSubscriptionChart = new Chartist.Bar('#emailsSubscriptionChart', dataEmailsSubscriptionChart, optionsEmailsSubscriptionChart, responsiveOptions);
+      const emailsSubscriptionChart1 = new Chartist.Bar('#emailsSubscriptionChart1', dataEmailsSubscriptionChart1, optionsEmailsSubscriptionChart, responsiveOptions);
+
       this.startAnimationForBarChart(emailsSubscriptionChart);
       this.startAnimationForBarChart(emailsSubscriptionChart1);
   }

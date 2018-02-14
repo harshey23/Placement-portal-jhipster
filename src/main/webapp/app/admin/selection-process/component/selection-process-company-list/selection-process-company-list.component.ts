@@ -8,13 +8,11 @@ import { Router } from '@angular/router';
 })
 export class SelectionProcessCompanyListComponent implements OnInit {
 
-
   constructor(private router: Router) { }
-  
-    ngOnInit() {
-    }
-  
+
+    ngOnInit() {}
+
     gotoSelectionProcess(): void {
-      this.router.navigate(['/admin/selection/company']);
+        this.router.navigate(['/admin/selection/company']);
     }
 }

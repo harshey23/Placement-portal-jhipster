@@ -10,10 +10,9 @@ import { IMultiSelectOption, IMultiSelectSettings, IMultiSelectTexts } from 'ang
 })
 export class GeneralEligibalFormComponent implements OnInit {
 
+  static ITEMS = 0;
   studentForm: FormGroup;
   isUG: boolean = true;
-
-  static ITEMS = 0;
 
   branchesOptionsModel: number[] = [1, 2];
   pgBranchesOptionsModel: number[] = [1, 2];
@@ -89,15 +88,14 @@ export class GeneralEligibalFormComponent implements OnInit {
     allSelected: 'All selected',
   };
 
-  constructor(
-    private router: Router, 
+  constructor(private router: Router,
     private fb: FormBuilder,
   ) { }
 
   ngOnInit() {
   }
 
-  generateList(): void{
+  generateList(): void {
     this.router.navigate(['/admin/general/list']);
   }
 
