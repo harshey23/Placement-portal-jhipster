@@ -9,7 +9,7 @@ import { ResponseWrapper, createRequestOption } from '../../shared';
 @Injectable()
 export class CompanyService {
 
-private resourceUrl =  '127.0.0.1:8080/' + 'api/companies';
+private resourceUrl =  SERVER_API_URL + 'api/companies';
 
 constructor(private http: Http) { }
 

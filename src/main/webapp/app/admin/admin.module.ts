@@ -62,7 +62,7 @@ import {
     DetailsComponent,
     HomeComponent,
     CompanyPopupComponent,
-    
+
     AdminCoordinatorComponent,
     AdminCoordinatorAddComponent,
     AdminCoordinatorDetailComponent,
@@ -91,30 +91,7 @@ import {
 } from './';
 
 @NgModule({
-    imports: [
-        PlacementSharedModule,
-        RouterModule.forChild(adminState),
-        /* jhipster-needle-add-admin-module - JHipster will add admin modules here */
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MultiselectDropdownModule,
-        MatButtonModule,
-        MatCheckboxModule,
-        MatFormFieldModule,
-        MatNativeDateModule,
-        MatInputModule,
-        MatCheckboxModule,
-        MatToolbarModule,
-        MatIconModule,
-        MatStepperModule,
-        MatFormFieldModule,
-        MatCardModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        MatRadioModule,
-        MatSelectModule,
-    ],
+
     declarations: [
         AuditsComponent,
         UserMgmtComponent,
@@ -130,7 +107,7 @@ import {
         JhiDocsComponent,
         JhiMetricsMonitoringComponent,
         JhiMetricsMonitoringModalComponent,
-        
+
         FooterComponent,
         NavbarComponent,
         SidebarComponent,
@@ -165,6 +142,30 @@ import {
         UserMgmtDeleteDialogComponent,
         JhiHealthModalComponent,
         JhiMetricsMonitoringModalComponent,
+    ],
+imports: [
+        PlacementSharedModule,
+        RouterModule.forChild(adminState),
+        /* jhipster-needle-add-admin-module - JHipster will add admin modules here */
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MultiselectDropdownModule,
+        MatButtonModule,
+        MatCheckboxModule,
+        MatFormFieldModule,
+        MatNativeDateModule,
+        MatInputModule,
+        MatCheckboxModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatStepperModule,
+        MatFormFieldModule,
+        MatCardModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatRadioModule,
+        MatSelectModule,
     ],
     providers: [
         AuditsService,

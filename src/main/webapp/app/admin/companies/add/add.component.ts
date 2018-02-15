@@ -1,5 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { NgModule , Component, OnInit, OnDestroy, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Response } from '@angular/http';
 import { Location } from '@angular/common';
 import { Observable } from 'rxjs/Observable';
@@ -17,7 +18,7 @@ import { CompanyPopupService } from '../company-popup.service';
 })
 export class AddComponent implements OnInit {
 
-  company: Company;
+public  company: Company;
   isSaving: boolean;
 
 //  types = ['It Services', 'IT core', 'Non-IT core'];
@@ -32,6 +33,7 @@ export class AddComponent implements OnInit {
 
   ngOnInit() {
     this.isSaving = false;
+    this.company = new Company;
    }
 
   goBack(): void {
@@ -43,14 +45,12 @@ export class AddComponent implements OnInit {
 }
 
 save() {
+      console.log("Form Submitted!");
     this.isSaving = true;
-    if (this.company.id !== undefined) {
-        this.subscribeToSaveResponse(
-            this.companyService.update(this.company));
-    } else {
+
         this.subscribeToSaveResponse(
             this.companyService.create(this.company));
-    }
+
 }
 
 private subscribeToSaveResponse(result: Observable<Company>) {
