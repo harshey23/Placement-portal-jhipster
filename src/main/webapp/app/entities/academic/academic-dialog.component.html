@@ -1,0 +1,150 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myAcademicLabel">Create or edit a Academic</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!academic.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="academic.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_xBoard">X Board</label>
+            <input type="text" class="form-control" name="xBoard" id="field_xBoard"
+                [(ngModel)]="academic.xBoard" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_xPercentage">X Percentage</label>
+            <input type="text" class="form-control" name="xPercentage" id="field_xPercentage"
+                [(ngModel)]="academic.xPercentage" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_xYearOfPass">X Year Of Pass</label>
+            <input type="text" class="form-control" name="xYearOfPass" id="field_xYearOfPass"
+                [(ngModel)]="academic.xYearOfPass" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_xiiBoard">Xii Board</label>
+            <input type="text" class="form-control" name="xiiBoard" id="field_xiiBoard"
+                [(ngModel)]="academic.xiiBoard" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_xiiPercentage">Xii Percentage</label>
+            <input type="text" class="form-control" name="xiiPercentage" id="field_xiiPercentage"
+                [(ngModel)]="academic.xiiPercentage" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_xiiYearOfPass">Xii Year Of Pass</label>
+            <input type="text" class="form-control" name="xiiYearOfPass" id="field_xiiYearOfPass"
+                [(ngModel)]="academic.xiiYearOfPass" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_dipPercentage">Dip Percentage</label>
+            <input type="text" class="form-control" name="dipPercentage" id="field_dipPercentage"
+                [(ngModel)]="academic.dipPercentage" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_dipYearOfPass">Dip Year Of Pass</label>
+            <input type="text" class="form-control" name="dipYearOfPass" id="field_dipYearOfPass"
+                [(ngModel)]="academic.dipYearOfPass" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_cetRank">Cet Rank</label>
+            <input type="number" class="form-control" name="cetRank" id="field_cetRank"
+                [(ngModel)]="academic.cetRank" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_comedkRank">Comedk Rank</label>
+            <input type="number" class="form-control" name="comedkRank" id="field_comedkRank"
+                [(ngModel)]="academic.comedkRank" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_iSem">I Sem</label>
+            <input type="number" class="form-control" name="iSem" id="field_iSem"
+                [(ngModel)]="academic.iSem" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_iiSem">Ii Sem</label>
+            <input type="number" class="form-control" name="iiSem" id="field_iiSem"
+                [(ngModel)]="academic.iiSem" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_iiiSem">Iii Sem</label>
+            <input type="number" class="form-control" name="iiiSem" id="field_iiiSem"
+                [(ngModel)]="academic.iiiSem" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_ivSem">Iv Sem</label>
+            <input type="number" class="form-control" name="ivSem" id="field_ivSem"
+                [(ngModel)]="academic.ivSem" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_vSem">V Sem</label>
+            <input type="number" class="form-control" name="vSem" id="field_vSem"
+                [(ngModel)]="academic.vSem" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_viSem">Vi Sem</label>
+            <input type="number" class="form-control" name="viSem" id="field_viSem"
+                [(ngModel)]="academic.viSem" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_viiSem">Vii Sem</label>
+            <input type="number" class="form-control" name="viiSem" id="field_viiSem"
+                [(ngModel)]="academic.viiSem" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_viiiSem">Viii Sem</label>
+            <input type="number" class="form-control" name="viiiSem" id="field_viiiSem"
+                [(ngModel)]="academic.viiiSem" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_ixSem">Ix Sem</label>
+            <input type="number" class="form-control" name="ixSem" id="field_ixSem"
+                [(ngModel)]="academic.ixSem" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_xSem">X Sem</label>
+            <input type="number" class="form-control" name="xSem" id="field_xSem"
+                [(ngModel)]="academic.xSem" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_cgpa">Cgpa</label>
+            <input type="number" class="form-control" name="cgpa" id="field_cgpa"
+                [(ngModel)]="academic.cgpa" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_discontinued">Discontinued</label>
+            <input type="checkbox" class="form-control" name="discontinued" id="field_discontinued"
+                [(ngModel)]="academic.discontinued" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_yearBack">Year Back</label>
+            <input type="checkbox" class="form-control" name="yearBack" id="field_yearBack"
+                [(ngModel)]="academic.yearBack" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_currentBackLog">Current Back Log</label>
+            <input type="number" class="form-control" name="currentBackLog" id="field_currentBackLog"
+                [(ngModel)]="academic.currentBackLog" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_historyBackLog">History Back Log</label>
+            <input type="number" class="form-control" name="historyBackLog" id="field_historyBackLog"
+                [(ngModel)]="academic.historyBackLog" />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>
