@@ -26,7 +26,7 @@ import { FooterComponent } from './template/footer/footer.component';
 import { NavbarComponent } from './template/navbar/navbar.component';
 import { SidebarComponent } from './template/sidebar/sidebar.component';
 import { CompanyService } from './companies/company.services';
-import { CompanyPopupService } from './companies/company-popup.service';
+
 
 import {
     adminState,
@@ -61,7 +61,6 @@ import {
     AddComponent,
     DetailsComponent,
     HomeComponent,
-    CompanyPopupComponent,
 
     AdminCoordinatorComponent,
     AdminCoordinatorAddComponent,
@@ -176,8 +175,7 @@ imports: [
         UserResolvePagingParams,
         UserResolve,
         UserModalService,
-        CompanyService,
-        CompanyPopupService
+        CompanyService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

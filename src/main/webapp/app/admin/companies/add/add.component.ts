@@ -9,7 +9,6 @@ import { JhiEventManager } from 'ng-jhipster';
 
 import { Company } from '../company.model';
 import { CompanyService } from '../company.services';
-import { CompanyPopupService } from '../company-popup.service';
 
 @Component({
   selector: 'app-company-add',
@@ -45,12 +44,11 @@ public  company: Company;
 }
 
 save() {
-      console.log("Form Submitted!");
-    this.isSaving = true;
+        console.log("Form Submitted!");
+        this.isSaving = true;
 
         this.subscribeToSaveResponse(
             this.companyService.create(this.company));
-
 }
 
 private subscribeToSaveResponse(result: Observable<Company>) {
@@ -68,34 +66,4 @@ private onSaveError() {
     this.isSaving = false;
 }
 
-}
-
-@Component({
-  selector: 'jhi-company-popup',
-  template: ''
-})
-export class CompanyPopupComponent implements OnInit, OnDestroy {
-
-  routeSub: any;
-
-  constructor(
-      private route: ActivatedRoute,
-      private companyPopupService: CompanyPopupService
-  ) {}
-
-  ngOnInit() {
-      this.routeSub = this.route.params.subscribe((params) => {
-          if ( params['id'] ) {
-              this.companyPopupService
-                  .open(AddComponent as Component, params['id']);
-          } else {
-              this.companyPopupService
-                  .open(AddComponent as Component);
-          }
-      });
-  }
-
-  ngOnDestroy() {
-      this.routeSub.unsubscribe();
-  }
 }
