@@ -50,8 +50,6 @@ export class AdminStudentAddComponent implements OnInit {
           secondCtrl: ['', Validators.required]
       });
 
-
-
       $.material.init();
       const elemMainPanel = <HTMLElement>document.querySelector('.main-panel');
       const elemSidebar = <HTMLElement>document.querySelector('.sidebar .sidebar-wrapper');
@@ -61,17 +59,19 @@ export class AdminStudentAddComponent implements OnInit {
       });
       this.router.events.subscribe((event: any) => {
           if (event instanceof NavigationStart) {
-              if (event.url != this.lastPoppedUrl)
+              if (event.url !== this.lastPoppedUrl) {
                   this.yScrollStack.push(window.scrollY);
+                }
           } else if (event instanceof NavigationEnd) {
-              if (event.url == this.lastPoppedUrl) {
+              if (event.url === this.lastPoppedUrl) {
                   this.lastPoppedUrl = undefined;
                   window.scrollTo(0, this.yScrollStack.pop());
-              } else
+              } else {
                   window.scrollTo(0, 0);
+                }
           }
       });
-      this._router = this.router.events.filter(event => event instanceof NavigationEnd).subscribe((event: NavigationEnd) => {
+      this._router = this.router.events.filter((event) => event instanceof NavigationEnd).subscribe((event: NavigationEnd) => {
           elemMainPanel.scrollTop = 0;
           elemSidebar.scrollTop = 0;
       });
@@ -84,12 +84,11 @@ export class AdminStudentAddComponent implements OnInit {
       this.runOnRouteChange();
   }
   isMaps(path) {
-      var titlee = this.location.prepareExternalUrl(this.location.path());
+      let titlee = this.location.prepareExternalUrl(this.location.path());
       titlee = titlee.slice(1);
-      if (path == titlee) {
+      if (path === titlee) {
           return false;
-      }
-      else {
+      } else {
           return true;
       }
   }

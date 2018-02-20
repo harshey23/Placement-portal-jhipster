@@ -14,15 +14,15 @@ export class JobHomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  post(): void{
+  post(): void {
     this.router.navigate(['/admin/job/post']);
   }
 
-  gotoCurrentDetails(): void{
+  gotoCurrentDetails(): void {
     this.router.navigate(['/admin/job/current']);
   }
 
-  gotoCompletedDetails(): void{
+  gotoCompletedDetails(): void {
     this.router.navigate(['/admin/job/completed']);
   }
 }

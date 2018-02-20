@@ -10,7 +10,7 @@ import { NavigationEnd, NavigationStart } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import PerfectScrollbar from 'perfect-scrollbar';
 import 'rxjs/add/operator/filter';
-declare var $ : any;
+declare var $: any;
 
 @Component({
   selector: 'app-post',
@@ -19,12 +19,12 @@ declare var $ : any;
 })
 export class PostComponent implements OnInit {
 
+  static ITEMS = 0;
   studentForm: FormGroup;
+
   isUG: boolean = true;
   isJob: boolean = true;
   isInternship: boolean = false;
-
-  static ITEMS = 0;
 
   branchesOptionsModel: number[] = [1, 2];
   pgBranchesOptionsModel: number[] = [1, 2];
@@ -101,8 +101,7 @@ export class PostComponent implements OnInit {
     allSelected: 'All selected',
   };
 
-  constructor(
-    private router: Router, 
+  constructor(private router: Router,
     private fb: FormBuilder,
     private location: Location
   ) { }
