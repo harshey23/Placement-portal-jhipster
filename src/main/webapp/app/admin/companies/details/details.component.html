@@ -1,84 +1,89 @@
 <div class="main-content">
-
   <div class="container-fluid">
-
-    <div class="col-md-12">
-
-      <div class="card">
-        <div class="card-header" data-background-color="red">
-          <div class="">
-            <h5>Adobe Details</h5>
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="card">
+          <div class="card-header" data-background-color="blue">
+            <h4 class="title">View & Edit a company</h4>
+            <!-- <p class="category">Complete your profile</p> -->
           </div>
-        </div>
+          <div class="card-content">
 
+              <form (ngSubmit)="save()" #companyForm="ngForm" name="editForm" role="form" novalidate  >
 
-
-        <div class="card-content">
-
-          <div class="row">
-            <div class="col-sm-6 col-sm-offset-3">
-              <div class="row">
-                <div class="col-xs-8 col-sm-6">
-                  <h5 class="text-muted">Name :</h5>
+                <div class="form-group form-black">
+                  <label class="col-sm-2 control-label big-font" for="id" style="font-size:15px;">ID :</label>
+                  <div class="col-sm-10" style="margin-top:7px;">
+                    <input type="text" class="form-control" id="id" name="id"
+                    [(ngModel)]="company.id" readonly />
+                  </div>
                 </div>
-                <div class="col-xs-4 col-sm-6">
-                  <p>Adobe</p>
-                  <!-- <input [(ngModel)]="company.name" placeholder="name"/> -->
+
+              <div class="form-group form-black">
+                <label class="col-sm-2 control-label big-font" for="field_name" style="font-size:15px;">Name :</label>
+                <div class="col-sm-10" style="margin-top:7px;">
+                    <input type="text" class="form-control" name="name"
+                    [(ngModel)]="company.name" />
+                </div>
+              </div>
+              <div class="form-group form-black">
+                <label class="col-sm-2 control-label big-font" for="field_website" style="font-size:15px;">Website :</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="website" id="field_website"
+                    [(ngModel)]="company.website" />
                 </div>
               </div>
 
-              <hr>
-              <div class="row">
-                <div class="col-xs-8 col-sm-6">
-                  <h5 class="text-muted">Website :</h5>
+              <div class="form-group form-black">
+                <label class="col-sm-2 control-label big-font" for="field_description" style="font-size:15px;">Description :</label>
+                <div class="col-sm-10">
+                   <input type="text" class="form-control" name="description" id="field_description"
+                              [(ngModel)]="company.description" />
                 </div>
-                <div class="col-xs-4 col-sm-6">
-                  <p>Adobe.com</p>
-                  <!-- <input [(ngModel)]="company.website" placeholder="name"/> -->
+                </div>
+                <div class="form-group form-black">
+                    <label class="col-sm-2 control-label big-font" for="field_email" style="font-size:15px;">Email :</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="email" id="field_email"
+                        [(ngModel)]="company.email" />
+                    </div>
+                  </div>
+                    <div class="form-group form-black">
+                        <label class="col-sm-2 control-label big-font" for="field_phone" style="font-size:15px;">Phone :</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="phone" id="field_phone"
+                            [(ngModel)]="company.phone" />
+                        </div>
+                    </div>
+
+                
+              <div class="form-group" style="float:right;">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit"  class="btn btn-info">
+                        <span class="fa fa-save"></span>&nbsp;<span>Update</span>
+                    </button>
+                </div>
+              </div>
+              <div class="form-group" style="float:right;">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+                        <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+                    </button>
                 </div>
               </div>
 
-              <hr>
-              <div class="row">
-                <div class="col-xs-8 col-sm-6">
-                  <h5 class="text-muted">Location :</h5>
-                </div>
-                <div class="col-xs-4 col-sm-6">
-                  <p>Adobe, Bangalore</p>
-                  <!-- <input [(ngModel)]="company.address" placeholder="name"/> -->
-                </div>
-              </div>
+          </form>
 
-              <hr>
-              <div class="row">
-                <div class="col-xs-8 col-sm-6">
-                  <h5 class="text-muted">Contact :</h5>
-                </div>
-                <div class="col-xs-4 col-sm-6">
-                  <p>35132121</p>
-                  <!-- <input [(ngModel)]="company.number" placeholder="name"/> -->
-                </div>
-              </div>
-
+          <div class="form-group" style="float:left;">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button (click)="goBack()" class="btn btn-info my-tweak">
+                    <i class="fa fa-arrow-left"></i> Back</button>
             </div>
-          </div>
-
         </div>
-
-        <div class="card-footer">
-          <div class="stats" style="float:right;">
-            <button class="btn btn btn-danger">Edit</button>
-          </div>
-          <div class="stats" style="float:left;">
-            <button (click)="goBack()" class="btn btn btn-danger">Back</button>
           </div>
         </div>
-
-
       </div>
 
     </div>
-
   </div>
-
 </div>

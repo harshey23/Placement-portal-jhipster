@@ -25,7 +25,7 @@ export class AdminComponent implements OnInit {
 
   ngOnInit() {
 
-      $.material.init();
+     // $.material.init();
       const elemMainPanel = <HTMLElement>document.querySelector('.main-panel');
       const elemSidebar = <HTMLElement>document.querySelector('.sidebar .sidebar-wrapper');
 

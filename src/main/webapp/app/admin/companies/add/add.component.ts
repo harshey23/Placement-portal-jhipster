@@ -49,6 +49,7 @@ save() {
 
         this.subscribeToSaveResponse(
             this.companyService.create(this.company));
+        this.location.back();
 }
 
 private subscribeToSaveResponse(result: Observable<Company>) {

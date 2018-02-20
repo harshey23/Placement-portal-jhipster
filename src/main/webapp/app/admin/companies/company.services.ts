@@ -29,7 +29,7 @@ constructor(private http: Http) { }
         });
     }
 
-    find(id: string): Observable<Company> {
+    find(id: any): Observable<Company> {
         return this.http.get(`${this.resourceUrl}/${id}`).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
@@ -42,7 +42,7 @@ constructor(private http: Http) { }
             .map((res: Response) => this.convertResponse(res));
     }
 
-    delete(id: string): Observable<Response> {
+    delete(id: any): Observable<Response> {
         return this.http.delete(`${this.resourceUrl}/${id}`);
     }
 
