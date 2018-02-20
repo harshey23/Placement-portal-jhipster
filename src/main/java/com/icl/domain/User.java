@@ -12,6 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Objects;
@@ -22,7 +23,7 @@ import java.time.Instant;
  * A user.
  */
 
-@org.springframework.data.mongodb.core.mapping.Document(collection = "com.icl.placement.user")
+@org.springframework.data.mongodb.core.mapping.Document(collection = "pl.user")
 public class User extends AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -31,25 +32,63 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Id
     private String id;
 
-    @DBRef
-    private Status status;
-
     @NotNull
     private String login;
 
     @NotNull
     private String password;
 
-    @Size(max = 50)
     @Field("first_name")
     private String firstName;
 
-    @Size(max = 50)
     @Field("last_name")
     private String lastName;
 
     @Email
     private String email;
+
+    @Email
+    @Field("email2")
+    private String alternateEmail;
+
+    private String phone;
+
+    @Field("phone2")
+    private String alternatePhone;
+
+    private String fatherName;
+
+    private String motherName;
+
+    private LocalDate dateOfBirth;
+
+    private String gender;
+
+    private String nationality;
+
+    private String religion;
+
+    private String category;
+
+    private int sem;
+
+    @DBRef
+    private Batch batch;
+
+    @DBRef
+    private Course course;
+
+    @DBRef
+    private CourseType courseType;
+
+    @DBRef
+    private Status status;
+
+    @DBRef
+    private Address address;
+
+    @DBRef
+    private Academic academic;
 
     private boolean activated = false;
 
@@ -120,6 +159,142 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getAlternateEmail() {
+        return alternateEmail;
+    }
+
+    public void setAlternateEmail(String alternateEmail) {
+        this.alternateEmail = alternateEmail;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAlternatePhone() {
+        return alternatePhone;
+    }
+
+    public void setAlternatePhone(String alternatePhone) {
+        this.alternatePhone = alternatePhone;
+    }
+
+    public String getFatherName() {
+        return fatherName;
+    }
+
+    public void setFatherName(String fatherName) {
+        this.fatherName = fatherName;
+    }
+
+    public String getMotherName() {
+        return motherName;
+    }
+
+    public void setMotherName(String motherName) {
+        this.motherName = motherName;
+    }
+
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getNationality() {
+        return nationality;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
+
+    public String getReligion() {
+        return religion;
+    }
+
+    public void setReligion(String religion) {
+        this.religion = religion;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public int getSem() {
+        return sem;
+    }
+
+    public void setSem(int sem) {
+        this.sem = sem;
+    }
+
+    public Batch getBatch() {
+        return batch;
+    }
+
+    public void setBatch(Batch batch) {
+        this.batch = batch;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    public CourseType getCourseType() {
+        return courseType;
+    }
+
+    public void setCourseType(CourseType courseType) {
+        this.courseType = courseType;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public Academic getAcademic() {
+        return academic;
+    }
+
+    public void setAcademic(Academic academic) {
+        this.academic = academic;
     }
 
     public String getImageUrl() {

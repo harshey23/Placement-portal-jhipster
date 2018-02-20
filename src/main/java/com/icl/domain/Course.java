@@ -1,7 +1,6 @@
 package com.icl.domain;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
@@ -16,19 +15,9 @@ public class Course implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    private String id;
-
-    @Field("course")
     private String course;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getCourse() {
         return course;
@@ -53,22 +42,21 @@ public class Course implements Serializable {
             return false;
         }
         Course course = (Course) o;
-        if (course.getId() == null || getId() == null) {
+        if (course.getCourse() == null || getCourse() == null) {
             return false;
         }
-        return Objects.equals(getId(), course.getId());
+        return Objects.equals(getCourse(), course.getCourse());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getId());
+        return Objects.hashCode(getCourse());
     }
 
     @Override
     public String toString() {
         return "Course{" +
-            "id=" + getId() +
-            ", course='" + getCourse() + "'" +
+            "course='" + getCourse() + "'" +
             "}";
     }
 }

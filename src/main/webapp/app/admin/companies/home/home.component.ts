@@ -1,7 +1,6 @@
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Company } from '../company';
 import { CompanyService } from '../company.services';
 
 declare var $: any;
@@ -19,23 +18,17 @@ export class HomeComponent implements OnInit {
     { status: 'Obsolete', class: 'nav nav-pills nav justified nav-pills-danger' }
   ]
 
-  companies: Company[];
-  selectedCompany: Company;
+    companies: any[] = [
+    {name: 'TCS',number: '9874563211'},{name: 'TCS',number: '9874563211'}
+    ]
 
   constructor(
-    private companyService: CompanyService,
+   // private companyService: CompanyService,
     private router: Router
   ) { }
 
-  getCompanies(): void {
-    this.companyService.getCompanies()
-      .subscribe(companies => this.companies = companies);
-    // .then(companies => this.companies = companies);
-  }
-
   ngOnInit() {
-    this.getCompanies();
-    $('[data-toggle="tooltip"]').tooltip();
+
   }
 
   gotoDetail(id: number): void {

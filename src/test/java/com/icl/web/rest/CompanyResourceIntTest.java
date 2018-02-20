@@ -4,6 +4,7 @@ import com.icl.PlacementApp;
 
 import com.icl.domain.Company;
 import com.icl.repository.CompanyRepository;
+import com.icl.service.CompanyService;
 import com.icl.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
@@ -67,6 +68,9 @@ public class CompanyResourceIntTest {
     private CompanyRepository companyRepository;
 
     @Autowired
+    private CompanyService companyService;
+
+    @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
     @Autowired
@@ -82,7 +86,7 @@ public class CompanyResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final CompanyResource companyResource = new CompanyResource(companyRepository);
+        final CompanyResource companyResource = new CompanyResource(companyRepository, companyService);
         this.restCompanyMockMvc = MockMvcBuilders.standaloneSetup(companyResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -146,7 +150,7 @@ public class CompanyResourceIntTest {
         int databaseSizeBeforeCreate = companyRepository.findAll().size();
 
         // Create the Company with an existing ID
-        company.setId("existing_id");
+        company.setName("existing_id");
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restCompanyMockMvc.perform(post("/api/companies")
@@ -168,7 +172,7 @@ public class CompanyResourceIntTest {
         restCompanyMockMvc.perform(get("/api/companies?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(company.getId())))
+            .andExpect(jsonPath("$.[*].id").value(hasItem(company.getName())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
             .andExpect(jsonPath("$.[*].website").value(hasItem(DEFAULT_WEBSITE.toString())))
             .andExpect(jsonPath("$.[*].discreption").value(hasItem(DEFAULT_DISCREPTION.toString())))
@@ -186,10 +190,10 @@ public class CompanyResourceIntTest {
         companyRepository.save(company);
 
         // Get the company
-        restCompanyMockMvc.perform(get("/api/companies/{id}", company.getId()))
+        restCompanyMockMvc.perform(get("/api/companies/{id}", company.getName()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.id").value(company.getId()))
+            .andExpect(jsonPath("$.id").value(company.getName()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
             .andExpect(jsonPath("$.website").value(DEFAULT_WEBSITE.toString()))
             .andExpect(jsonPath("$.discreption").value(DEFAULT_DISCREPTION.toString()))
@@ -215,7 +219,7 @@ public class CompanyResourceIntTest {
         int databaseSizeBeforeUpdate = companyRepository.findAll().size();
 
         // Update the company
-        Company updatedCompany = companyRepository.findOne(company.getId());
+        Company updatedCompany = companyRepository.findOne(company.getName());
         updatedCompany
             .name(UPDATED_NAME)
             .website(UPDATED_WEBSITE)
@@ -271,7 +275,7 @@ public class CompanyResourceIntTest {
         int databaseSizeBeforeDelete = companyRepository.findAll().size();
 
         // Get the company
-        restCompanyMockMvc.perform(delete("/api/companies/{id}", company.getId())
+        restCompanyMockMvc.perform(delete("/api/companies/{id}", company.getName())
             .accept(TestUtil.APPLICATION_JSON_UTF8))
             .andExpect(status().isOk());
 
@@ -284,13 +288,13 @@ public class CompanyResourceIntTest {
     public void equalsVerifier() throws Exception {
         TestUtil.equalsVerifier(Company.class);
         Company company1 = new Company();
-        company1.setId("id1");
+        company1.setName("id1");
         Company company2 = new Company();
-        company2.setId(company1.getId());
+        company2.setName(company1.getName());
         assertThat(company1).isEqualTo(company2);
-        company2.setId("id2");
+        company2.setName("id2");
         assertThat(company1).isNotEqualTo(company2);
-        company1.setId(null);
+        company1.setName(null);
         assertThat(company1).isNotEqualTo(company2);
     }
 }

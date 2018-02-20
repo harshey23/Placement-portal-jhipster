@@ -2,6 +2,7 @@ package com.icl.domain;
 
 import io.swagger.annotations.ApiModel;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -12,15 +13,12 @@ import java.util.Objects;
  * not an ignored comment
  */
 @ApiModel(description = "not an ignored comment")
-@Document(collection = "company")
+@Document(collection = "pl.company")
 public class Company implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    private String id;
-
-    @Field("name")
     private String name;
 
     @Field("website")
@@ -47,14 +45,10 @@ public class Company implements Serializable {
     @Field("email_2")
     private String email2;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
-    public String getId() {
-        return id;
-    }
+    @DBRef
+    private CompanyType companyType;
 
-    public void setId(String id) {
-        this.id = id;
-    }
+    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
 
     public String getName() {
         return name;
@@ -172,6 +166,15 @@ public class Company implements Serializable {
     public void setEmail2(String email2) {
         this.email2 = email2;
     }
+
+    public CompanyType getCompanyType() {
+        return companyType;
+    }
+
+    public void setCompanyType(CompanyType companyType) {
+        this.companyType = companyType;
+    }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -183,21 +186,20 @@ public class Company implements Serializable {
             return false;
         }
         Company company = (Company) o;
-        if (company.getId() == null || getId() == null) {
+        if (company.getName() == null || getName() == null) {
             return false;
         }
-        return Objects.equals(getId(), company.getId());
+        return Objects.equals(getName(), company.getName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getId());
+        return Objects.hashCode(getName());
     }
 
     @Override
     public String toString() {
         return "Company{" +
-            "id=" + getId() +
             ", name='" + getName() + "'" +
             ", website='" + getWebsite() + "'" +
             ", discreption='" + getDiscreption() + "'" +

@@ -11,7 +11,7 @@ import java.util.Objects;
 /**
  * A Announcement.
  */
-@Document(collection = "announcement")
+@Document(collection = "pl.announcement")
 public class Announcement implements Serializable {
 
     private static final long serialVersionUID = 1L;

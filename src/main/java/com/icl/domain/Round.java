@@ -1,6 +1,7 @@
 package com.icl.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -11,7 +12,7 @@ import java.util.Objects;
 /**
  * A Round.
  */
-@Document(collection = "round")
+@Document(collection = "pl.round")
 public class Round implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -25,11 +26,17 @@ public class Round implements Serializable {
     @Field("number")
     private Integer number;
 
-    @Field("discreption")
-    private String discreption;
+    @Field("description")
+    private String description;
 
     @Field("date")
     private LocalDate date;
+
+    @DBRef
+    private Offer offer;
+
+    @DBRef
+    private Status status;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public String getId() {
@@ -66,17 +73,17 @@ public class Round implements Serializable {
         this.number = number;
     }
 
-    public String getDiscreption() {
-        return discreption;
+    public String getDescription() {
+        return description;
     }
 
-    public Round discreption(String discreption) {
-        this.discreption = discreption;
+    public Round description(String description) {
+        this.description = description;
         return this;
     }
 
-    public void setDiscreption(String discreption) {
-        this.discreption = discreption;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public LocalDate getDate() {
@@ -91,6 +98,23 @@ public class Round implements Serializable {
     public void setDate(LocalDate date) {
         this.date = date;
     }
+
+    public Offer getOffer() {
+        return offer;
+    }
+
+    public void setOffer(Offer offer) {
+        this.offer = offer;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -119,7 +143,7 @@ public class Round implements Serializable {
             "id=" + getId() +
             ", name='" + getName() + "'" +
             ", number=" + getNumber() +
-            ", discreption='" + getDiscreption() + "'" +
+            ", description='" + getDescription() + "'" +
             ", date='" + getDate() + "'" +
             "}";
     }

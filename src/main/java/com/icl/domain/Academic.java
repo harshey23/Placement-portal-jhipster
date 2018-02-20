@@ -10,7 +10,7 @@ import java.util.Objects;
 /**
  * A Academic.
  */
-@Document(collection = "academic")
+@Document(collection = "pl.academic")
 public class Academic implements Serializable {
 
     private static final long serialVersionUID = 1L;

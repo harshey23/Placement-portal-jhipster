@@ -27,7 +27,7 @@ import { UserRouteAccessService } from '../shared';
 const ADMIN_ROUTES = [
     tryRoute,
     analyticsRoute,
-   // ...companiesRoute,
+    ...companiesRoute,
     ...coordinatorRoute,
     dashboardRoute,
     ...generalElgibalRoute,

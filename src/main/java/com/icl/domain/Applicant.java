@@ -1,6 +1,7 @@
 package com.icl.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -10,7 +11,7 @@ import java.util.Objects;
 /**
  * A Applicant.
  */
-@Document(collection = "applicant")
+@Document(collection = "pl.applicant")
 public class Applicant implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -18,8 +19,17 @@ public class Applicant implements Serializable {
     @Id
     private String id;
 
-    @Field("myid")
-    private String myid;
+    @DBRef
+    private User user;
+
+    @DBRef
+    private Offer offer;
+
+    @DBRef
+    private Fee fee;
+
+    @DBRef
+    private Status status;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public String getId() {
@@ -30,18 +40,38 @@ public class Applicant implements Serializable {
         this.id = id;
     }
 
-    public String getMyid() {
-        return myid;
+    public User getUser() {
+        return user;
     }
 
-    public Applicant myid(String myid) {
-        this.myid = myid;
-        return this;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public void setMyid(String myid) {
-        this.myid = myid;
+    public Offer getOffer() {
+        return offer;
     }
+
+    public void setOffer(Offer offer) {
+        this.offer = offer;
+    }
+
+    public Fee getFee() {
+        return fee;
+    }
+
+    public void setFee(Fee fee) {
+        this.fee = fee;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -68,7 +98,6 @@ public class Applicant implements Serializable {
     public String toString() {
         return "Applicant{" +
             "id=" + getId() +
-            ", myid='" + getMyid() + "'" +
             "}";
     }
 }

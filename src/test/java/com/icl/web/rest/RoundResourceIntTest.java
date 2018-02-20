@@ -87,7 +87,7 @@ public class RoundResourceIntTest {
         Round round = new Round()
             .name(DEFAULT_NAME)
             .number(DEFAULT_NUMBER)
-            .discreption(DEFAULT_DISCREPTION)
+            .description(DEFAULT_DISCREPTION)
             .date(DEFAULT_DATE);
         return round;
     }
@@ -114,7 +114,7 @@ public class RoundResourceIntTest {
         Round testRound = roundList.get(roundList.size() - 1);
         assertThat(testRound.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testRound.getNumber()).isEqualTo(DEFAULT_NUMBER);
-        assertThat(testRound.getDiscreption()).isEqualTo(DEFAULT_DISCREPTION);
+        assertThat(testRound.getDescription()).isEqualTo(DEFAULT_DISCREPTION);
         assertThat(testRound.getDate()).isEqualTo(DEFAULT_DATE);
     }
 
@@ -148,7 +148,7 @@ public class RoundResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(round.getId())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
             .andExpect(jsonPath("$.[*].number").value(hasItem(DEFAULT_NUMBER)))
-            .andExpect(jsonPath("$.[*].discreption").value(hasItem(DEFAULT_DISCREPTION.toString())))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DISCREPTION.toString())))
             .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())));
     }
 
@@ -164,7 +164,7 @@ public class RoundResourceIntTest {
             .andExpect(jsonPath("$.id").value(round.getId()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
             .andExpect(jsonPath("$.number").value(DEFAULT_NUMBER))
-            .andExpect(jsonPath("$.discreption").value(DEFAULT_DISCREPTION.toString()))
+            .andExpect(jsonPath("$.description").value(DEFAULT_DISCREPTION.toString()))
             .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()));
     }
 
@@ -186,7 +186,7 @@ public class RoundResourceIntTest {
         updatedRound
             .name(UPDATED_NAME)
             .number(UPDATED_NUMBER)
-            .discreption(UPDATED_DISCREPTION)
+            .description(UPDATED_DISCREPTION)
             .date(UPDATED_DATE);
 
         restRoundMockMvc.perform(put("/api/rounds")
@@ -200,7 +200,7 @@ public class RoundResourceIntTest {
         Round testRound = roundList.get(roundList.size() - 1);
         assertThat(testRound.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testRound.getNumber()).isEqualTo(UPDATED_NUMBER);
-        assertThat(testRound.getDiscreption()).isEqualTo(UPDATED_DISCREPTION);
+        assertThat(testRound.getDescription()).isEqualTo(UPDATED_DISCREPTION);
         assertThat(testRound.getDate()).isEqualTo(UPDATED_DATE);
     }
 

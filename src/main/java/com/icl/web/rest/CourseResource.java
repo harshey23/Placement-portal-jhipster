@@ -2,8 +2,10 @@ package com.icl.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.icl.domain.Course;
+import com.icl.domain.CourseType;
 
 import com.icl.repository.CourseRepository;
+import com.icl.repository.CourseTypeRepository;
 import com.icl.web.rest.errors.BadRequestAlertException;
 import com.icl.web.rest.util.HeaderUtil;
 import com.icl.web.rest.util.PaginationUtil;
@@ -36,8 +38,11 @@ public class CourseResource {
 
     private final CourseRepository courseRepository;
 
-    public CourseResource(CourseRepository courseRepository) {
+    private final CourseTypeRepository courseTypeRepository;
+
+    public CourseResource(CourseRepository courseRepository, CourseTypeRepository courseTypeRepository) {
         this.courseRepository = courseRepository;
+        this.courseTypeRepository = courseTypeRepository;
     }
 
     /**
@@ -51,12 +56,12 @@ public class CourseResource {
     @Timed
     public ResponseEntity<Course> createCourse(@RequestBody Course course) throws URISyntaxException {
         log.debug("REST request to save Course : {}", course);
-        if (course.getId() != null) {
+        if (course.getCourse() != null) {
             throw new BadRequestAlertException("A new course cannot already have an ID", ENTITY_NAME, "idexists");
         }
         Course result = courseRepository.save(course);
-        return ResponseEntity.created(new URI("/api/courses/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
+        return ResponseEntity.created(new URI("/api/courses/" + result.getCourse()))
+            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getCourse().toString()))
             .body(result);
     }
 
@@ -73,12 +78,12 @@ public class CourseResource {
     @Timed
     public ResponseEntity<Course> updateCourse(@RequestBody Course course) throws URISyntaxException {
         log.debug("REST request to update Course : {}", course);
-        if (course.getId() == null) {
+        if (course.getCourse() == null) {
             return createCourse(course);
         }
         Course result = courseRepository.save(course);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, course.getId().toString()))
+            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, course.getCourse().toString()))
             .body(result);
     }
 
@@ -98,30 +103,32 @@ public class CourseResource {
     }
 
     /**
-     * GET  /courses/:id : get the "id" course.
+     * GET  /courses/:courseId : get the "id" course.
      *
-     * @param id the id of the course to retrieve
+     * @param courseId the courseId of the course to retrieve
      * @return the ResponseEntity with status 200 (OK) and with body the course, or with status 404 (Not Found)
      */
-    @GetMapping("/courses/{id}")
+    @GetMapping("/courses/{courseId}")
     @Timed
-    public ResponseEntity<Course> getCourse(@PathVariable String id) {
-        log.debug("REST request to get Course : {}", id);
-        Course course = courseRepository.findOne(id);
+    public ResponseEntity<Course> getCourse(@PathVariable String courseId) {
+        log.debug("REST request to get Course : {}", courseId);
+        Course course = courseRepository.findOne(courseId);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(course));
     }
 
     /**
-     * DELETE  /courses/:id : delete the "id" course.
+     * DELETE  /courses/:courseId : delete the "id" course.
      *
-     * @param id the id of the course to delete
+     * @param courseId the id of the course to delete
      * @return the ResponseEntity with status 200 (OK)
      */
-    @DeleteMapping("/courses/{id}")
+    @DeleteMapping("/courses/{courseId}")
     @Timed
-    public ResponseEntity<Void> deleteCourse(@PathVariable String id) {
-        log.debug("REST request to delete Course : {}", id);
-        courseRepository.delete(id);
-        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id)).build();
+    public ResponseEntity<Void> deleteCourse(@PathVariable String courseId) {
+        log.debug("REST request to delete Course : {}", courseId);
+        courseRepository.delete(courseId);
+        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, courseId)).build();
     }
+
+
 }

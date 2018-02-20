@@ -1,8 +1,7 @@
 package com.icl.service;
 
 import com.icl.config.CacheConfiguration;
-import com.icl.domain.Authority;
-import com.icl.domain.User;
+import com.icl.domain.*;
 import com.icl.repository.AuthorityRepository;
 import com.icl.config.Constants;
 import com.icl.repository.UserRepository;
@@ -266,29 +265,23 @@ public class UserService {
         return authorityRepository.findAll().stream().map(Authority::getName).collect(Collectors.toList());
     }
 
-    /**
-     * @return a list of all the batches
-     */
-    public List<String> getBatches() {
-        return authorityRepository.findAll().stream().map(Authority::getName).collect(Collectors.toList());
+    public Page<UserDTO> getAllUsersByAuthority(Pageable pageable, Authority authority){
+        Set<Authority> authorities = new HashSet<>();
+        authorities.add(authority);
+        return userRepository.findAllByAuthorities(pageable, authorities).map(UserDTO::new);
     }
 
-    /**
-     * @return a list of all the courses
-     */
-    public List<String> getCourses() {
-        return authorityRepository.findAll().stream().map(Authority::getName).collect(Collectors.toList());
+    public Page<UserDTO> getAllUsersByBatch(Pageable pageable, Batch batch){
+        return userRepository.findAllByBatch(pageable, batch).map(UserDTO::new);
     }
 
-    /**
-     * @return a list of all the course types
-     */
-    public List<String> getCourseTypes() {
-        return authorityRepository.findAll().stream().map(Authority::getName).collect(Collectors.toList());
+    public Page<UserDTO> getAllUsersByBatchAndCourse(Pageable pageable, Batch batch, Course course){
+        return userRepository.findAllByBatchAndCourse(pageable, batch, course).map(UserDTO::new);
     }
 
-    public Page<UserDTO> getAllUsersByRole(Pageable pageable, String role) {
-        return userRepository.findAllByLoginNot(pageable, Constants.ANONYMOUS_USER).map(UserDTO::new);
-    }
+//    public Page<UserDTO> getAllUsersByBatchAndCompany(Pageable pageable, Batch batch, Company company){
+//        return userRepository.findAllByBatchAndCompany(pageable, batch, company).map(UserDTO::new);
+//    }
+
 
 }

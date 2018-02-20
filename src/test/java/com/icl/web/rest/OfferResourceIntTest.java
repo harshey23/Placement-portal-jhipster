@@ -4,6 +4,8 @@ import com.icl.PlacementApp;
 
 import com.icl.domain.Offer;
 import com.icl.repository.OfferRepository;
+import com.icl.repository.OfferTypeRepository;
+import com.icl.service.OfferService;
 import com.icl.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
@@ -60,6 +62,12 @@ public class OfferResourceIntTest {
     private OfferRepository offerRepository;
 
     @Autowired
+    private OfferTypeRepository offerTypeRepository;
+
+    @Autowired
+    private OfferService offerService;
+
+    @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
     @Autowired
@@ -75,7 +83,7 @@ public class OfferResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final OfferResource offerResource = new OfferResource(offerRepository);
+        final OfferResource offerResource = new OfferResource(offerRepository, offerTypeRepository, offerService);
         this.restOfferMockMvc = MockMvcBuilders.standaloneSetup(offerResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -93,7 +101,7 @@ public class OfferResourceIntTest {
         Offer offer = new Offer()
             .title(DEFAULT_TITLE)
             .packageOffered(DEFAULT_PACKAGE_OFFERED)
-            .discreption(DEFAULT_DISCREPTION)
+            .description(DEFAULT_DISCREPTION)
             .dateOfVisit(DEFAULT_DATE_OF_VISIT)
             .lastDate(DEFAULT_LAST_DATE)
             .place(DEFAULT_PLACE);
@@ -122,7 +130,7 @@ public class OfferResourceIntTest {
         Offer testOffer = offerList.get(offerList.size() - 1);
         assertThat(testOffer.getTitle()).isEqualTo(DEFAULT_TITLE);
         assertThat(testOffer.getPackageOffered()).isEqualTo(DEFAULT_PACKAGE_OFFERED);
-        assertThat(testOffer.getDiscreption()).isEqualTo(DEFAULT_DISCREPTION);
+        assertThat(testOffer.getDescription()).isEqualTo(DEFAULT_DISCREPTION);
         assertThat(testOffer.getDateOfVisit()).isEqualTo(DEFAULT_DATE_OF_VISIT);
         assertThat(testOffer.getLastDate()).isEqualTo(DEFAULT_LAST_DATE);
         assertThat(testOffer.getPlace()).isEqualTo(DEFAULT_PLACE);
@@ -158,7 +166,7 @@ public class OfferResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(offer.getId())))
             .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE.toString())))
             .andExpect(jsonPath("$.[*].packageOffered").value(hasItem(DEFAULT_PACKAGE_OFFERED)))
-            .andExpect(jsonPath("$.[*].discreption").value(hasItem(DEFAULT_DISCREPTION.toString())))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DISCREPTION.toString())))
             .andExpect(jsonPath("$.[*].dateOfVisit").value(hasItem(DEFAULT_DATE_OF_VISIT.toString())))
             .andExpect(jsonPath("$.[*].lastDate").value(hasItem(DEFAULT_LAST_DATE.toString())))
             .andExpect(jsonPath("$.[*].place").value(hasItem(DEFAULT_PLACE.toString())));
@@ -176,7 +184,7 @@ public class OfferResourceIntTest {
             .andExpect(jsonPath("$.id").value(offer.getId()))
             .andExpect(jsonPath("$.title").value(DEFAULT_TITLE.toString()))
             .andExpect(jsonPath("$.packageOffered").value(DEFAULT_PACKAGE_OFFERED))
-            .andExpect(jsonPath("$.discreption").value(DEFAULT_DISCREPTION.toString()))
+            .andExpect(jsonPath("$.description").value(DEFAULT_DISCREPTION.toString()))
             .andExpect(jsonPath("$.dateOfVisit").value(DEFAULT_DATE_OF_VISIT.toString()))
             .andExpect(jsonPath("$.lastDate").value(DEFAULT_LAST_DATE.toString()))
             .andExpect(jsonPath("$.place").value(DEFAULT_PLACE.toString()));
@@ -200,7 +208,7 @@ public class OfferResourceIntTest {
         updatedOffer
             .title(UPDATED_TITLE)
             .packageOffered(UPDATED_PACKAGE_OFFERED)
-            .discreption(UPDATED_DISCREPTION)
+            .description(UPDATED_DISCREPTION)
             .dateOfVisit(UPDATED_DATE_OF_VISIT)
             .lastDate(UPDATED_LAST_DATE)
             .place(UPDATED_PLACE);
@@ -216,7 +224,7 @@ public class OfferResourceIntTest {
         Offer testOffer = offerList.get(offerList.size() - 1);
         assertThat(testOffer.getTitle()).isEqualTo(UPDATED_TITLE);
         assertThat(testOffer.getPackageOffered()).isEqualTo(UPDATED_PACKAGE_OFFERED);
-        assertThat(testOffer.getDiscreption()).isEqualTo(UPDATED_DISCREPTION);
+        assertThat(testOffer.getDescription()).isEqualTo(UPDATED_DISCREPTION);
         assertThat(testOffer.getDateOfVisit()).isEqualTo(UPDATED_DATE_OF_VISIT);
         assertThat(testOffer.getLastDate()).isEqualTo(UPDATED_LAST_DATE);
         assertThat(testOffer.getPlace()).isEqualTo(UPDATED_PLACE);

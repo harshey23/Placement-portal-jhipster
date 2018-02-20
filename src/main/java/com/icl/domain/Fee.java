@@ -10,7 +10,6 @@ import java.util.Objects;
 /**
  * A Fee.
  */
-@Document(collection = "fee")
 public class Fee implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -4,6 +4,7 @@ import com.icl.PlacementApp;
 
 import com.icl.domain.Course;
 import com.icl.repository.CourseRepository;
+import com.icl.repository.CourseTypeRepository;
 import com.icl.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
@@ -43,6 +44,9 @@ public class CourseResourceIntTest {
     private CourseRepository courseRepository;
 
     @Autowired
+    private CourseTypeRepository courseTypeRepository;
+
+    @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
     @Autowired
@@ -58,7 +62,7 @@ public class CourseResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final CourseResource courseResource = new CourseResource(courseRepository);
+        final CourseResource courseResource = new CourseResource(courseRepository, courseTypeRepository);
         this.restCourseMockMvc = MockMvcBuilders.standaloneSetup(courseResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -106,7 +110,7 @@ public class CourseResourceIntTest {
         int databaseSizeBeforeCreate = courseRepository.findAll().size();
 
         // Create the Course with an existing ID
-        course.setId("existing_id");
+        course.setCourse("existing_id");
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restCourseMockMvc.perform(post("/api/courses")
@@ -128,7 +132,7 @@ public class CourseResourceIntTest {
         restCourseMockMvc.perform(get("/api/courses?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(course.getId())))
+            .andExpect(jsonPath("$.[*].id").value(hasItem(course.getCourse())))
             .andExpect(jsonPath("$.[*].course").value(hasItem(DEFAULT_COURSE.toString())));
     }
 
@@ -138,10 +142,10 @@ public class CourseResourceIntTest {
         courseRepository.save(course);
 
         // Get the course
-        restCourseMockMvc.perform(get("/api/courses/{id}", course.getId()))
+        restCourseMockMvc.perform(get("/api/courses/{id}", course.getCourse()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.id").value(course.getId()))
+            .andExpect(jsonPath("$.id").value(course.getCourse()))
             .andExpect(jsonPath("$.course").value(DEFAULT_COURSE.toString()));
     }
 
@@ -159,7 +163,7 @@ public class CourseResourceIntTest {
         int databaseSizeBeforeUpdate = courseRepository.findAll().size();
 
         // Update the course
-        Course updatedCourse = courseRepository.findOne(course.getId());
+        Course updatedCourse = courseRepository.findOne(course.getCourse());
         updatedCourse
             .course(UPDATED_COURSE);
 
@@ -199,7 +203,7 @@ public class CourseResourceIntTest {
         int databaseSizeBeforeDelete = courseRepository.findAll().size();
 
         // Get the course
-        restCourseMockMvc.perform(delete("/api/courses/{id}", course.getId())
+        restCourseMockMvc.perform(delete("/api/courses/{id}", course.getCourse())
             .accept(TestUtil.APPLICATION_JSON_UTF8))
             .andExpect(status().isOk());
 
@@ -212,13 +216,13 @@ public class CourseResourceIntTest {
     public void equalsVerifier() throws Exception {
         TestUtil.equalsVerifier(Course.class);
         Course course1 = new Course();
-        course1.setId("id1");
+        course1.setCourse("id1");
         Course course2 = new Course();
-        course2.setId(course1.getId());
+        course2.setCourse(course1.getCourse());
         assertThat(course1).isEqualTo(course2);
-        course2.setId("id2");
+        course2.setCourse("id2");
         assertThat(course1).isNotEqualTo(course2);
-        course1.setId(null);
+        course1.setCourse(null);
         assertThat(course1).isNotEqualTo(course2);
     }
 }
