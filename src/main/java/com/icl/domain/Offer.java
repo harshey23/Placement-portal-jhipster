@@ -27,9 +27,4 @@ public class Offer {
     @DBRef
     private Criteria criteria;
 
-//    @DBRef
-//    private OfferType offerType;
-
-//    @DBRef
-//    private Criteria criteria;
 }
