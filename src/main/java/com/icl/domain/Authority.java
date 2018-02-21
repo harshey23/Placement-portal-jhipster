@@ -9,7 +9,7 @@ import java.io.Serializable;
 /**
  * An authority (a security role) used by Spring Security.
  */
-@Document(collection = "jhi_authority")
+@Document(collection = "pl.authority")
 
 public class Authority implements Serializable {
 

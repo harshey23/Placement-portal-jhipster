@@ -1,0 +1,112 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "xBoard",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "xPercentage",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "xYearOfPass",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "xiiBoard",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "xiiPercentage",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "xiiYearOfPass",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dipPercentage",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dipYearOfPass",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "cetRank",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "comedkRank",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "iSem",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "iiSem",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "iiiSem",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "ivSem",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "vSem",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "viSem",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "viiSem",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "viiiSem",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "ixSem",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "xSem",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "cgpa",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "discontinued",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "yearBack",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "currentBackLog",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "historyBackLog",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20180215094147",
+    "entityTableName": "academic",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

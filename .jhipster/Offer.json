@@ -1,0 +1,36 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "packageOffered",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "discreption",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dateOfVisit",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "lastDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "place",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180215094144",
+    "entityTableName": "offer",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

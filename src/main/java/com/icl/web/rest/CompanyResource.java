@@ -1,9 +1,13 @@
 package com.icl.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.icl.domain.Batch;
 import com.icl.domain.Company;
 
+import com.icl.domain.CompanyType;
+import com.icl.domain.Offer;
 import com.icl.repository.CompanyRepository;
+import com.icl.service.CompanyService;
 import com.icl.web.rest.errors.BadRequestAlertException;
 import com.icl.web.rest.util.HeaderUtil;
 import com.icl.web.rest.util.PaginationUtil;
@@ -34,10 +38,13 @@ public class CompanyResource {
 
     private static final String ENTITY_NAME = "company";
 
+    private final CompanyService companyService;
+
     private final CompanyRepository companyRepository;
 
-    public CompanyResource(CompanyRepository companyRepository) {
+    public CompanyResource(CompanyRepository companyRepository, CompanyService companyService) {
         this.companyRepository = companyRepository;
+        this.companyService = companyService;
     }
 
     /**
@@ -105,7 +112,7 @@ public class CompanyResource {
      */
     @GetMapping("/companies/{id}")
     @Timed
-    public ResponseEntity<Company> getCompany(@PathVariable String id) {
+    public ResponseEntity<Company> getName(@PathVariable String id) {
         log.debug("REST request to get Company : {}", id);
         Company company = companyRepository.findOne(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(company));
@@ -124,4 +131,34 @@ public class CompanyResource {
         companyRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id)).build();
     }
+
+
+    /**
+     * GET  /companies : get all the companies.
+     *
+     * @param pageable the pagination information
+     * @return the ResponseEntity with status 200 (OK) and the list of companies in body
+     */
+    @GetMapping("/companies/batch/{batch}")
+    @Timed
+    public ResponseEntity<List<Offer>> getAllCompaniesByBatch(Pageable pageable, @RequestBody Batch batch) {
+        final Page<Offer> page = companyService.getAllCompaniesByBatch(pageable, batch);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/companies/batch");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    /**
+     * GET  /companies : get all the companies.
+     *
+     * @param pageable the pagination information
+     * @return the ResponseEntity with status 200 (OK) and the list of companies in body
+     */
+    @GetMapping("/companies/type/{type}")
+    @Timed
+    public ResponseEntity<List<Company>> getAllCompaniesByType(Pageable pageable, @RequestBody CompanyType companyType) {
+        final Page<Company> page = companyService.getAllCompaniesByType(pageable, companyType);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/companies/batch");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
 }

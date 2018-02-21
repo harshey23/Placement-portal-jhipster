@@ -1,0 +1,49 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "website",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "discreption",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "person1",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "contact1",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "email1",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "person2",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "contact2",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "email2",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180215094143",
+    "javadoc": "not an ignored comment",
+    "entityTableName": "company",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}
