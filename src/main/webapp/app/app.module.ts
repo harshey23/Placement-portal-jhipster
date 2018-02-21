@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Ng2Webstorage } from 'ngx-webstorage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { PlacementSharedModule, UserRouteAccessService } from './shared';
 import { PlacementAppRoutingModule} from './app-routing.module';
@@ -53,7 +54,8 @@ import { AppComponent } from './app.component';
         ProfileService,
         customHttpProvider(),
         PaginationConfig,
-        UserRouteAccessService
+        UserRouteAccessService,
+        NgbActiveModal
     ],
     bootstrap: [ AppComponent ]
 })

@@ -11,16 +11,11 @@
 
               <form (ngSubmit)="save()" #companyForm="ngForm" name="editForm" role="form" novalidate  >
 
-                  <!-- <div class="modal-header">
-                      <h4 class="modal-title" id="myCompanyLabel">Create or edit a Company</h4>
-                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                              (click)="clear()">&times;</button>
-                  </div> -->
 
               <div class="form-group form-black">
                 <label class="col-sm-2 control-label big-font" style="font-size:15px;">Name :</label>
                 <div class="col-sm-10" style="margin-top:7px;">
-                    <input type="text" class="form-control" name="cname"
+                    <input type="text" class="form-control" name="name"
                     [(ngModel)]="company.name" />
 
                 </div>
@@ -58,7 +53,7 @@
                 
               <div class="form-group" style="float:right;">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit"  class="btn btn-primary">
+                    <button type="submit"  class="btn btn-info">
                         <span class="fa fa-save"></span>&nbsp;<span>Save</span>
                     </button>
                 </div>
@@ -74,7 +69,7 @@
           </form>
           <div class="form-group" style="float:left;">
             <div class="col-sm-offset-2 col-sm-10">
-                <button (click)="goBack()" class="btn btn-primary my-tweak">
+                <button (click)="goBack()" class="btn btn-info my-tweak">
                     <i class="fa fa-arrow-left"></i> Back</button>
             </div>
         </div>

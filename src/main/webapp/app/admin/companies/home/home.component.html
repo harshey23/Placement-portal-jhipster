@@ -42,9 +42,11 @@
       </form>
     </div>
 
+    <jhi-alert></jhi-alert>
+
     <div class="card">
       <div class="card-header" data-background-color="blue">
-        <button (click)="addCompany()" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Add Company" style="float:right;margin-top: -45px;margin-top: -5px;padding: 12px;">
+        <button (click)="addCompany()" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Add Company" style="float:right;margin-top: -45px;margin-top: -5px;padding: 12px;">
           <i class="fa fa-plus-square"></i>
           <div class="ripple-container"></div>
         </button>
@@ -55,7 +57,59 @@
         <p class="category"></p>
       </div>
 
-      <div class="card-content table-responsive my-border">
+      <div class="row">
+      </div>
+      <br/>
+      <div class="table-responsive" *ngIf="companies">
+          <table class="table table-striped">
+              <thead>
+              <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+              <th jhiSortBy="id"><span>ID</span> <span class="fa fa-sort"></span></th>
+              <th jhiSortBy="name"><span>Name</span> <span class="fa fa-sort"></span></th>
+              <th jhiSortBy="website"><span>Website</span> <span class="fa fa-sort"></span></th>
+              <th jhiSortBy="description"><span>Description</span> <span class="fa fa-sort"></span></th>
+              <th jhiSortBy="phone"><span>Phone</span> <span class="fa fa-sort"></span></th>
+              <th jhiSortBy="email"><span>Email</span> <span class="fa fa-sort"></span></th>
+              <th></th>
+              </tr>
+              </thead>
+              <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+              <tr *ngFor="let company of companies ;trackBy: trackId" >
+                  <td><a routerLink="/admin/companies/detail/{{company.id}}">{{company.id}}</a></td>
+                  <td>{{company.name}}</td>
+                  <td>{{company.website}}</td>
+                  <td>{{company.description}}</td>
+                  <td>{{company.phone}}</td>
+                  <td>{{company.email}}</td>
+                  <td class="text-right">
+                      <div class="btn-group flex-btn-group-container">
+                          <button type="submit"
+                          [routerLink]="['../detail', company.id ]"
+                                
+                                  class="btn btn-info btn-sm">
+                              <span class="fa fa-eye"></span>
+                              <span class="fa fa-pencil"></span>
+                              <span class="d-none d-md-inline"></span>
+                          </button>
+                         
+                          <button type="submit"
+                                  [routerLink]="['/', { outlets: { popup: 'company/'+ company.id + '/delete'} }]"
+                                  replaceUrl="true"
+                                  queryParamsHandling="merge"
+                                  class="btn btn-danger btn-sm">
+                              <span class="fa fa-remove"></span>
+                              <span class="d-none d-md-inline"></span>
+                          </button>
+                      </div>
+                  </td>
+              </tr>
+              </tbody>
+          </table>
+      </div>
+
+
+
+      <!-- <div class="card-content table-responsive my-border">
         
         <table class="table table-hover">
           <thead class="text-info">
@@ -69,7 +123,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let company of companies" routerLink="/admin/companies/detail/{{company.id}}">
-            <!-- <tr *ngFor="let company of companies" ng-click="gotoDetail(company.id)"> -->
+             <tr *ngFor="let company of companies" ng-click="gotoDetail(company.id)"> 
               <td>{{company.name}}</td>
               <td>{{company.number}}</td>
               <td>
@@ -84,9 +138,8 @@
             </tr>
           </tbody>
         </table>
+      </div> -->
 
-      </div>
     </div>
-
   </div>
 </div>

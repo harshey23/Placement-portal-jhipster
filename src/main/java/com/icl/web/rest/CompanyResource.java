@@ -58,7 +58,7 @@ public class CompanyResource {
     @Timed
     public ResponseEntity<Company> createCompany(@RequestBody Company company) throws URISyntaxException {
         log.debug("REST request to save Company : {}", company);
-        if (company.getName() != null) {
+        if (company.getId() != null) {
             throw new BadRequestAlertException("A new company cannot already have an ID", ENTITY_NAME, "idexists");
         }
         Company result = companyRepository.save(company);
@@ -80,7 +80,7 @@ public class CompanyResource {
     @Timed
     public ResponseEntity<Company> updateCompany(@RequestBody Company company) throws URISyntaxException {
         log.debug("REST request to update Company : {}", company);
-        if (company.getName() == null) {
+        if (company.getId() == null) {
             return createCompany(company);
         }
         Company result = companyRepository.save(company);

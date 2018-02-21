@@ -23,10 +23,11 @@ import { MatSelectModule } from '@angular/material/select';
 
 import { PlacementSharedModule } from '../shared';
 /* jhipster-needle-add-admin-module-import - JHipster will add admin modules imports here */
-
 import { FooterComponent } from './template/footer/footer.component';
 import { NavbarComponent } from './template/navbar/navbar.component';
 import { SidebarComponent } from './template/sidebar/sidebar.component';
+import { CompanyService } from './companies/company.services';
+
 
 import {
     adminState,
@@ -81,30 +82,7 @@ import {
 } from './';
 
 @NgModule({
-    imports: [
-        PlacementSharedModule,
-        RouterModule.forChild(adminState),
-        /* jhipster-needle-add-admin-module - JHipster will add admin modules here */
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MultiselectDropdownModule,
-        MatButtonModule,
-        MatCheckboxModule,
-        MatFormFieldModule,
-        MatNativeDateModule,
-        MatInputModule,
-        MatCheckboxModule,
-        MatToolbarModule,
-        MatIconModule,
-        MatStepperModule,
-        MatFormFieldModule,
-        MatCardModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        MatRadioModule,
-        MatSelectModule,
-    ],
+
     declarations: [
         AuditsComponent,
         UserMgmtComponent,
@@ -155,6 +133,30 @@ import {
         JhiHealthModalComponent,
         JhiMetricsMonitoringModalComponent,
     ],
+imports: [
+        PlacementSharedModule,
+        RouterModule.forChild(adminState),
+        /* jhipster-needle-add-admin-module - JHipster will add admin modules here */
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MultiselectDropdownModule,
+        MatButtonModule,
+        MatCheckboxModule,
+        MatFormFieldModule,
+        MatNativeDateModule,
+        MatInputModule,
+        MatCheckboxModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatStepperModule,
+        MatFormFieldModule,
+        MatCardModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatRadioModule,
+        MatSelectModule,
+    ],
     providers: [
         AuditsService,
         JhiConfigurationService,
@@ -163,7 +165,8 @@ import {
         LogsService,
         UserResolvePagingParams,
         UserResolve,
-        UserModalService
+        UserModalService,
+        CompanyService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
