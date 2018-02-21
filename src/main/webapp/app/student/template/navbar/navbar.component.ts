@@ -1,11 +1,11 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { ROUTES } from '../sidebar/sidebar.component';
-import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import { LoginService } from '../../../shared';
 
 @Component({
-  selector: 'jhi-admin-navbar',
+  selector: 'app-student-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
@@ -48,7 +48,7 @@ export class NavbarComponent implements OnInit {
         body.classList.remove('nav-open');
     };
     sidebarToggle() {
-
+        
         if (this.sidebarVisible === false) {
             this.sidebarOpen();
         } else {

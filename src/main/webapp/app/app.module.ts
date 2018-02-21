@@ -11,6 +11,7 @@ import { PlacementHomeModule } from './home/home.module';
 import { PlacementAdminModule } from './admin/admin.module';
 import { PlacementAccountModule } from './account/account.module';
 import { PlacementEntityModule } from './entities/entity.module';
+import { StudentModule } from './student/student.module';
 import { customHttpProvider } from './blocks/interceptor/http.provider';
 import { PaginationConfig } from './blocks/config/uib-pagination.config';
 import { AppComponent } from './app.component';
@@ -22,7 +23,7 @@ import { AppComponent } from './app.component';
      NavbarComponent,
 //     FooterComponent,
      ProfileService,
-//     PageRibbonComponent,
+     PageRibbonComponent,
      ErrorComponent
  } from './layouts';
 
@@ -37,13 +38,14 @@ import { AppComponent } from './app.component';
         PlacementAdminModule,
         PlacementAccountModule,
         PlacementEntityModule,
+        StudentModule
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [
         // JhiMainComponent,
          NavbarComponent,
          ErrorComponent,
-        // PageRibbonComponent,
+         PageRibbonComponent,
         // FooterComponent,
         AppComponent
     ],

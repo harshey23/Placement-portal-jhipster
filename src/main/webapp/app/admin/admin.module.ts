@@ -3,15 +3,15 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
-import { MatFormFieldModule} from '@angular/material';
+import { MatFormFieldModule } from '@angular/material';
 
 // importing Material UI components
 import {
-  MatButtonModule,
-  MatCheckboxModule,
-  MatFormField,
-  MatInputModule,
-  MatNativeDateModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatFormField,
+    MatInputModule,
+    MatNativeDateModule,
 } from '@angular/material';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -57,37 +57,27 @@ import {
     TryComponent,
 
     AnalyticsComponent,
-
     AddComponent,
     DetailsComponent,
     HomeComponent,
-
     AdminCoordinatorComponent,
     AdminCoordinatorAddComponent,
     AdminCoordinatorDetailComponent,
-
     DashboardComponent,
-
     GeneralEligibalFormComponent,
     GeneralEligibalListComponent,
-
     CompletedDetailComponent,
     CurrentDetailComponent,
     JobHomeComponent,
     PostComponent,
-
     ReportHomeComponent,
     ReportListComponent,
-
     SelectionProcessHomeComponent,
     SelectionProcessCompanyListComponent,
-
     AdminStudentComponent,
     AdminStudentAddComponent,
     AdminStudentDetailComponent,
     AdminStudentListComponent
-
-
 } from './';
 
 @NgModule({
@@ -158,7 +148,6 @@ import {
         AdminStudentAddComponent,
         AdminStudentDetailComponent,
         AdminStudentListComponent
-
     ],
     entryComponents: [
         UserMgmtDialogComponent,
@@ -178,4 +167,4 @@ import {
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class PlacementAdminModule {}
+export class PlacementAdminModule { }
