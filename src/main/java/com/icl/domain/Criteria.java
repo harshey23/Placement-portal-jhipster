@@ -215,4 +215,35 @@ public class Criteria {
     public void setAge(int age) {
         this.age = age;
     }
+
+    @Override
+    public String toString() {
+        return "Criteria{" +
+            "sslcCutOff=" + sslcCutOff +
+            ", puCutOff=" + puCutOff +
+            ", diplomaCutOff=" + diplomaCutOff +
+            ", ugCutOff=" + ugCutOff +
+            ", cgpaCutOff=" + cgpaCutOff +
+            ", historyBacklogs=" + historyBacklogs +
+            ", currentBacklogs=" + currentBacklogs +
+            ", packageUpperBound=" + packageUpperBound +
+            ", packageLowerBound=" + packageLowerBound +
+            ", isInternshipMandatory=" + isInternshipMandatory +
+            ", performanceJob=" + performanceJob +
+            ", onCampus=" + onCampus +
+            ", yearBack=" + yearBack +
+            ", educationBreak=" + educationBreak +
+            ", gender='" + gender + '\'' +
+            ", multipleOfferAllowed=" + multipleOfferAllowed +
+            ", batch='" + batch + '\'' +
+            ", courseType='" + courseType + '\'' +
+            ", companiesToBeExcluded=" + companiesToBeExcluded +
+            ", categoryAllowed=" + categoryAllowed +
+            ", age=" + age +
+            '}';
+    }
+
+
 }
+
+
