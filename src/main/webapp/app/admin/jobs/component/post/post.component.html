@@ -13,7 +13,6 @@
           </div>
           <div class="card-content">
             <form (ngSubmit)="onSubmit()" style="margin:20px;">
-
               <!-- Post new allowed -->
               <div class="row">
 
@@ -201,7 +200,7 @@
               <!-- Branches allowed for ug-->
               <div *ngIf="isUG == true" class="row">
                 <div class="col-md-12">
-                  <h3>Branches Allowed in ug:</h3>
+                  <h3>Branches Allowed in UG:</h3>
                   <ss-multiselect-dropdown [options]="branches" [texts]="branchesTexts" [settings]="branchesSettings" [(ngModel)]="branchesOptionsModel"
                     [ngModelOptions]="{standalone: true}"></ss-multiselect-dropdown>
                 </div>
@@ -210,7 +209,7 @@
               <!-- Branches allowed for pg-->
               <div *ngIf="isUG == false" class="row">
                 <div class="col-md-12">
-                  <h3>Branches Allowed in pg:</h3>
+                  <h3>Branches Allowed in PG:</h3>
                   <ss-multiselect-dropdown class="btn btn-info" [options]="pgBranches" [texts]="pgBranchesTexts" [settings]="pgBranchesSettings" [(ngModel)]="pgBranchesOptionsModel"
                     [ngModelOptions]="{standalone: true}"></ss-multiselect-dropdown>
                 </div>
@@ -496,7 +495,6 @@
                   <div class="col-md-8">
                   </div>
                 </div>
-
                 <div class="row">
                   <div class="col-md-2">
                    <p class="mar">Round : 1</p>
