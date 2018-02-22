@@ -1,0 +1,16 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "batch",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180215094151",
+    "entityTableName": "batch",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

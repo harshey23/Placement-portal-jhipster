@@ -2,7 +2,7 @@ package com.icl.web.rest;
 
 import com.icl.config.Constants;
 import com.codahale.metrics.annotation.Timed;
-import com.icl.domain.User;
+import com.icl.domain.*;
 import com.icl.repository.UserRepository;
 import com.icl.security.AuthoritiesConstants;
 import com.icl.service.MailService;
@@ -187,4 +187,67 @@ public class UserResource {
         userService.deleteUser(login);
         return ResponseEntity.ok().headers(HeaderUtil.createAlert( "A user is deleted with identifier " + login, login)).build();
     }
+
+
+
+    /**
+     * GET /users/authorities : get all users by authorities.
+     *
+     * @param pageable the pagination information
+     * @return the ResponseEntity with status 200 (OK) and with body all users
+     */
+    @GetMapping("/users/authority/{authority}")
+    @Timed
+    @Secured(AuthoritiesConstants.ADMIN)
+    public ResponseEntity<List<UserDTO>> getAllUsersByAuthorities(Pageable pageable, @RequestBody Authority authority) {
+        final Page<UserDTO> page = userService.getAllUsersByAuthority(pageable, authority);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/users/authority");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    /**
+     * GET /users/batch : get all users by batch.
+     *
+     * @param pageable the pagination information
+     * @return the ResponseEntity with status 200 (OK) and with body all users
+     */
+    @GetMapping("/users/batch/{batch}")
+    @Timed
+    @Secured(AuthoritiesConstants.ADMIN)
+    public ResponseEntity<List<UserDTO>> getAllUsersByBatch(Pageable pageable, @RequestBody Batch batch) {
+        final Page<UserDTO> page = userService.getAllUsersByBatch(pageable, batch);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/users/batch");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    /**
+     * GET /users/batch/course : get all users by batch.
+     *
+     * @param pageable the pagination information
+     * @return the ResponseEntity with status 200 (OK) and with body all users
+     */
+    @GetMapping("/users/batch/{batch}/course/{course}")
+    @Timed
+    @Secured(AuthoritiesConstants.ADMIN)
+    public ResponseEntity<List<UserDTO>> getAllUsersByBatchAndCourse(Pageable pageable, @RequestBody Batch batch, @RequestBody Course course) {
+        final Page<UserDTO> page = userService.getAllUsersByBatchAndCourse(pageable, batch, course);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/users/batch");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    /**
+     * GET /users/batch/company : get all users by batch.
+     *
+     * @param pageable the pagination information
+     * @return the ResponseEntity with status 200 (OK) and with body all users
+     */
+//    @GetMapping("/users/batch/{batch}/company/{company}")
+//    @Timed
+//    @Secured(AuthoritiesConstants.ADMIN)
+//    public ResponseEntity<List<UserDTO>> getAllUsersByBatchAndCompany(Pageable pageable, @RequestBody Batch batch, @RequestBody Company company) {
+//        final Page<UserDTO> page = userService.getAllUsersByBatchAndCompany(pageable, batch, company);
+//        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/users/batch");
+//        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+//    }
+
 }

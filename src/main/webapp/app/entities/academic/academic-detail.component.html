@@ -1,0 +1,122 @@
+
+<div *ngIf="academic">
+    <h2><span>Academic</span> {{academic.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>X Board</span></dt>
+        <dd>
+            <span>{{academic.xBoard}}</span>
+        </dd>
+        <dt><span>X Percentage</span></dt>
+        <dd>
+            <span>{{academic.xPercentage}}</span>
+        </dd>
+        <dt><span>X Year Of Pass</span></dt>
+        <dd>
+            <span>{{academic.xYearOfPass}}</span>
+        </dd>
+        <dt><span>Xii Board</span></dt>
+        <dd>
+            <span>{{academic.xiiBoard}}</span>
+        </dd>
+        <dt><span>Xii Percentage</span></dt>
+        <dd>
+            <span>{{academic.xiiPercentage}}</span>
+        </dd>
+        <dt><span>Xii Year Of Pass</span></dt>
+        <dd>
+            <span>{{academic.xiiYearOfPass}}</span>
+        </dd>
+        <dt><span>Dip Percentage</span></dt>
+        <dd>
+            <span>{{academic.dipPercentage}}</span>
+        </dd>
+        <dt><span>Dip Year Of Pass</span></dt>
+        <dd>
+            <span>{{academic.dipYearOfPass}}</span>
+        </dd>
+        <dt><span>Cet Rank</span></dt>
+        <dd>
+            <span>{{academic.cetRank}}</span>
+        </dd>
+        <dt><span>Comedk Rank</span></dt>
+        <dd>
+            <span>{{academic.comedkRank}}</span>
+        </dd>
+        <dt><span>I Sem</span></dt>
+        <dd>
+            <span>{{academic.iSem}}</span>
+        </dd>
+        <dt><span>Ii Sem</span></dt>
+        <dd>
+            <span>{{academic.iiSem}}</span>
+        </dd>
+        <dt><span>Iii Sem</span></dt>
+        <dd>
+            <span>{{academic.iiiSem}}</span>
+        </dd>
+        <dt><span>Iv Sem</span></dt>
+        <dd>
+            <span>{{academic.ivSem}}</span>
+        </dd>
+        <dt><span>V Sem</span></dt>
+        <dd>
+            <span>{{academic.vSem}}</span>
+        </dd>
+        <dt><span>Vi Sem</span></dt>
+        <dd>
+            <span>{{academic.viSem}}</span>
+        </dd>
+        <dt><span>Vii Sem</span></dt>
+        <dd>
+            <span>{{academic.viiSem}}</span>
+        </dd>
+        <dt><span>Viii Sem</span></dt>
+        <dd>
+            <span>{{academic.viiiSem}}</span>
+        </dd>
+        <dt><span>Ix Sem</span></dt>
+        <dd>
+            <span>{{academic.ixSem}}</span>
+        </dd>
+        <dt><span>X Sem</span></dt>
+        <dd>
+            <span>{{academic.xSem}}</span>
+        </dd>
+        <dt><span>Cgpa</span></dt>
+        <dd>
+            <span>{{academic.cgpa}}</span>
+        </dd>
+        <dt><span>Discontinued</span></dt>
+        <dd>
+            <span>{{academic.discontinued}}</span>
+        </dd>
+        <dt><span>Year Back</span></dt>
+        <dd>
+            <span>{{academic.yearBack}}</span>
+        </dd>
+        <dt><span>Current Back Log</span></dt>
+        <dd>
+            <span>{{academic.currentBackLog}}</span>
+        </dd>
+        <dt><span>History Back Log</span></dt>
+        <dd>
+            <span>{{academic.historyBackLog}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'academic/'+ academic.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

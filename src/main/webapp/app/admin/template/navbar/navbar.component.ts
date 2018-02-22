@@ -1,6 +1,8 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
+import { Router } from '@angular/router';
 import { ROUTES } from '../sidebar/sidebar.component';
-import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
+import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { LoginService } from '../../../shared';
 
 @Component({
   selector: 'jhi-admin-navbar',
@@ -13,9 +15,14 @@ export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
 
-    constructor(location: Location,  private element: ElementRef) {
-      this.location = location;
-          this.sidebarVisible = false;
+    constructor(
+        private loginService: LoginService, 
+        location: Location, 
+        private element: ElementRef,
+        private router: Router
+    ) {
+        this.location = location;
+        this.sidebarVisible = false;
     }
 
     ngOnInit() {
@@ -62,5 +69,10 @@ export class NavbarComponent implements OnInit {
           }
       }
       return 'Dashboard';
+    }
+
+    logout() {
+        this.loginService.logout();
+        this.router.navigate(['']);
     }
 }

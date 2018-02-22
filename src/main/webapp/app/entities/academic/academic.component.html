@@ -1,0 +1,114 @@
+<div>
+    <h2>
+        <span>Academics</span>
+        <button class="btn btn-primary float-right jh-create-entity create-academic" [routerLink]="['/', { outlets: { popup: ['academic-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Academic
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="academics">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="xBoard"><span>X Board</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="xPercentage"><span>X Percentage</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="xYearOfPass"><span>X Year Of Pass</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="xiiBoard"><span>Xii Board</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="xiiPercentage"><span>Xii Percentage</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="xiiYearOfPass"><span>Xii Year Of Pass</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dipPercentage"><span>Dip Percentage</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dipYearOfPass"><span>Dip Year Of Pass</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="cetRank"><span>Cet Rank</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="comedkRank"><span>Comedk Rank</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="iSem"><span>I Sem</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="iiSem"><span>Ii Sem</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="iiiSem"><span>Iii Sem</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="ivSem"><span>Iv Sem</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="vSem"><span>V Sem</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="viSem"><span>Vi Sem</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="viiSem"><span>Vii Sem</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="viiiSem"><span>Viii Sem</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="ixSem"><span>Ix Sem</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="xSem"><span>X Sem</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="cgpa"><span>Cgpa</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="discontinued"><span>Discontinued</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="yearBack"><span>Year Back</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="currentBackLog"><span>Current Back Log</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="historyBackLog"><span>History Back Log</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let academic of academics ;trackBy: trackId">
+                <td><a [routerLink]="['../academic', academic.id ]">{{academic.id}}</a></td>
+                <td>{{academic.xBoard}}</td>
+                <td>{{academic.xPercentage}}</td>
+                <td>{{academic.xYearOfPass}}</td>
+                <td>{{academic.xiiBoard}}</td>
+                <td>{{academic.xiiPercentage}}</td>
+                <td>{{academic.xiiYearOfPass}}</td>
+                <td>{{academic.dipPercentage}}</td>
+                <td>{{academic.dipYearOfPass}}</td>
+                <td>{{academic.cetRank}}</td>
+                <td>{{academic.comedkRank}}</td>
+                <td>{{academic.iSem}}</td>
+                <td>{{academic.iiSem}}</td>
+                <td>{{academic.iiiSem}}</td>
+                <td>{{academic.ivSem}}</td>
+                <td>{{academic.vSem}}</td>
+                <td>{{academic.viSem}}</td>
+                <td>{{academic.viiSem}}</td>
+                <td>{{academic.viiiSem}}</td>
+                <td>{{academic.ixSem}}</td>
+                <td>{{academic.xSem}}</td>
+                <td>{{academic.cgpa}}</td>
+                <td>{{academic.discontinued}}</td>
+                <td>{{academic.yearBack}}</td>
+                <td>{{academic.currentBackLog}}</td>
+                <td>{{academic.historyBackLog}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../academic', academic.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'academic/'+ academic.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'academic/'+ academic.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="academics && academics.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>
