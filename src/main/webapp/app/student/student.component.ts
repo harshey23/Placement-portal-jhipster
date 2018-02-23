@@ -29,7 +29,7 @@ export class StudentComponent implements OnInit {
             this.router.navigate(['/dashboard']);
         }
 
-      $.material.init();
+      //$.material.init();
       const elemMainPanel = <HTMLElement>document.querySelector('.main-panel');
       const elemSidebar = <HTMLElement>document.querySelector('.sidebar .sidebar-wrapper');
 
