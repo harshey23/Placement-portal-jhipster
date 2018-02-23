@@ -1,6 +1,7 @@
 package com.icl.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -27,6 +28,9 @@ public class Announcement implements Serializable {
 
     @Field("date")
     private LocalDate date;
+
+    @DBRef
+    private Status status;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public String getId() {
@@ -90,6 +94,14 @@ public class Announcement implements Serializable {
             return false;
         }
         return Objects.equals(getId(), announcement.getId());
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     @Override
