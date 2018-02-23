@@ -12,7 +12,7 @@ import { Account, Principal } from '../shared';
         'home.scss'
     ]
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent implements OnInit {
     account: Account;
     modalRef: NgbModalRef;
 
@@ -28,15 +28,15 @@ export class HomeComponent implements OnInit{
             this.account = account;
         });
         this.registerAuthenticationSuccess();
-        if(this.isAuthenticated()) {
+        if (this.isAuthenticated()) {
             this.principal.hasAuthority("ROLE_ADMIN").then((authorised) => {
-                if(authorised) {
+                if (authorised) {
                     console.log("redirecting to admin " + authorised);
                     this.router.navigate(['/admin/dashboard']);
                 }
             });
             this.principal.hasAuthority("ROLE_USER").then((authorised) => {
-                if(authorised) {
+                if (authorised) {
                     console.log("redirecting to student " + authorised);
                     // this.router.navigate(['/admin/dashboard']);
                 }

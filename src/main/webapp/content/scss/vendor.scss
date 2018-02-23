@@ -6,10 +6,10 @@ put Sass variables here:
 eg $input-color: red;
 ****************************/
 
-// Override Boostrap variables
+// // Override Boostrap variables
 // @import "bootstrap-variables"; //scss
 
-// Import Bootstrap source files from node_modules
+// // Import Bootstrap source files from node_modules
 // @import 'node_modules/bootstrap/scss/bootstrap'; //scss
 // // @import 'node_modules/bootstrap-material-design/dist/css/bootstrap-material-design';
 // @import 'node_modules/font-awesome/scss/font-awesome'; //scss
@@ -18,7 +18,7 @@ eg $input-color: red;
  @import 'node_modules/bootstrap/dist/css/bootstrap'; //css
  @import 'node_modules/perfect-scrollbar/css/perfect-scrollbar'; //css
  @import '../../assets/sass/material-dashboard'; //scss
-//  @import '../../assets/css/demo'; //css
+// @import '../../assets/css/demo'; //css
  @import "~@angular/material/prebuilt-themes/indigo-pink.css"; //css
 
 /* jhipster-needle-scss-add-vendor JHipster will add new css style */

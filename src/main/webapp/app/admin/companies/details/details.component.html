@@ -1,89 +1,129 @@
 <div class="main-content">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-10 col-md-offset-1">
-        <div class="card">
-          <div class="card-header" data-background-color="blue">
-            <h4 class="title">View & Edit a company</h4>
-            <!-- <p class="category">Complete your profile</p> -->
-          </div>
-          <div class="card-content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
 
-              <form (ngSubmit)="save()" #companyForm="ngForm" name="editForm" role="form" novalidate  >
+				<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+					<div class="card">
 
-                <div class="form-group form-black">
-                  <label class="col-sm-2 control-label big-font" for="id" style="font-size:15px;">ID :</label>
-                  <div class="col-sm-10" style="margin-top:7px;">
-                    <input type="text" class="form-control" id="id" name="id"
-                    [(ngModel)]="company.id" readonly />
-                  </div>
-                </div>
+						<div class="card-header" data-background-color="blue">
+							<h4 class="title">Add a new company</h4>
+						</div>
 
-              <div class="form-group form-black">
-                <label class="col-sm-2 control-label big-font" for="field_name" style="font-size:15px;">Name :</label>
-                <div class="col-sm-10" style="margin-top:7px;">
-                    <input type="text" class="form-control" name="name"
-                    [(ngModel)]="company.name" />
-                </div>
-              </div>
-              <div class="form-group form-black">
-                <label class="col-sm-2 control-label big-font" for="field_website" style="font-size:15px;">Website :</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="website" id="field_website"
-                    [(ngModel)]="company.website" />
-                </div>
-              </div>
+						<div class="card-content">
+							<!-- <div class="form-group form-black">
+								<label class="col-sm-2 control-label big-font" style="font-size:15px;">Name :</label>
+								<div class="col-sm-10" style="margin-top:7px;">
+									<input type="text" class="form-control" name="name" [(ngModel)]="company.name" />
+								</div>
+							</div>
 
-              <div class="form-group form-black">
-                <label class="col-sm-2 control-label big-font" for="field_description" style="font-size:15px;">Description :</label>
-                <div class="col-sm-10">
-                   <input type="text" class="form-control" name="description" id="field_description"
-                              [(ngModel)]="company.description" />
-                </div>
-                </div>
-                <div class="form-group form-black">
-                    <label class="col-sm-2 control-label big-font" for="field_email" style="font-size:15px;">Email :</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" name="email" id="field_email"
-                        [(ngModel)]="company.email" />
-                    </div>
-                  </div>
-                    <div class="form-group form-black">
-                        <label class="col-sm-2 control-label big-font" for="field_phone" style="font-size:15px;">Phone :</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name="phone" id="field_phone"
-                            [(ngModel)]="company.phone" />
-                        </div>
-                    </div>
+							<div class="form-group form-black">
+								<label class="col-sm-2 control-label big-font" for="field_website" style="font-size:15px;">Website :</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" name="website" id="field_website" [(ngModel)]="company.website" />
+								</div>
+							</div>
 
-                
-              <div class="form-group" style="float:right;">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit"  class="btn btn-info">
-                        <span class="fa fa-save"></span>&nbsp;<span>Update</span>
-                    </button>
-                </div>
-              </div>
-              <div class="form-group" style="float:right;">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
-                        <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
-                    </button>
-                </div>
-              </div>
+							<div class="form-group form-black">
+								<label class="col-sm-2 control-label big-font" for="field_description" style="font-size:15px;">Description :</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" name="description" id="field_description" [(ngModel)]="company.description" />
+								</div>
+							</div>
 
-          </form>
+							<div class="form-group form-black">
+								<label class="col-sm-2 control-label big-font" for="field_email" style="font-size:15px;">Email :</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" name="email" id="field_email" [(ngModel)]="company.email" />
+								</div>
+							</div>
 
-          <div class="form-group" style="float:left;">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button (click)="goBack()" class="btn btn-info my-tweak">
-                    <i class="fa fa-arrow-left"></i> Back</button>
-            </div>
-        </div>
-          </div>
-        </div>
-      </div>
+							<div class="form-group form-black">
+								<label class="col-sm-2 control-label big-font" for="field_phone" style="font-size:15px;">Phone :</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" name="phone" id="field_phone" [(ngModel)]="company.phone" />
+								</div>
+							</div>
 
-    </div>
-  </div>
+							<div class="form-group" style="float:right;">
+								<div class="col-sm-offset-2 col-sm-10">
+									<button type="submit" class="btn btn-info">
+										<span class="fa fa-save"></span>&nbsp;
+										<span>Save</span>
+									</button>
+								</div>
+							</div>
+							<div class="form-group" style="float:right;">
+								<div class="col-sm-offset-2 col-sm-10">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+										<span class="fa fa-ban"></span>&nbsp;
+										<span>Cancel</span>
+									</button>
+								</div>
+							</div>
+
+							<div class="form-group" style="float:left;">
+								<div class="col-sm-offset-2 col-sm-10">
+									<button (click)="goBack()" class="btn btn-info my-tweak">
+										<i class="fa fa-arrow-left"></i> Back</button>
+								</div>
+							</div> -->
+
+
+							<div class="form-group">
+								<label class="form-control-label" for="field_name">Name</label>
+								<input type="text" class="form-control" name="name" id="field_name" [(ngModel)]="company.name" />
+							</div>
+							<div class="form-group">
+								<label class="form-control-label" for="field_website">Website</label>
+								<input type="text" class="form-control" name="website" id="field_website" [(ngModel)]="company.website" />
+							</div>
+							<div class="form-group">
+								<label class="form-control-label" for="field_discreption">Discreption</label>
+								<input type="text" class="form-control" name="discreption" id="field_discreption" [(ngModel)]="company.discreption" />
+							</div>
+							<div class="form-group">
+								<label class="form-control-label" for="field_person1">Person 1</label>
+								<input type="text" class="form-control" name="person1" id="field_person1" [(ngModel)]="company.person1" />
+							</div>
+							<div class="form-group">
+								<label class="form-control-label" for="field_contact1">Contact 1</label>
+								<input type="text" class="form-control" name="contact1" id="field_contact1" [(ngModel)]="company.contact1" />
+							</div>
+							<div class="form-group">
+								<label class="form-control-label" for="field_email1">Email 1</label>
+								<input type="text" class="form-control" name="email1" id="field_email1" [(ngModel)]="company.email1" />
+							</div>
+							<div class="form-group">
+								<label class="form-control-label" for="field_person2">Person 2</label>
+								<input type="text" class="form-control" name="person2" id="field_person2" [(ngModel)]="company.person2" />
+							</div>
+							<div class="form-group">
+								<label class="form-control-label" for="field_contact2">Contact 2</label>
+								<input type="text" class="form-control" name="contact2" id="field_contact2" [(ngModel)]="company.contact2" />
+							</div>
+							<div class="form-group">
+								<label class="form-control-label" for="field_email2">Email 2</label>
+								<input type="text" class="form-control" name="email2" id="field_email2" [(ngModel)]="company.email2" />
+							</div>
+						</div>
+
+						<div class="card-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="goBack()">
+								<span class="fa fa-ban"></span>&nbsp;
+								<span>Cancel</span>
+							</button>
+							<button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary" style="float:right;">
+								<span class="fa fa-save"></span>&nbsp;
+								<span>Save</span>
+							</button>
+						</div>
+
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
 </div>

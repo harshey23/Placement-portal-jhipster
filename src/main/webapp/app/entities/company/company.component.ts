@@ -13,7 +13,7 @@ import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../shared';
 })
 export class CompanyComponent implements OnInit, OnDestroy {
 
-currentAccount: any;
+    currentAccount: any;
     companies: Company[];
     error: any;
     success: any;
@@ -50,24 +50,28 @@ currentAccount: any;
         this.companyService.query({
             page: this.page - 1,
             size: this.itemsPerPage,
-            sort: this.sort()}).subscribe(
+            sort: this.sort()
+        }).subscribe(
             (res: ResponseWrapper) => this.onSuccess(res.json, res.headers),
             (res: ResponseWrapper) => this.onError(res.json)
         );
     }
+    
     loadPage(page: number) {
         if (page !== this.previousPage) {
             this.previousPage = page;
             this.transition();
         }
     }
+
     transition() {
-        this.router.navigate(['/company'], {queryParams:
-            {
-                page: this.page,
-                size: this.itemsPerPage,
-                sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
-            }
+        this.router.navigate(['/company'], {
+            queryParams:
+                {
+                    page: this.page,
+                    size: this.itemsPerPage,
+                    sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
+                }
         });
         this.loadAll();
     }
@@ -80,6 +84,7 @@ currentAccount: any;
         }]);
         this.loadAll();
     }
+
     ngOnInit() {
         this.loadAll();
         this.principal.identity().then((account) => {
@@ -95,6 +100,7 @@ currentAccount: any;
     trackId(index: number, item: Company) {
         return item.id;
     }
+
     registerChangeInCompanies() {
         this.eventSubscriber = this.eventManager.subscribe('companyListModification', (response) => this.loadAll());
     }
@@ -114,6 +120,7 @@ currentAccount: any;
         // this.page = pagingParams.page;
         this.companies = data;
     }
+
     private onError(error) {
         this.jhiAlertService.error(error.message, null, null);
     }

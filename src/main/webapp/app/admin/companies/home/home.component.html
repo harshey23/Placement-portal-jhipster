@@ -1,48 +1,15 @@
 <div class="main-content">
   <div class="container-fluid">
 
-    <div class="col-lg-10 col-md-12">
-      <form role="search" style="margin-top:0px;">
-
-        <div class="input-group col-sm-10" style="margin-top:-15px;">
-          <input type="text" class="form-control" placeholder="Search Company by Name" aria-label="Recipient's username" aria-describedby="basic-addon2">
-          <div class="input-group-btn">
-            <button type="submit" id="wrap" class="btn btn-info btn-just-icon">
-              <i class="material-icons">search</i>
-              <div class="ripple-container"></div>
-            </button>
-          </div>
-
-          <div class="dropdown">
-            <a href="#" class="btn btn-info dropdown-toggle" data-toggle="dropdown" style="margin-bottom:22px;">
-              Company Type
-              <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a href="#">IT</a>
-              </li>
-              <li>
-                <a href="#">IT/ITeS</a>
-              </li>
-              <li>
-                <a href="#">BioGas</a>
-              </li>
-              <li class="divider"></li>
-              <li>
-                <a href="#">Healthcare</a>
-              </li>
-              <li class="divider"></li>
-              <li>
-                <a href="#">And more...</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </form>
+    <div class="input-group col-sm-10 col-lg-6">
+      <input type="text" class="form-control" placeholder="Search Company by Name" aria-label="Recipient's username" aria-describedby="basic-addon2">
+      <div class="input-group-btn">
+        <button type="submit" id="wrap" class="btn btn-info btn-just-icon">
+          <i class="material-icons">search</i>
+          <div class="ripple-container"></div>
+        </button>
+      </div>
     </div>
-
-    <jhi-alert></jhi-alert>
 
     <div class="card">
       <div class="card-header" data-background-color="blue">
@@ -53,92 +20,99 @@
         <h4 class="title">
           <b>Companies List</b>
         </h4>
-
-        <p class="category"></p>
       </div>
-
-      <div class="row">
-      </div>
-      <br/>
-      <div class="table-responsive" *ngIf="companies">
-          <table class="table table-striped">
-              <thead>
-              <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
-              <th jhiSortBy="id"><span>ID</span> <span class="fa fa-sort"></span></th>
-              <th jhiSortBy="name"><span>Name</span> <span class="fa fa-sort"></span></th>
-              <th jhiSortBy="website"><span>Website</span> <span class="fa fa-sort"></span></th>
-              <th jhiSortBy="description"><span>Description</span> <span class="fa fa-sort"></span></th>
-              <th jhiSortBy="phone"><span>Phone</span> <span class="fa fa-sort"></span></th>
-              <th jhiSortBy="email"><span>Email</span> <span class="fa fa-sort"></span></th>
+      <div class="card-content table-responsive" *ngIf="companies">
+        <table class="table table-striped">
+          <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+              <th jhiSortBy="id">
+                <span>ID</span>
+                <span class="fa fa-sort"></span>
+              </th>
+              <th jhiSortBy="name">
+                <span>Name</span>
+                <span class="fa fa-sort"></span>
+              </th>
+              <th jhiSortBy="website">
+                <span>Website</span>
+                <span class="fa fa-sort"></span>
+              </th>
+              <th jhiSortBy="discreption">
+                <span>Discreption</span>
+                <span class="fa fa-sort"></span>
+              </th>
+              <th jhiSortBy="person1">
+                <span>Person 1</span>
+                <span class="fa fa-sort"></span>
+              </th>
+              <th jhiSortBy="contact1">
+                <span>Contact 1</span>
+                <span class="fa fa-sort"></span>
+              </th>
+              <th jhiSortBy="email1">
+                <span>Email 1</span>
+                <span class="fa fa-sort"></span>
+              </th>
+              <th jhiSortBy="person2">
+                <span>Person 2</span>
+                <span class="fa fa-sort"></span>
+              </th>
+              <th jhiSortBy="contact2">
+                <span>Contact 2</span>
+                <span class="fa fa-sort"></span>
+              </th>
+              <th jhiSortBy="email2">
+                <span>Email 2</span>
+                <span class="fa fa-sort"></span>
+              </th>
               <th></th>
-              </tr>
-              </thead>
-              <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
-              <tr *ngFor="let company of companies ;trackBy: trackId" >
-                  <td><a routerLink="/admin/companies/detail/{{company.id}}">{{company.id}}</a></td>
-                  <td>{{company.name}}</td>
-                  <td>{{company.website}}</td>
-                  <td>{{company.description}}</td>
-                  <td>{{company.phone}}</td>
-                  <td>{{company.email}}</td>
-                  <td class="text-right">
-                      <div class="btn-group flex-btn-group-container">
-                          <button type="submit"
-                          [routerLink]="['../detail', company.id ]"
-                                
-                                  class="btn btn-info btn-sm">
-                              <span class="fa fa-eye"></span>
-                              <span class="fa fa-pencil"></span>
-                              <span class="d-none d-md-inline"></span>
-                          </button>
-                         
-                          <button type="submit"
-                                  [routerLink]="['/', { outlets: { popup: 'company/'+ company.id + '/delete'} }]"
-                                  replaceUrl="true"
-                                  queryParamsHandling="merge"
-                                  class="btn btn-danger btn-sm">
-                              <span class="fa fa-remove"></span>
-                              <span class="d-none d-md-inline"></span>
-                          </button>
-                      </div>
-                  </td>
-              </tr>
-              </tbody>
-          </table>
-      </div>
-
-
-
-      <!-- <div class="card-content table-responsive my-border">
-        
-        <table class="table table-hover">
-          <thead class="text-info">
-            <th class="pad">Company Name</th>
-            <th class="pad">Contact</th>
-            <th class="pad">
-              <ul>
-                Status
-              </ul>
-            </th>
+            </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let company of companies" routerLink="/admin/companies/detail/{{company.id}}">
-             <tr *ngFor="let company of companies" ng-click="gotoDetail(company.id)"> 
-              <td>{{company.name}}</td>
-              <td>{{company.number}}</td>
+            <tr *ngFor="let company of companies ;trackBy: trackId">
               <td>
-                <ul *ngFor="let status of statusItem">
-                  <ul *ngIf="company.status == status.status" class="{{status.class}}">
-                    <li class="active">
-                      <a>{{company.status}}</a>
-                    </li>
-                  </ul>
-                </ul>
+                <a [routerLink]="['../company', company.id ]">{{company.id}}</a>
+              </td>
+              <td>{{company.name}}</td>
+              <td>{{company.website}}</td>
+              <td>{{company.discreption}}</td>
+              <td>{{company.person1}}</td>
+              <td>{{company.contact1}}</td>
+              <td>{{company.email1}}</td>
+              <td>{{company.person2}}</td>
+              <td>{{company.contact2}}</td>
+              <td>{{company.email2}}</td>
+              <td class="text-right">
+                <div class="btn-group flex-btn-group-container">
+                  <button type="submit" [routerLink]="['../company', company.id ]" class="btn btn-info btn-sm">
+                    <span class="fa fa-eye"></span>
+                    <span class="d-none d-md-inline">View</span>
+                  </button>
+                  <button type="submit" [routerLink]="['/', { outlets: { popup: 'company/'+ company.id + '/edit'} }]" replaceUrl="true" queryParamsHandling="merge"
+                    class="btn btn-primary btn-sm">
+                    <span class="fa fa-pencil"></span>
+                    <span class="d-none d-md-inline">Edit</span>
+                  </button>
+                  <button type="submit" [routerLink]="['/', { outlets: { popup: 'company/'+ company.id + '/delete'} }]" replaceUrl="true" queryParamsHandling="merge"
+                    class="btn btn-danger btn-sm">
+                    <span class="fa fa-remove"></span>
+                    <span class="d-none d-md-inline">Delete</span>
+                  </button>
+                </div>
               </td>
             </tr>
           </tbody>
         </table>
-      </div> -->
+      </div>
+      <div *ngIf="companies && companies.length">
+        <div class="row justify-content-center">
+          <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+          <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"
+            (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+      </div>
 
     </div>
   </div>

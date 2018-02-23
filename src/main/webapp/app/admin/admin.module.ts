@@ -26,7 +26,6 @@ import { PlacementSharedModule } from '../shared';
 import { FooterComponent } from './template/footer/footer.component';
 import { NavbarComponent } from './template/navbar/navbar.component';
 import { SidebarComponent } from './template/sidebar/sidebar.component';
-import { CompanyService } from './companies/company.services';
 
 
 import {
@@ -61,6 +60,8 @@ import {
     AddComponent,
     DetailsComponent,
     HomeComponent,
+    CompanyResolvePagingParams,
+    CompanyService,
     AdminCoordinatorComponent,
     AdminCoordinatorAddComponent,
     AdminCoordinatorDetailComponent,
@@ -133,7 +134,7 @@ import {
         JhiHealthModalComponent,
         JhiMetricsMonitoringModalComponent,
     ],
-imports: [
+    imports: [
         PlacementSharedModule,
         RouterModule.forChild(adminState),
         /* jhipster-needle-add-admin-module - JHipster will add admin modules here */
@@ -166,7 +167,8 @@ imports: [
         UserResolvePagingParams,
         UserResolve,
         UserModalService,
-        CompanyService
+        CompanyService,
+        CompanyResolvePagingParams
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

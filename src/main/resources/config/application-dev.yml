@@ -11,7 +11,7 @@
 # Standard Spring Boot properties.
 # Full reference is available at:
 # http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
-# ===================================================================
+# ==================================================================
 
 logging:
     level:
@@ -40,7 +40,7 @@ spring:
         serialization.indent_output: true
     data:
         mongodb:
-            uri: mongodb://localhost:27017
+            uri: mongodb://192.168.213.42:27017
             database: Placement
     mail:
         host: localhost

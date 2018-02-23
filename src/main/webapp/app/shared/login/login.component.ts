@@ -5,6 +5,7 @@ import { JhiEventManager } from 'ng-jhipster';
 
 import { LoginService } from './login.service';
 import { StateStorageService } from '../auth/state-storage.service';
+import { Principal } from '../';
 
 @Component({
     selector: 'jhi-login-modal',
@@ -18,6 +19,7 @@ export class JhiLoginModalComponent implements AfterViewInit {
     credentials: any;
 
     constructor(
+        private principal: Principal,
         private eventManager: JhiEventManager,
         private loginService: LoginService,
         private stateStorageService: StateStorageService,
@@ -56,6 +58,21 @@ export class JhiLoginModalComponent implements AfterViewInit {
                 this.router.navigate(['']);
             }
 
+            if(this.isAuthenticated()) {
+                this.principal.hasAuthority("ROLE_ADMIN").then((authorised) => {
+                    if(authorised) {
+                        console.log("redirecting to admin " + authorised);
+                        this.router.navigate(['/admin/dashboard']);
+                    }
+                });
+                this.principal.hasAuthority("ROLE_USER").then((authorised) => {
+                    if(authorised) {
+                        console.log("redirecting to student " + authorised);
+                        this.router.navigate(['/student/dashboard']);
+                    }
+                });
+            }
+
             this.eventManager.broadcast({
                 name: 'authenticationSuccess',
                 content: 'Sending Authentication Success'
@@ -81,5 +98,9 @@ export class JhiLoginModalComponent implements AfterViewInit {
     requestResetPassword() {
         // this.activeModal.dismiss('to state requestReset');
         this.router.navigate(['/reset', 'request']);
+    }
+
+    isAuthenticated() {
+        return this.principal.isAuthenticated();
     }
 }

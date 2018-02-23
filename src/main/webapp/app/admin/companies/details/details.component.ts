@@ -1,57 +1,70 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
-import { JhiEventManager } from 'ng-jhipster';
+import { Response } from '@angular/http';
 import { Location } from '@angular/common';
+
+import { Observable } from 'rxjs/Observable';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { JhiEventManager } from 'ng-jhipster';
 
 import { Company } from '../company.model';
 import { CompanyService } from '../company.services';
 
 @Component({
-  selector: 'jhi-company-details',
-  templateUrl: './details.component.html',
-  styleUrls: ['./details.component.scss']
+    selector: 'jhi-company-details',
+    templateUrl: './details.component.html',
+    styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent implements OnInit, OnDestroy {
 
-  company: Company;
-  private subscription: Subscription;
-  private eventSubscriber: Subscription;
+    company: Company;
+    isSaving: boolean;
+    routeSub: any;
 
-  constructor(
-      private eventManager: JhiEventManager,
-      private companyService: CompanyService,
-      private route: ActivatedRoute,
-      private location: Location
-  ) {
-  }
+    constructor(
+        public location: Location,
+        private companyService: CompanyService,
+        private eventManager: JhiEventManager,
+        private route: ActivatedRoute,
+    ) {
+    }
 
-  ngOnInit() {
-      this.subscription = this.route.params.subscribe((params) => {
-          this.load(params['id']);
-      });
-      this.registerChangeInCompanies();
-  }
+    ngOnInit() {
+        this.isSaving = false;
+        this.routeSub = this.route.params.subscribe((params) => {
+            if (params['id']) {
+                this.companyService.find(params['id']).subscribe((company) => {
+                    this.company = company;
+                });
+            }
+        });
+    }
 
-  load(id) {
-      this.companyService.find(id).subscribe((company) => {
-          this.company = company;
-      });
-  }
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-    this.eventManager.destroy(this.eventSubscriber);
-}
+    save() {
+        this.isSaving = true;
+        console.log(this.company);
+        this.subscribeToSaveResponse(this.companyService.update(this.company));
+    }
 
-registerChangeInCompanies() {
-    this.eventSubscriber = this.eventManager.subscribe(
-        'companyListModification',
-        (response) => this.load(this.company.id)
-    );
-}
-  goBack(): void {
-    this.location.back();
-  }
+    goBack(): void {
+        this.location.back();
+    }
 
- 
+    ngOnDestroy() {
+        this.routeSub.unsubscribe();
+    }
+
+    private subscribeToSaveResponse(result: Observable<Company>) {
+        result.subscribe((res: Company) =>
+            this.onSaveSuccess(res), (res: Response) => this.onSaveError());
+    }
+
+    private onSaveSuccess(result: Company) {
+        this.eventManager.broadcast({ name: 'companyListModification', content: 'OK' });
+        this.isSaving = false;
+    }
+
+    private onSaveError() {
+        this.isSaving = false;
+    }
 }

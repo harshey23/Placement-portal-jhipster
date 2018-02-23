@@ -1,14 +1,15 @@
-import { BaseEntity } from './../../shared';
-
-export class Company implements BaseEntity {
-
-constructor(
-        public id?: any,
-        public name?: any,
-        public website?: any,
-        public description?: any,
-        public phone?: any,
-        public email?: any,
+export class Company {
+    constructor(
+        public id?: string,
+        public name?: string,
+        public website?: string,
+        public discreption?: string,
+        public person1?: string,
+        public contact1?: string,
+        public email1?: string,
+        public person2?: string,
+        public contact2?: string,
+        public email2?: string,
     ) {
     }
 }

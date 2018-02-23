@@ -34,6 +34,8 @@ import {
   AnalyticsComponent,
   CompaniesComponent,
   DashboardComponent,
+  TimelineComponent,
+  StudentCompanyDetailComponent,
   NoticeComponent,
   ProfileComponent
 } from './';
@@ -70,6 +72,8 @@ import {
     AnalyticsComponent,
     CompaniesComponent,
     DashboardComponent,
+    TimelineComponent,
+    StudentCompanyDetailComponent,
     NoticeComponent,
     ProfileComponent
   ],

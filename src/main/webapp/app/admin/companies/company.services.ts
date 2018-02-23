@@ -9,9 +9,9 @@ import { ResponseWrapper, createRequestOption } from '../../shared';
 @Injectable()
 export class CompanyService {
 
-private resourceUrl =  SERVER_API_URL + 'api/companies';
+    private resourceUrl =  SERVER_API_URL + 'api/companies';
 
-constructor(private http: Http) { }
+    constructor(private http: Http) { }
 
     create(company: Company): Observable<Company> {
         const copy = this.convert(company);

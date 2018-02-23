@@ -2,69 +2,60 @@
 
     <div class="modal-header">
         <h4 class="modal-title" id="myCompanyLabel">Create or edit a Company</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                (click)="clear()">&times;</button>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" (click)="clear()">&times;</button>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
         <div class="form-group" [hidden]="!company.id">
             <label for="id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                   [(ngModel)]="company.id" readonly />
+            <input type="text" class="form-control" id="id" name="id" [(ngModel)]="company.id" readonly />
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_name">Name</label>
-            <input type="text" class="form-control" name="name" id="field_name"
-                [(ngModel)]="company.name" />
+            <input type="text" class="form-control" name="name" id="field_name" [(ngModel)]="company.name" />
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_website">Website</label>
-            <input type="text" class="form-control" name="website" id="field_website"
-                [(ngModel)]="company.website" />
+            <input type="text" class="form-control" name="website" id="field_website" [(ngModel)]="company.website" />
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_discreption">Discreption</label>
-            <input type="text" class="form-control" name="discreption" id="field_discreption"
-                [(ngModel)]="company.discreption" />
+            <input type="text" class="form-control" name="discreption" id="field_discreption" [(ngModel)]="company.discreption" />
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_person1">Person 1</label>
-            <input type="text" class="form-control" name="person1" id="field_person1"
-                [(ngModel)]="company.person1" />
+            <input type="text" class="form-control" name="person1" id="field_person1" [(ngModel)]="company.person1" />
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_contact1">Contact 1</label>
-            <input type="text" class="form-control" name="contact1" id="field_contact1"
-                [(ngModel)]="company.contact1" />
+            <input type="text" class="form-control" name="contact1" id="field_contact1" [(ngModel)]="company.contact1" />
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_email1">Email 1</label>
-            <input type="text" class="form-control" name="email1" id="field_email1"
-                [(ngModel)]="company.email1" />
+            <input type="text" class="form-control" name="email1" id="field_email1" [(ngModel)]="company.email1" />
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_person2">Person 2</label>
-            <input type="text" class="form-control" name="person2" id="field_person2"
-                [(ngModel)]="company.person2" />
+            <input type="text" class="form-control" name="person2" id="field_person2" [(ngModel)]="company.person2" />
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_contact2">Contact 2</label>
-            <input type="text" class="form-control" name="contact2" id="field_contact2"
-                [(ngModel)]="company.contact2" />
+            <input type="text" class="form-control" name="contact2" id="field_contact2" [(ngModel)]="company.contact2" />
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_email2">Email 2</label>
-            <input type="text" class="form-control" name="email2" id="field_email2"
-                [(ngModel)]="company.email2" />
+            <input type="text" class="form-control" name="email2" id="field_email2" [(ngModel)]="company.email2" />
         </div>
 
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
-            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+            <span class="fa fa-ban"></span>&nbsp;
+            <span>Cancel</span>
         </button>
         <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
-            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+            <span class="fa fa-save"></span>&nbsp;
+            <span>Save</span>
         </button>
     </div>
 </form>

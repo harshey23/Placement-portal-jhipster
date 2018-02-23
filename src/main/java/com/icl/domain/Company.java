@@ -48,6 +48,9 @@ public class Company implements Serializable {
     @DBRef
     private CompanyType companyType;
 
+    @DBRef
+    private Status status;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
 
     public String getName() {
@@ -173,6 +176,14 @@ public class Company implements Serializable {
 
     public void setCompanyType(CompanyType companyType) {
         this.companyType = companyType;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove

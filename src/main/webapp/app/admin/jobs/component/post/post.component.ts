@@ -31,38 +31,38 @@ export class PostComponent implements OnInit {
   companiesOptionsModel: number[] = [];
 
   branches: IMultiSelectOption[] = [
-    { id: 1, name: 'CSE'},
-    { id: 2, name: 'ISE'},
-    { id: 3, name: 'EC'},
-    { id: 4, name: 'TC'},
-    { id: 5, name: 'IT'},
-    { id: 6, name: 'EE'},
-    { id: 7, name: 'Mech'},
-    { id: 8, name: 'EIEM'},
-    { id: 9, name: 'Chem'},
-    { id: 10, name: 'Civil'},
-    { id: 11, name: 'Biotech'},
-    { id: 12, name: 'Arch'},
+    { id: 1, name: 'CSE' },
+    { id: 2, name: 'ISE' },
+    { id: 3, name: 'EC' },
+    { id: 4, name: 'TC' },
+    { id: 5, name: 'IT' },
+    { id: 6, name: 'EE' },
+    { id: 7, name: 'Mech' },
+    { id: 8, name: 'EIEM' },
+    { id: 9, name: 'Chem' },
+    { id: 10, name: 'Civil' },
+    { id: 11, name: 'Biotech' },
+    { id: 12, name: 'Arch' },
   ];
   pgBranches: IMultiSelectOption[] = [
-    { id: 1, name: 'M.Tech'},
-    { id: 2, name: 'ISE'},
-    { id: 3, name: 'EC'},
-    { id: 7, name: 'Mech'}
+    { id: 1, name: 'M.Tech' },
+    { id: 2, name: 'ISE' },
+    { id: 3, name: 'EC' },
+    { id: 7, name: 'Mech' }
   ];
   companies: IMultiSelectOption[] = [
-    { id: 1, name: 'TCS'},
-    { id: 2, name: 'Redbus'},
-    { id: 3, name: 'ZScalar'},
-    { id: 4, name: 'Siemens'},
-    { id: 5, name: 'Tech Mahindra'},
-    { id: 6, name: 'Infosys'},
-    { id: 7, name: 'Wipro'},
-    { id: 8, name: 'Amazon'},
-    { id: 9, name: 'Google'},
-    { id: 10, name: 'VMWare'},
-    { id: 11, name: 'JPMorgan'},
-    { id: 12, name: 'Global'},
+    { id: 1, name: 'TCS' },
+    { id: 2, name: 'Redbus' },
+    { id: 3, name: 'ZScalar' },
+    { id: 4, name: 'Siemens' },
+    { id: 5, name: 'Tech Mahindra' },
+    { id: 6, name: 'Infosys' },
+    { id: 7, name: 'Wipro' },
+    { id: 8, name: 'Amazon' },
+    { id: 9, name: 'Google' },
+    { id: 10, name: 'VMWare' },
+    { id: 11, name: 'JPMorgan' },
+    { id: 12, name: 'Global' },
   ];
 
   branchesSettings: IMultiSelectSettings = {
