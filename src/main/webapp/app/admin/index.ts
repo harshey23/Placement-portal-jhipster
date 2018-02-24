@@ -25,6 +25,13 @@ export * from './companies/company.services';
 export * from './companies/add/add.component';
 export * from './companies/details/details.component';
 export * from './companies/home/home.component';
+
+export * from './announcements/announcements.route';
+export * from './announcements/home-announcements.component';
+export * from './announcements/new-announcemnt/new-announcement.component';
+export * from './announcements/view-announcement/view-announcement.component';
+export * from './announcements/announcements.service';
+
 export * from './coordinator/coordinator.route';
 export * from './coordinator/component/admin-coordinator/admin-coordinator.component';
 export * from './coordinator/component/admin-coordinator-add/admin-coordinator-add.component';

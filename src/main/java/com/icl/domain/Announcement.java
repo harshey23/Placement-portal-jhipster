@@ -12,7 +12,7 @@ import java.util.Objects;
 /**
  * A Announcement.
  */
-@Document(collection = "pl.announcement")
+@Document(collection = "pl.announcements")
 public class Announcement implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -29,9 +29,9 @@ public class Announcement implements Serializable {
     @Field("date")
     private LocalDate date;
 
-    @DBRef
-    private Status status;
-
+    // @DBRef
+    // private Status status;
+    
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public String getId() {
         return id;
