@@ -40,7 +40,7 @@ spring:
         serialization.indent_output: true
     data:
         mongodb:
-            uri: mongodb://192.168.213.42:27017
+            uri: mongodb://localhost:27017
             database: Placement
     mail:
         host: localhost
