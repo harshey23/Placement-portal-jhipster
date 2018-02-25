@@ -13,4 +13,15 @@ import { Announcement } from './announcement.model';
 })
 export class AnnouncementComponent {
     
+    constructor(
+        private principal: Principal,
+        private activatedRoute: ActivatedRoute,
+        private router: Router,
+        private eventManager: JhiEventManager
+    ) {}
+    
+
+    newAnnouncement(): void {
+        this.router.navigate(['/admin/announcements/new']);
+    }
 }
