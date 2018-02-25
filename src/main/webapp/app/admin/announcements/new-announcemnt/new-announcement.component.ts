@@ -23,34 +23,34 @@ export class NewAnnouncementComponent implements OnInit {
             private eventManager: JhiEventManager
         ) {}
         ngOnInit() {
-			this.isSaving = false;
-			this.announcement = new Announcement();
-		}
-		clear() {
-			this.activeModal.dismiss('cancel');
-		}
-		goBack(): void {
-			this.location.back();
-		}
-		save() {
-			this.isSaving = true;
-			this.subscribeToSaveResponse(
-				this.announcementService.create(this.announcement));
-				this.location.back();
-		}
-	
-		private subscribeToSaveResponse(result: Observable<Announcement>) {
-			result.subscribe((res: Announcement) =>
-				this.onSaveSuccess(res), (res: Response) => this.onSaveError());
-		}
-	
-		private onSaveSuccess(result: Announcement) {
-			this.eventManager.broadcast({ name: 'announcementListModification', content: 'OK'});
-			this.isSaving = false;
-			this.activeModal.dismiss(result);
-		}
-	
-		private onSaveError() {
-			this.isSaving = false;
-		}
+            this.isSaving = false;
+            this.announcement = new Announcement();
+        }
+        clear() {
+            this.activeModal.dismiss('cancel');
+        }
+        goBack(): void {
+            this.location.back();
+        }
+        save() {
+            this.isSaving = true;
+            this.subscribeToSaveResponse(
+                this.announcementService.create(this.announcement));
+                this.location.back();
+        }
+
+        private subscribeToSaveResponse(result: Observable<Announcement>) {
+            result.subscribe((res: Announcement) =>
+                this.onSaveSuccess(res), (res: Response) => this.onSaveError());
+        }
+
+        private onSaveSuccess(result: Announcement) {
+            this.eventManager.broadcast({ name: 'announcementListModification', content: 'OK'});
+            this.isSaving = false;
+            this.activeModal.dismiss(result);
+        }
+
+        private onSaveError() {
+            this.isSaving = false;
+        }
 }

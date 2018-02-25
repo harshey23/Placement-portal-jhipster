@@ -27,7 +27,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
     constructor(
         public location: Location,
         private companyService: CompanyService,
-		private companyTypeService: CompanyTypeService,
+        private companyTypeService: CompanyTypeService,
         private eventManager: JhiEventManager,
         private route: ActivatedRoute,
     ) {
@@ -35,13 +35,13 @@ export class DetailsComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.isSaving = false;
-		this.company = new Company();
-		this.companyTypeService.query().subscribe((res: ResponseWrapper) => this.companyTypes = res.json);
+        this.company = new Company();
+        this.companyTypeService.query().subscribe((res: ResponseWrapper) => this.companyTypes = res.json);
         this.routeSub = this.route.params.subscribe((params) => {
             if (params['id']) {
                 this.companyService.find(params['id']).subscribe((company) => {
                     this.company = company;
-                    console.log("detail called ", this.company);
+                    console.log('detail called ', this.company);
                 });
             }
         });

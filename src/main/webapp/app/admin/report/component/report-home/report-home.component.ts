@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-report-home',
+  selector: 'jhi-admin-report-home',
   templateUrl: './report-home.component.html',
   styleUrls: ['./report-home.component.scss']
 })

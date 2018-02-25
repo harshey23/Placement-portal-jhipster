@@ -16,7 +16,7 @@ export const ROUTES: RouteInfo[] = [
 ];
 
 @Component({
-    selector: 'app-student-sidebar',
+    selector: 'jhi-student-sidebar',
     templateUrl: './sidebar.component.html',
     styleUrls: ['./sidebar.component.css']
 })
@@ -26,7 +26,7 @@ export class SidebarComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
-        this.menuItems = ROUTES.filter(menuItem => menuItem);
+        this.menuItems = ROUTES.filter((menuItem) => menuItem);
     }
     isMobileMenu() {
         if ($(window).width() > 991) {

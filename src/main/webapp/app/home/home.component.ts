@@ -29,15 +29,15 @@ export class HomeComponent implements OnInit {
         });
         this.registerAuthenticationSuccess();
         if (this.isAuthenticated()) {
-            this.principal.hasAuthority("ROLE_ADMIN").then((authorised) => {
+            this.principal.hasAuthority('ROLE_ADMIN').then((authorised) => {
                 if (authorised) {
-                    console.log("redirecting to admin " + authorised);
+                    console.log('redirecting to admin ' + authorised);
                     this.router.navigate(['/admin/dashboard']);
                 }
             });
-            this.principal.hasAuthority("ROLE_USER").then((authorised) => {
+            this.principal.hasAuthority('ROLE_USER').then((authorised) => {
                 if (authorised) {
-                    console.log("redirecting to student " + authorised);
+                    console.log('redirecting to student ' + authorised);
                     // this.router.navigate(['/admin/dashboard']);
                 }
             });
@@ -72,6 +72,4 @@ export class HomeComponent implements OnInit {
     isAuthenticated() {
         return this.principal.isAuthenticated();
     }
-
-
 }

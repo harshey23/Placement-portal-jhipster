@@ -3,7 +3,7 @@ import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'jhi-app-admin-student-list',
+  selector: 'jhi-admin-student-list',
   templateUrl: './admin-student-list.component.html',
   styleUrls: ['./admin-student-list.component.scss']
 })

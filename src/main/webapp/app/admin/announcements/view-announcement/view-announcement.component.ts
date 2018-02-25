@@ -10,36 +10,36 @@ import { Announcement } from '../announcement.model';
 import { AnnouncementService } from '../announcements.service';
 
 @Component({
-	selector: 'jhi-view-announcement',
-	templateUrl: './view-announcement.component.html'
+    selector: 'jhi-view-announcement',
+    templateUrl: './view-announcement.component.html'
 })
 export class ViewAnnouncementComponent implements OnInit, OnDestroy {
-	
-	announcement: Announcement;
-		isSaving: boolean;
-		routeSub: any;
-	
-		constructor(
-			public location: Location,
-			private announcementService: AnnouncementService,
-			private eventManager: JhiEventManager,
-			private route: ActivatedRoute,
-		) {
-		}
-	
-		ngOnInit() {
-			this.isSaving = false;
-			this.announcement = new Announcement();
-			this.routeSub = this.route.params.subscribe((params) => {
-				if (params['id']) {
-					this.announcementService.find(params['id']).subscribe((announcement) => {
-						this.announcement = announcement;
-						console.log("detail called ", this.announcement);
-					});
-				}
-			});
-		}
-		
+
+    announcement: Announcement;
+        isSaving: boolean;
+        routeSub: any;
+
+        constructor(
+            public location: Location,
+            private announcementService: AnnouncementService,
+            private eventManager: JhiEventManager,
+            private route: ActivatedRoute,
+        ) {
+        }
+
+        ngOnInit() {
+            this.isSaving = false;
+            this.announcement = new Announcement();
+            this.routeSub = this.route.params.subscribe((params) => {
+                if (params['id']) {
+                    this.announcementService.find(params['id']).subscribe((announcement) => {
+                        this.announcement = announcement;
+                        console.log('detail called ', this.announcement);
+                    });
+                }
+            });
+        }
+
     goBack(): void {
         this.location.back();
     }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-job-home',
+  selector: 'jhi-admin-job-home',
   templateUrl: './job-home.component.html',
   styleUrls: ['./job-home.component.scss']
 })
