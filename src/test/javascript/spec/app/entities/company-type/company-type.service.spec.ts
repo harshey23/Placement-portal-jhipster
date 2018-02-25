@@ -59,7 +59,7 @@ describe('Service Tests', () => {
                 })));
 
                 expect(entity).toBeDefined();
-                expect(entity.id).toEqual('123');
+                expect(entity.companyType).toEqual('123');
             });
 
             it('should propagate not found response', () => {

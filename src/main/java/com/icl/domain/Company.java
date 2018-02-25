@@ -2,6 +2,7 @@ package com.icl.domain;
 
 import io.swagger.annotations.ApiModel;
 import org.springframework.data.annotation.Id;
+//import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -24,8 +25,8 @@ public class Company implements Serializable {
     @Field("website")
     private String website;
 
-    @Field("discreption")
-    private String discreption;
+    @Field("description")
+    private String description;
 
     @Field("person_1")
     private String person1;
@@ -79,17 +80,17 @@ public class Company implements Serializable {
         this.website = website;
     }
 
-    public String getDiscreption() {
-        return discreption;
+    public String getDescription() {
+        return description;
     }
 
-    public Company discreption(String discreption) {
-        this.discreption = discreption;
+    public Company discreption(String description) {
+        this.description = description;
         return this;
     }
 
-    public void setDiscreption(String discreption) {
-        this.discreption = discreption;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getPerson1() {
@@ -213,7 +214,7 @@ public class Company implements Serializable {
         return "Company{" +
             ", name='" + getName() + "'" +
             ", website='" + getWebsite() + "'" +
-            ", discreption='" + getDiscreption() + "'" +
+            ", descreption='" + getDescription() + "'" +
             ", person1='" + getPerson1() + "'" +
             ", contact1='" + getContact1() + "'" +
             ", email1='" + getEmail1() + "'" +

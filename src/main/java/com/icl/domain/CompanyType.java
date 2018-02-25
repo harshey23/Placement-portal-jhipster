@@ -1,7 +1,6 @@
 package com.icl.domain;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
@@ -17,6 +16,12 @@ public class CompanyType implements Serializable {
 
     @Id
     private String companyType;
+
+    public CompanyType(){}
+
+    public CompanyType(String companyType) {
+        this.companyType = companyType;
+    }
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
 

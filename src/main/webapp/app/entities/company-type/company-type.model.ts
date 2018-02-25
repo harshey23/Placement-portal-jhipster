@@ -1,8 +1,5 @@
-import { BaseEntity } from './../../shared';
-
-export class CompanyType implements BaseEntity {
+export class CompanyType {
     constructor(
-        public id?: string,
         public companyType?: string,
     ) {
     }

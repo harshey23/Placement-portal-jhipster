@@ -136,7 +136,7 @@ public class CompanyResourceIntTest {
         Company testCompany = companyList.get(companyList.size() - 1);
         assertThat(testCompany.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testCompany.getWebsite()).isEqualTo(DEFAULT_WEBSITE);
-        assertThat(testCompany.getDiscreption()).isEqualTo(DEFAULT_DISCREPTION);
+        assertThat(testCompany.getDescription()).isEqualTo(DEFAULT_DISCREPTION);
         assertThat(testCompany.getPerson1()).isEqualTo(DEFAULT_PERSON_1);
         assertThat(testCompany.getContact1()).isEqualTo(DEFAULT_CONTACT_1);
         assertThat(testCompany.getEmail1()).isEqualTo(DEFAULT_EMAIL_1);
@@ -242,7 +242,7 @@ public class CompanyResourceIntTest {
         Company testCompany = companyList.get(companyList.size() - 1);
         assertThat(testCompany.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testCompany.getWebsite()).isEqualTo(UPDATED_WEBSITE);
-        assertThat(testCompany.getDiscreption()).isEqualTo(UPDATED_DISCREPTION);
+        assertThat(testCompany.getDescription()).isEqualTo(UPDATED_DISCREPTION);
         assertThat(testCompany.getPerson1()).isEqualTo(UPDATED_PERSON_1);
         assertThat(testCompany.getContact1()).isEqualTo(UPDATED_CONTACT_1);
         assertThat(testCompany.getEmail1()).isEqualTo(UPDATED_EMAIL_1);

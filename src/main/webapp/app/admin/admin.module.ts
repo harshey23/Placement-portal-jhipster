@@ -66,6 +66,7 @@ import {
 
     CompanyResolvePagingParams,
     CompanyService,
+    CompanyTypeService,
     AdminCoordinatorComponent,
     AdminCoordinatorAddComponent,
     AdminCoordinatorDetailComponent,
@@ -176,7 +177,8 @@ import {
         CompanyService,
         CompanyResolvePagingParams,
         AnnouncementService,
-        AnnouncementResolvePagingParams
+        AnnouncementResolvePagingParams,
+        CompanyTypeService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
