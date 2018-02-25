@@ -1,6 +1,5 @@
 package com.icl.repository;
 
-import com.icl.domain.Batch;
 import com.icl.domain.Company;
 import com.icl.domain.CompanyType;
 import org.springframework.data.domain.Page;

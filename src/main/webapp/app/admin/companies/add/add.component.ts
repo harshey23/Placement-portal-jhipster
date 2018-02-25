@@ -6,7 +6,10 @@ import { Observable } from 'rxjs/Observable';
 import { JhiEventManager } from 'ng-jhipster';
 
 import { Company } from '../company.model';
+import { CompanyType } from '../company-type.model';
 import { CompanyService } from '../company.services';
+import { CompanyTypeService } from '../company-type.service';
+import { ResponseWrapper } from '../../../shared';
 
 @Component({
 	selector: 'app-company-add',
@@ -16,11 +19,13 @@ import { CompanyService } from '../company.services';
 export class AddComponent implements OnInit {
 
 	company: Company;
+    companyTypes: CompanyType[];
 	isSaving: boolean;
 
 	constructor(
 		public location: Location,
 		private companyService: CompanyService,
+		private companyTypeService: CompanyTypeService,
 		private eventManager: JhiEventManager
 	) {
 	}
@@ -28,12 +33,14 @@ export class AddComponent implements OnInit {
 	ngOnInit() {
 		this.isSaving = false;
 		this.company = new Company();
+		this.companyTypeService.query().subscribe((res: ResponseWrapper) => this.companyTypes = res.json);
 	}
 
 	save() {
 		this.isSaving = true;
 		console.log(this.company);
 		this.subscribeToSaveResponse(this.companyService.create(this.company));
+        this.goBack();
 	}
 
 	goBack(): void {

@@ -93,7 +93,7 @@ currentAccount: any;
     }
 
     trackId(index: number, item: CompanyType) {
-        return item.id;
+        return item.companyType;
     }
     registerChangeInCompanyTypes() {
         this.eventSubscriber = this.eventManager.subscribe('companyTypeListModification', (response) => this.loadAll());

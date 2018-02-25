@@ -36,7 +36,7 @@ export class CompanyTypeDialogComponent implements OnInit {
 
     save() {
         this.isSaving = true;
-        if (this.companyType.id !== undefined) {
+        if (this.companyType.companyType !== undefined) {
             this.subscribeToSaveResponse(
                 this.companyTypeService.update(this.companyType));
         } else {

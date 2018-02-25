@@ -19,7 +19,7 @@
             <th jhiSortBy="id"><span>ID</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="title"><span>Title</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="packageOffered"><span>Package Offered</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="discreption"><span>Discreption</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="description"><span>Discreption</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="dateOfVisit"><span>Date Of Visit</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="lastDate"><span>Last Date</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="place"><span>Place</span> <span class="fa fa-sort"></span></th>
@@ -31,7 +31,7 @@
                 <td><a [routerLink]="['../offer', offer.id ]">{{offer.id}}</a></td>
                 <td>{{offer.title}}</td>
                 <td>{{offer.packageOffered}}</td>
-                <td>{{offer.discreption}}</td>
+                <td>{{offer.description}}</td>
                 <td>{{offer.dateOfVisit | date:'mediumDate'}}</td>
                 <td>{{offer.lastDate | date:'mediumDate'}}</td>
                 <td>{{offer.place}}</td>

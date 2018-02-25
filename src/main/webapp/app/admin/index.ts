@@ -22,6 +22,7 @@ export * from './analytics/analytics.route';
 export * from './analytics/analytics.component';
 export * from './companies/companies.route';
 export * from './companies/company.services';
+export * from './companies/company-type.service';
 export * from './companies/add/add.component';
 export * from './companies/details/details.component';
 export * from './companies/home/home.component';

@@ -8,7 +8,7 @@ import com.icl.domain.CompanyType;
 import com.icl.domain.Offer;
 import com.icl.repository.CompanyRepository;
 import com.icl.service.CompanyService;
-import com.icl.web.rest.errors.BadRequestAlertException;
+//import com.icl.web.rest.errors.BadRequestAlertException;
 import com.icl.web.rest.util.HeaderUtil;
 import com.icl.web.rest.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -58,12 +58,9 @@ public class CompanyResource {
     @Timed
     public ResponseEntity<Company> createCompany(@RequestBody Company company) throws URISyntaxException {
         log.debug("REST request to save Company : {}", company);
-        if (company.getName() != null) {
-            throw new BadRequestAlertException("A new company cannot already have an ID", ENTITY_NAME, "idexists");
-        }
-        Company result = companyRepository.save(company);
+        Company result = companyService.createCompany(company);
         return ResponseEntity.created(new URI("/api/companies/" + result.getName()))
-            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getName().toString()))
+            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getName()))
             .body(result);
     }
 

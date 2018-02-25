@@ -60,41 +60,39 @@ public class CompanyTypeResource {
             .body(result);
     }
 
-    /**
-     * PUT  /company-types : Updates an existing companyType.
-     *
-     * @param companyType the companyType to update
-     * @return the ResponseEntity with status 200 (OK) and with body the updated companyType,
-     * or with status 400 (Bad Request) if the companyType is not valid,
-     * or with status 500 (Internal Server Error) if the companyType couldn't be updated
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
-    @PutMapping("/company-types")
-    @Timed
-    public ResponseEntity<CompanyType> updateCompanyType(@RequestBody CompanyType companyType) throws URISyntaxException {
-        log.debug("REST request to update CompanyType : {}", companyType);
-        if (companyType.getCompanyType() == null) {
-            return createCompanyType(companyType);
-        }
-        CompanyType result = companyTypeRepository.save(companyType);
-        return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, companyType.getCompanyType().toString()))
-            .body(result);
-    }
+//    /**
+//     * PUT  /company-types : Updates an existing companyType.
+//     *
+//     * @param companyType the companyType to update
+//     * @return the ResponseEntity with status 200 (OK) and with body the updated companyType,
+//     * or with status 400 (Bad Request) if the companyType is not valid,
+//     * or with status 500 (Internal Server Error) if the companyType couldn't be updated
+//     * @throws URISyntaxException if the Location URI syntax is incorrect
+//     */
+//    @PutMapping("/company-types")
+//    @Timed
+//    public ResponseEntity<CompanyType> updateCompanyType(@RequestBody CompanyType companyType) throws URISyntaxException {
+//        log.debug("REST request to update CompanyType : {}", companyType);
+//        if (companyType.getCompanyType() == null) {
+//            return createCompanyType(companyType);
+//        }
+//        CompanyType result = companyTypeRepository.save(companyType);
+//        return ResponseEntity.ok()
+//            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, companyType.getCompanyType().toString()))
+//            .body(result);
+//    }
 
     /**
      * GET  /company-types : get all the companyTypes.
      *
-     * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and the list of companyTypes in body
      */
     @GetMapping("/company-types")
     @Timed
-    public ResponseEntity<List<CompanyType>> getAllCompanyTypes(Pageable pageable) {
+    public ResponseEntity<List<CompanyType>> getAllCompanyTypes() {
         log.debug("REST request to get a page of CompanyTypes");
-        Page<CompanyType> page = companyTypeRepository.findAll(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/company-types");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        List<CompanyType> page = companyTypeRepository.findAll();
+        return new ResponseEntity<>(page, HttpStatus.OK);
     }
 
     /**

@@ -1,11 +1,9 @@
 package com.icl.service;
 
-import com.icl.domain.Batch;
-import com.icl.domain.Company;
-import com.icl.domain.CompanyType;
-import com.icl.domain.Offer;
+import com.icl.domain.*;
 import com.icl.repository.CompanyRepository;
 import com.icl.repository.OfferRepository;
+import com.icl.repository.StatusRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -19,11 +17,22 @@ public class CompanyService {
 
     private final CompanyRepository companyRepository;
 
+    private final StatusRepository statusRepository;
+
     private final OfferRepository offerRepository;
 
-    public CompanyService(CompanyRepository companyRepository, OfferRepository offerRepository) {
+    public CompanyService(CompanyRepository companyRepository, StatusRepository statusRepository, OfferRepository offerRepository) {
         this.companyRepository = companyRepository;
+        this.statusRepository = statusRepository;
         this.offerRepository = offerRepository;
+    }
+
+    public Company createCompany(Company company){
+        Status status = new Status();
+        status.setCOMPANY_STATUS("active");
+        statusRepository.save(status);
+        company.setStatus(status);
+        return companyRepository.save(company);
     }
 
 

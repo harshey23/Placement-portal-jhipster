@@ -5,7 +5,7 @@ export class Round implements BaseEntity {
         public id?: string,
         public name?: string,
         public number?: number,
-        public discreption?: string,
+        public description?: string,
         public date?: any,
     ) {
     }

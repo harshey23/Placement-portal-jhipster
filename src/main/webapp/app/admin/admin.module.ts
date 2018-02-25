@@ -62,6 +62,7 @@ import {
     HomeComponent,
     CompanyResolvePagingParams,
     CompanyService,
+    CompanyTypeService,
     AdminCoordinatorComponent,
     AdminCoordinatorAddComponent,
     AdminCoordinatorDetailComponent,
@@ -168,7 +169,8 @@ import {
         UserResolve,
         UserModalService,
         CompanyService,
-        CompanyResolvePagingParams
+        CompanyResolvePagingParams,
+        CompanyTypeService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
