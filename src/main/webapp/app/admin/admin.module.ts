@@ -52,13 +52,18 @@ import {
     UserResolve,
     UserModalService,
     AdminComponent,
-
     TryComponent,
-
     AnalyticsComponent,
     AddComponent,
     DetailsComponent,
     HomeComponent,
+
+    AnnouncementService,
+    AnnouncementComponent,
+    NewAnnouncementComponent,
+    ViewAnnouncementComponent,
+    AnnouncementResolvePagingParams,
+
     CompanyResolvePagingParams,
     CompanyService,
     CompanyTypeService,
@@ -99,7 +104,6 @@ import {
         JhiDocsComponent,
         JhiMetricsMonitoringComponent,
         JhiMetricsMonitoringModalComponent,
-
         FooterComponent,
         NavbarComponent,
         SidebarComponent,
@@ -109,6 +113,9 @@ import {
         AddComponent,
         DetailsComponent,
         HomeComponent,
+        AnnouncementComponent,
+        NewAnnouncementComponent,
+        ViewAnnouncementComponent,
         AdminCoordinatorComponent,
         AdminCoordinatorAddComponent,
         AdminCoordinatorDetailComponent,
@@ -169,6 +176,8 @@ import {
         UserModalService,
         CompanyService,
         CompanyResolvePagingParams,
+        AnnouncementService,
+        AnnouncementResolvePagingParams,
         CompanyTypeService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]

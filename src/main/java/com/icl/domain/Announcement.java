@@ -6,13 +6,14 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Objects;
 
 /**
  * A Announcement.
  */
-@Document(collection = "pl.announcement")
+@Document(collection = "pl.announcements")
 public class Announcement implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -27,10 +28,17 @@ public class Announcement implements Serializable {
     private String body;
 
     @Field("date")
-    private LocalDate date;
+    private Instant date;
 
-    @DBRef
-    private Status status;
+    public Instant getDate() {
+        return date;
+    }
+
+    public void setDate(Instant date) {
+        this.date = date;
+    }
+// @DBRef
+    // private Status status;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public String getId() {
@@ -67,19 +75,14 @@ public class Announcement implements Serializable {
         this.body = body;
     }
 
-    public LocalDate getDate() {
-        return date;
-    }
 
-    public Announcement date(LocalDate date) {
+
+    public Announcement date(Instant date) {
         this.date = date;
         return this;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+   // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
     public boolean equals(Object o) {
@@ -96,13 +99,13 @@ public class Announcement implements Serializable {
         return Objects.equals(getId(), announcement.getId());
     }
 
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
+//    public Status getStatus() {
+//        return status;
+//    }
+//
+//    public void setStatus(Status status) {
+//        this.status = status;
+//    }
 
     @Override
     public int hashCode() {
