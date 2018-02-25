@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
 
 @Component({
-  selector: 'app-student-dashboard',
+  selector: 'jhi-student-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
@@ -15,7 +15,7 @@ export class DashboardComponent implements OnInit {
     delays = 80;
     durations = 500;
 
-    chart.on('draw', function (data) {
+    chart.on('draw', function(data) {
       if (data.type === 'line' || data.type === 'area') {
         data.element.animate({
           d: {
@@ -48,7 +48,7 @@ export class DashboardComponent implements OnInit {
     seq2 = 0;
     delays2 = 80;
     durations2 = 500;
-    chart.on('draw', function (data) {
+    chart.on('draw', function(data) {
       if (data.type === 'bar') {
         seq2++;
         data.element.animate({
@@ -84,10 +84,9 @@ export class DashboardComponent implements OnInit {
       chartPadding: { top: 0, right: 0, bottom: 0, left: 0 },
     }
 
-    var dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
+    const dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
 
     this.startAnimationForLineChart(dailySalesChart);
-
 
     /* ----------==========     Completed Tasks Chart initialization    ==========---------- */
 
@@ -107,23 +106,21 @@ export class DashboardComponent implements OnInit {
       chartPadding: { top: 0, right: 0, bottom: 0, left: 0 }
     }
 
-    var completedTasksChart = new Chartist.Line('#completedTasksChart', dataCompletedTasksChart, optionsCompletedTasksChart);
+    const completedTasksChart = new Chartist.Line('#completedTasksChart', dataCompletedTasksChart, optionsCompletedTasksChart);
 
     // start animation for the Completed Tasks Chart - Line Chart
     this.startAnimationForLineChart(completedTasksChart);
 
-
-
     /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
 
-    var dataEmailsSubscriptionChart = {
+    const dataEmailsSubscriptionChart = {
       labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
       series: [
         [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
 
       ]
     };
-    var optionsEmailsSubscriptionChart = {
+    const optionsEmailsSubscriptionChart = {
       axisX: {
         showGrid: false
       },
@@ -131,19 +128,15 @@ export class DashboardComponent implements OnInit {
       high: 1000,
       chartPadding: { top: 0, right: 5, bottom: 0, left: 0 }
     };
-    var responsiveOptions: any[] = [
+    const responsiveOptions: any[] = [
       ['screen and (max-width: 640px)', {
         seriesBarDistance: 5,
-        axisX: {
-          labelInterpolationFnc: function (value) {
-            return value[0];
-          }
-        }
+        axisX: ('{labelInterpolationFnc: function(value) {return value[0]; }}')
       }]
     ];
-    var emailsSubscriptionChart = new Chartist.Bar('#emailsSubscriptionChart', dataEmailsSubscriptionChart, optionsEmailsSubscriptionChart, responsiveOptions);
+    const emailsSubscriptionChart = new Chartist.Bar('#emailsSubscriptionChart', dataEmailsSubscriptionChart, optionsEmailsSubscriptionChart, responsiveOptions);
 
-    //start animation for the Emails Subscription Chart
+    // start animation for the Emails Subscription Chart
     this.startAnimationForBarChart(emailsSubscriptionChart);
   }
 

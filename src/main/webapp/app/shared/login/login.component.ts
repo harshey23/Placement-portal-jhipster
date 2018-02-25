@@ -58,16 +58,16 @@ export class JhiLoginModalComponent implements AfterViewInit {
                 this.router.navigate(['']);
             }
 
-            if(this.isAuthenticated()) {
-                this.principal.hasAuthority("ROLE_ADMIN").then((authorised) => {
-                    if(authorised) {
-                        console.log("redirecting to admin " + authorised);
+            if (this.isAuthenticated()) {
+                this.principal.hasAuthority('ROLE_ADMIN').then((authorised) => {
+                    if (authorised) {
+                        console.log('redirecting to admin ' + authorised);
                         this.router.navigate(['/admin/dashboard']);
                     }
                 });
-                this.principal.hasAuthority("ROLE_USER").then((authorised) => {
-                    if(authorised) {
-                        console.log("redirecting to student " + authorised);
+                this.principal.hasAuthority('ROLE_USER').then((authorised) => {
+                    if (authorised) {
+                        console.log('redirecting to student ' + authorised);
                         this.router.navigate(['/student/dashboard']);
                     }
                 });

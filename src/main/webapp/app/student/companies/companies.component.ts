@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-companies',
+  selector: 'jhi-student--companies',
   templateUrl: './companies.component.html',
   styleUrls: ['./companies.component.scss']
 })

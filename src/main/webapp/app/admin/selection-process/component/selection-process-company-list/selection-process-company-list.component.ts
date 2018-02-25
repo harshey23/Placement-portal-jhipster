@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-selection-process-company-list',
+  selector: 'jhi-admin-selection-process-list',
   templateUrl: './selection-process-company-list.component.html',
   styleUrls: ['./selection-process-company-list.component.scss']
 })

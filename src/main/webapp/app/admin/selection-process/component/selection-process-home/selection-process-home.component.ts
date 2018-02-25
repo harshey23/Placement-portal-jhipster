@@ -6,7 +6,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 @Component({
-  selector: 'app-selection-process-home',
+  selector: 'jhi-admin-selection-process-home',
   templateUrl: './selection-process-home.component.html',
   styleUrls: ['./selection-process-home.component.scss']
 })

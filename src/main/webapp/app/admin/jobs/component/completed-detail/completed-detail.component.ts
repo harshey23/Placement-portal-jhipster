@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-completed-detail',
+  selector: 'jhi-admin-completed-detail',
   templateUrl: './completed-detail.component.html',
   styleUrls: ['./completed-detail.component.scss']
 })

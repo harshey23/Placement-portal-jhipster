@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-student-footer',
+  selector: 'jhi-student-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css']
 })

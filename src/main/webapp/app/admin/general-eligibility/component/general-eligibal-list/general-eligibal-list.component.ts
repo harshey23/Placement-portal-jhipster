@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-general-eligibal-list',
+  selector: 'jhi-general-eligibal-list',
   templateUrl: './general-eligibal-list.component.html',
   styleUrls: ['./general-eligibal-list.component.scss']
 })

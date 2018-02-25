@@ -12,52 +12,52 @@ import { CompanyTypeService } from '../company-type.service';
 import { ResponseWrapper } from '../../../shared';
 
 @Component({
-	selector: 'app-company-add',
-	templateUrl: './add.component.html',
-	styleUrls: ['./add.component.css']
+    selector: 'jhi-admin-company-add',
+    templateUrl: './add.component.html',
+    styleUrls: ['./add.component.css']
 })
 export class AddComponent implements OnInit {
 
-	company: Company;
+    company: Company;
     companyTypes: CompanyType[];
-	isSaving: boolean;
+    isSaving: boolean;
 
-	constructor(
-		public location: Location,
-		private companyService: CompanyService,
-		private companyTypeService: CompanyTypeService,
-		private eventManager: JhiEventManager
-	) {
-	}
+    constructor(
+        public location: Location,
+        private companyService: CompanyService,
+        private companyTypeService: CompanyTypeService,
+        private eventManager: JhiEventManager
+    ) {
+    }
 
-	ngOnInit() {
-		this.isSaving = false;
-		this.company = new Company();
-		this.companyTypeService.query().subscribe((res: ResponseWrapper) => this.companyTypes = res.json);
-	}
+    ngOnInit() {
+        this.isSaving = false;
+        this.company = new Company();
+        this.companyTypeService.query().subscribe((res: ResponseWrapper) => this.companyTypes = res.json);
+    }
 
-	save() {
-		this.isSaving = true;
-		console.log(this.company);
-		this.subscribeToSaveResponse(this.companyService.create(this.company));
+    save() {
+        this.isSaving = true;
+        console.log(this.company);
+        this.subscribeToSaveResponse(this.companyService.create(this.company));
         this.goBack();
-	}
+    }
 
-	goBack(): void {
-		this.location.back();
-	}
+    goBack(): void {
+        this.location.back();
+    }
 
-	private subscribeToSaveResponse(result: Observable<Company>) {
-		result.subscribe((res: Company) =>
-			this.onSaveSuccess(res), (res: Response) => this.onSaveError());
-	}
+    private subscribeToSaveResponse(result: Observable<Company>) {
+        result.subscribe((res: Company) =>
+            this.onSaveSuccess(res), (res: Response) => this.onSaveError());
+    }
 
-	private onSaveSuccess(result: Company) {
-		this.eventManager.broadcast({ name: 'companyListModification', content: 'OK' });
-		this.isSaving = false;
-	}
+    private onSaveSuccess(result: Company) {
+        this.eventManager.broadcast({ name: 'companyListModification', content: 'OK' });
+        this.isSaving = false;
+    }
 
-	private onSaveError() {
-		this.isSaving = false;
-	}
+    private onSaveError() {
+        this.isSaving = false;
+    }
 }

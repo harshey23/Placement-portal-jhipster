@@ -27,7 +27,6 @@ import { FooterComponent } from './template/footer/footer.component';
 import { NavbarComponent } from './template/navbar/navbar.component';
 import { SidebarComponent } from './template/sidebar/sidebar.component';
 
-
 import {
     adminState,
     AuditsComponent,
