@@ -34,7 +34,7 @@ export const announcementsRoute: Routes = [
         canActivate: [UserRouteAccessService]
     },
     {
-        path: 'announcements/view/{id}',
+        path: 'announcements/view/:id',
         component: ViewAnnouncementComponent,
         data: {
             authorities: ['ROLE_ADMIN'],

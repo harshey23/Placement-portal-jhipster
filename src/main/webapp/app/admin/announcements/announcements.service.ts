@@ -68,12 +68,12 @@ export class AnnouncementService {
     }
 
     /**
-     * Convert a Announcement1 to a JSON which can be sent to the server.
+     * Convert a Announcement to a JSON which can be sent to the server.
      */
     private convert(announcement: Announcement): Announcement {
         const copy: Announcement = Object.assign({}, announcement);
-        copy.date = this.dateUtils
-            .convertLocalDateToServer(announcement.date);
+        // copy.date = this.dateUtils
+        //     .convertLocalDateToServer(announcement.date);
         return copy;
     }
 }

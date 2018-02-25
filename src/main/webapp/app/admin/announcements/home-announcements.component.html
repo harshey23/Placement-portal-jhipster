@@ -21,14 +21,26 @@
             <b>Announcements</b>
           </h4>
         </div>
-        <div>
-            <h3>1. Announcement 1</h3>
-            <h3>2. Announcement 2</h3>
-            <h3>3. Announcement 3</h3>
-            <h3>4. Announcement 4</h3>
-            <h3>5. Announcement 5</h3>
-        </div>
-        <div *ngIf="companies && companies.length">
+
+        <div class="card-content">
+          <div class="row">
+              <div class="col-md-6">
+                  <!-- <h5>Annoumcements List</h5> -->
+                <div *ngFor="let announcement of announcements ;trackBy: trackId">
+                  <div class="alert alert-success" (click)="gotoDetail(announcement.id)">
+                      <button type="button" aria-hidden="true" class="close">{{announcement.date}}</button>
+                      <span><b> Title - </b>{{announcement.title}}</span>
+                  </div>
+                </div>
+                
+              </div>
+          </div>
+
+          <br>
+          <br>
+      </div>
+       
+        <!-- <div *ngIf="companies && companies.length">
           <div class="row justify-content-center">
             <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
           </div>
@@ -36,7 +48,7 @@
             <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"
               (pageChange)="loadPage(page)"></ngb-pagination>
           </div>
-        </div>
+        </div> -->
   
       </div>
     </div>
