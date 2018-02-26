@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-report-list',
+  selector: 'jhi-admin-report-list',
   templateUrl: './report-list.component.html',
   styleUrls: ['./report-list.component.scss']
 })

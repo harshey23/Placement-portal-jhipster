@@ -29,6 +29,12 @@ export class HomeComponent implements OnInit, OnDestroy {
     previousPage: any;
     reverse: any;
 
+    statusItem: any[] = [
+        { status: 'active', class: 'nav nav-pills nav-justified nav-pills-success' },
+        { status: 'Inactive', class: 'nav nav-pills nav-justified nav-pills-warning' },
+        { status: 'Obsolete', class: 'nav nav-pills nav justified nav-pills-danger' }
+    ]
+
     constructor(
         private companyService: CompanyService,
         private parseLinks: JhiParseLinks,
@@ -57,7 +63,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             (res: ResponseWrapper) => this.onError(res.json)
         );
     }
-    
+
     loadPage(page: number) {
         if (page !== this.previousPage) {
             this.previousPage = page;
@@ -99,7 +105,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     trackId(index: number, item: Company) {
-        return item.id;
+        return item.name;
     }
 
     registerChangeInCompanies() {
@@ -114,6 +120,15 @@ export class HomeComponent implements OnInit, OnDestroy {
         return result;
     }
 
+    gotoDetail(id: any): void {
+        console.log(id);
+        this.router.navigate(['/admin/companies/detail', id]);
+    }
+
+    addCompany(): void {
+        this.router.navigate(['/admin/companies/add']);
+    }
+
     private onSuccess(data, headers) {
         this.links = this.parseLinks.parse(headers.get('link'));
         this.totalItems = headers.get('X-Total-Count');
@@ -124,21 +139,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     private onError(error) {
         this.jhiAlertService.error(error.message, null, null);
-    }
-
-    statusItem: any[] = [
-        { status: 'Active', class: 'nav nav-pills nav-justified nav-pills-success' },
-        { status: 'Inactive', class: 'nav nav-pills nav-justified nav-pills-warning' },
-        { status: 'Obsolete', class: 'nav nav-pills nav justified nav-pills-danger' }
-    ]
-
-    gotoDetail(id: number): void {
-        console.log(id);
-        this.router.navigate(['/admin/companies/detail', id]);
-    }
-
-    addCompany(): void {
-        this.router.navigate(['/admin/companies/add']);
     }
 
 }

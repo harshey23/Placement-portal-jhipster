@@ -56,7 +56,7 @@ export class CompanyComponent implements OnInit, OnDestroy {
             (res: ResponseWrapper) => this.onError(res.json)
         );
     }
-    
+
     loadPage(page: number) {
         if (page !== this.previousPage) {
             this.previousPage = page;

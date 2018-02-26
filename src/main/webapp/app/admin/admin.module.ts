@@ -27,7 +27,6 @@ import { FooterComponent } from './template/footer/footer.component';
 import { NavbarComponent } from './template/navbar/navbar.component';
 import { SidebarComponent } from './template/sidebar/sidebar.component';
 
-
 import {
     adminState,
     AuditsComponent,
@@ -53,15 +52,21 @@ import {
     UserResolve,
     UserModalService,
     AdminComponent,
-
     TryComponent,
-
     AnalyticsComponent,
     AddComponent,
     DetailsComponent,
     HomeComponent,
+
+    AnnouncementService,
+    AnnouncementComponent,
+    NewAnnouncementComponent,
+    ViewAnnouncementComponent,
+    AnnouncementResolvePagingParams,
+
     CompanyResolvePagingParams,
     CompanyService,
+    CompanyTypeService,
     AdminCoordinatorComponent,
     AdminCoordinatorAddComponent,
     AdminCoordinatorDetailComponent,
@@ -99,7 +104,6 @@ import {
         JhiDocsComponent,
         JhiMetricsMonitoringComponent,
         JhiMetricsMonitoringModalComponent,
-
         FooterComponent,
         NavbarComponent,
         SidebarComponent,
@@ -109,6 +113,9 @@ import {
         AddComponent,
         DetailsComponent,
         HomeComponent,
+        AnnouncementComponent,
+        NewAnnouncementComponent,
+        ViewAnnouncementComponent,
         AdminCoordinatorComponent,
         AdminCoordinatorAddComponent,
         AdminCoordinatorDetailComponent,
@@ -168,7 +175,10 @@ import {
         UserResolve,
         UserModalService,
         CompanyService,
-        CompanyResolvePagingParams
+        CompanyResolvePagingParams,
+        AnnouncementService,
+        AnnouncementResolvePagingParams,
+        CompanyTypeService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

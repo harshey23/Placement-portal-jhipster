@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-admin-student',
+  selector: 'jhi-admin-student',
   templateUrl: './admin-student.component.html',
   styleUrls: ['./admin-student.component.scss']
 })

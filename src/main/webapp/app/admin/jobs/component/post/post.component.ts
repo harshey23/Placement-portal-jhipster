@@ -13,7 +13,7 @@ import 'rxjs/add/operator/filter';
 declare var $: any;
 
 @Component({
-  selector: 'app-post',
+  selector: 'jhi-admin-post',
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.scss']
 })

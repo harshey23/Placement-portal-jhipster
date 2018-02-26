@@ -19,6 +19,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
@@ -45,7 +46,7 @@ public class AnnouncementResourceIntTest {
     private static final String UPDATED_BODY = "BBBBBBBBBB";
 
     private static final LocalDate DEFAULT_DATE = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_DATE = LocalDate.now(ZoneId.systemDefault());
+    private static final Instant UPDATED_DATE = Instant.from(LocalDate.now(ZoneId.systemDefault()));
 
     @Autowired
     private AnnouncementRepository announcementRepository;
@@ -84,7 +85,7 @@ public class AnnouncementResourceIntTest {
         Announcement announcement = new Announcement()
             .title(DEFAULT_TITLE)
             .body(DEFAULT_BODY)
-            .date(DEFAULT_DATE);
+            .date(Instant.from(DEFAULT_DATE));
         return announcement;
     }
 

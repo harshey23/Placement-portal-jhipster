@@ -47,7 +47,7 @@ export class CompanyTypeDetailComponent implements OnInit, OnDestroy {
     registerChangeInCompanyTypes() {
         this.eventSubscriber = this.eventManager.subscribe(
             'companyTypeListModification',
-            (response) => this.load(this.companyType.id)
+            (response) => this.load(this.companyType.companyType)
         );
     }
 }

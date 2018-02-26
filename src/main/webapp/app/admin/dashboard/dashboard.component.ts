@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
     delays = 80;
     durations = 500;
 
-    chart.on('draw', function (data) {
+    chart.on('draw', function(data) {
       if (data.type === 'line' || data.type === 'area') {
         data.element.animate({
           d: {
@@ -50,7 +50,7 @@ export class DashboardComponent implements OnInit {
     seq2 = 0;
     delays2 = 80;
     durations2 = 500;
-    chart.on('draw', function (data) {
+    chart.on('draw', function(data) {
       if (data.type === 'bar') {
         seq2++;
         data.element.animate({
@@ -73,9 +73,9 @@ export class DashboardComponent implements OnInit {
 
     $(this).children('.description').hide();
 
-    $('.register').mouseover(function () {
+    $('.register').mouseover(function() {
       $(this).children('.description').show();
-    }).mouseout(function () {
+    }).mouseout(function() {
       $(this).children('.description').hide();
     });
 
@@ -143,11 +143,7 @@ export class DashboardComponent implements OnInit {
     const responsiveOptions: any[] = [
       ['screen and (max-width: 640px)', {
         seriesBarDistance: 5,
-        axisX: {
-          labelInterpolationFnc: function (value) {
-            return value[0];
-          }
-        }
+        axisX: ('{labelInterpolationFnc: function(value) {return value[0]; }}')
       }]
     ];
     const emailsSubscriptionChart = new Chartist.Bar('#emailsSubscriptionChart', dataEmailsSubscriptionChart, optionsEmailsSubscriptionChart, responsiveOptions);

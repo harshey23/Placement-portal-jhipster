@@ -1,0 +1,46 @@
+<div class="main-content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+
+				<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+					<div class="card">
+
+						<div class="card-header" data-background-color="blue">
+							<h3 class="title">Creat a new Announcement</h3>
+						</div>
+
+						<div class="card-content">
+
+                            <div class="form-group">
+                                <label class="form-control-label" for="field_title">Title</label>
+                                <input type="text" class="form-control" name="title" id="field_title"
+                                    [(ngModel)]="announcement.title" />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label" for="field_body">Body</label>
+                                <textarea class="form-control" name="body" id="field_body"
+                                    [(ngModel)]="announcement.body" ></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label" for="field_date">Title</label>
+                                <input type="text" class="form-control" name="date" id="field_date"
+                                    [(ngModel)]="announcement.date" />
+                            </div>
+                
+						</div>
+
+						<div class="card-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="goBack()">
+								<span class="fa fa-ban"></span>&nbsp;
+								<span>Cancel</span>
+							</button>
+						</div>
+
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>

@@ -34,7 +34,7 @@ export const companiesRoute: Routes = [
         canActivate: [UserRouteAccessService]
     },
     {
-        path: 'companies/detail/{id}',
+        path: 'companies/detail/:id',
         component: DetailsComponent,
         data: {
             authorities: ['ROLE_ADMIN'],

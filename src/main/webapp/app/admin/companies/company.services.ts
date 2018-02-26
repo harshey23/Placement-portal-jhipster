@@ -15,6 +15,7 @@ export class CompanyService {
 
     create(company: Company): Observable<Company> {
         const copy = this.convert(company);
+        console.log(copy);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);

@@ -15,7 +15,6 @@
         "polyfills": "app/polyfills.ts",
         "test": "src/test/javascript/spec/entry.ts",
         "tsconfig": "src/tsconfig.json",
-        "prefix": "jhi",
         "mobile": false,
         "styles": [
             "../../../../node_modules/bootstrap/dist/css/bootstrap.css",

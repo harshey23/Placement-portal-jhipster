@@ -9,7 +9,7 @@ import 'rxjs/add/operator/filter';
 declare var $: any;
 
 @Component({
-    selector: 'jhi-app-admin-student-add',
+    selector: 'jhi-admin-student-add',
     templateUrl: './admin-student-add.component.html',
     styleUrls: ['./admin-student-add.component.scss']
 })
@@ -80,9 +80,9 @@ export class AdminStudentAddComponent implements OnInit {
             ps = new PerfectScrollbar(elemSidebar);
         }
     }
-    ngAfterViewInit() {
-        this.runOnRouteChange();
-    }
+    // ngAfterViewInit() {
+    //     this.runOnRouteChange();
+    // }
     isMaps(path) {
         let titlee = this.location.prepareExternalUrl(this.location.path());
         titlee = titlee.slice(1);

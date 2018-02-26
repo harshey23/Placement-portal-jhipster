@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { IMultiSelectOption, IMultiSelectSettings, IMultiSelectTexts } from 'angular-2-dropdown-multiselect';
 
 @Component({
-  selector: 'app-general-eligibal-form',
+  selector: 'jhi-general-eligibal-form',
   templateUrl: './general-eligibal-form.component.html',
   styleUrls: ['./general-eligibal-form.component.scss']
 })
