@@ -18,7 +18,8 @@ eg $input-color: red;
  @import 'node_modules/bootstrap/dist/css/bootstrap'; //css
  @import 'node_modules/perfect-scrollbar/css/perfect-scrollbar'; //css
  @import '../../assets/sass/material-dashboard'; //scss
-// @import '../../assets/css/demo'; //css
+ @import '../../assets/css/demo'; //css
+ @import './stylish-portfolio.css'; //css
  @import "~@angular/material/prebuilt-themes/indigo-pink.css"; //css
 
 /* jhipster-needle-scss-add-vendor JHipster will add new css style */
