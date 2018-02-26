@@ -11,7 +11,10 @@ declare var $ : any;
 
 @Component({
     selector: 'jhi-login-modal',
-    templateUrl: './login.component.html'
+    templateUrl: './login.component.html',
+    styleUrls: [
+            './login.component.css'
+        ]
 })
 export class JhiLoginModalComponent implements AfterViewInit {
     authenticationError: boolean;
