@@ -20,7 +20,7 @@ export const coordinatorRoute: Routes = [
         }
     },
     {
-        path: 'cord/detail',
+        path: 'cord/detail/:id',
         component: AdminCoordinatorDetailComponent,
         data: {
             pageTitle: 'Coordinator'

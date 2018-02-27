@@ -9,7 +9,7 @@ import java.util.Objects;
 /**
  * A Course.
  */
-@Document(collection = "course")
+@Document(collection = "pl.course")
 public class Course implements Serializable {
 
     private static final long serialVersionUID = 1L;

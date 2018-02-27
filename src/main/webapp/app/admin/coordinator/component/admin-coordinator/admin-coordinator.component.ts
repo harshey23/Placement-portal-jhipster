@@ -13,8 +13,8 @@ export class AdminCoordinatorComponent implements OnInit {
   ngOnInit() {
   }
 
-  gotoDetail(): void {
-    this.router.navigate(['/admin/cord/detail']);
+  gotoDetail(id: any): void {
+    this.router.navigate(['/admin/cord/detail', id]);
   }
 
   addCoordinator(): void {
