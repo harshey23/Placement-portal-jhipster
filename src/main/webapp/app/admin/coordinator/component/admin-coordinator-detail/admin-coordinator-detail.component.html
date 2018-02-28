@@ -76,6 +76,31 @@
                               </small>
                           </div>
                       </div>
+                      <div class="form-group">
+                        <label class="form-control-label">Course</label>
+                        <input type="text" class="form-control" name="course"  [(ngModel)]="user.course">
+                      </div>
+
+                      <div class="form-group">
+                        <label class="form-control-label">Phone</label>
+                        <input type="number" class="form-control" name="phone" #phoneInput="ngModel" [(ngModel)]="user.phone" minlength="10" 
+                            maxlength="13" email>
+            
+                        <div *ngIf="phoneInput.dirty && phoneInput.invalid">
+                          
+                            <small class="form-text text-danger" *ngIf="phoneInput.errors.maxlength">
+                                This field cannot be longer than 13 characters.
+                            </small>
+            
+                            <small class="form-text text-danger" *ngIf="phoneInput.errors.minlength">
+                                This field is required to be at least 10 characters.
+                            </small>
+            
+                            <small class="form-text text-danger" *ngIf="phoneInput.errors.phone">
+                                Your Phone number is invalid.
+                            </small>
+                        </div>
+                    </div>
                       <!-- <div class="form-check">
                           <label class="form-check-label" for="activated">
                               <input class="form-check-input" [disabled]="user.id === null" type="checkbox" id="activated" name="activated" [(ngModel)]="user.activated">

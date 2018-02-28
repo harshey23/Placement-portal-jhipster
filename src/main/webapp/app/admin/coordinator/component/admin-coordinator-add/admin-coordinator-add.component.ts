@@ -17,6 +17,7 @@ export class AdminCoordinatorAddComponent implements OnInit {
   languages: any[];
   authorities: any[];
   isSaving: Boolean;
+  courses: any[];
 
   constructor(
       private location: Location,
@@ -28,6 +29,10 @@ export class AdminCoordinatorAddComponent implements OnInit {
   ngOnInit() {
     this.isSaving = false;
     this.user = new User();
+    this.courses = [];
+    this.userService.courses().subscribe((courses) => {
+        this.courses = courses;
+    });
   }
   clear() {
     this.activeModal.dismiss('cancel');

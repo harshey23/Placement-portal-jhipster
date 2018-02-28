@@ -33,12 +33,19 @@ export class UserService {
             .map((res: Response) => this.convertResponse(res));
     }
 
+   
     delete(login: string): Observable<Response> {
         return this.http.delete(`${this.resourceUrl}/${login}`);
     }
 
     authorities(): Observable<string[]> {
         return this.http.get(SERVER_API_URL + 'api/users/authorities').map((res: Response) => {
+            const json = res.json();
+            return <string[]> json;
+        });
+    }
+    courses(): Observable<string[]> {
+        return this.http.get(SERVER_API_URL + 'api/courses').map((res: Response) => {
             const json = res.json();
             return <string[]> json;
         });

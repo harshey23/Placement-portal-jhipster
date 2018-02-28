@@ -4,6 +4,8 @@ export class User {
     public firstName?: string;
     public lastName?: string;
     public email?: string;
+    public phone?: string;
+    public course?: string;
     public activated?: Boolean;
     public langKey?: string;
     public authorities?: any[];
@@ -19,6 +21,8 @@ export class User {
         firstName?: string,
         lastName?: string,
         email?: string,
+        phone?: string,
+        course?: string,
         activated?: Boolean,
         langKey?: string,
         authorities?: any[],
@@ -33,6 +37,8 @@ export class User {
         this.firstName = firstName ? firstName : null;
         this.lastName = lastName ? lastName : null;
         this.email = email ? email : null;
+        this.phone = phone ? phone : null;
+        this.course = course ? course : null;
         this.activated = activated ? activated : false;
         this.langKey = langKey ? langKey : null;
         this.authorities = authorities ? authorities : null;
