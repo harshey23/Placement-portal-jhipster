@@ -33,7 +33,6 @@ export class UserService {
             .map((res: Response) => this.convertResponse(res));
     }
 
-   
     delete(login: string): Observable<Response> {
         return this.http.delete(`${this.resourceUrl}/${login}`);
     }
