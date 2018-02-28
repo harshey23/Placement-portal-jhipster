@@ -45,6 +45,8 @@ export class JhiLoginModalComponent implements AfterViewInit {
             $('mymodal').modal('hide');
             $('body').removeClass('modal-open');
             $('.modal-backdrop').remove();
+             $('body').css('padding-right','0');
+            
     }
 
     cancel() {
