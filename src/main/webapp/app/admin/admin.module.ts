@@ -1,7 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
 import { MatFormFieldModule } from '@angular/material';
 
@@ -57,13 +57,11 @@ import {
     AddComponent,
     DetailsComponent,
     HomeComponent,
-
     AnnouncementService,
     AnnouncementComponent,
     NewAnnouncementComponent,
     ViewAnnouncementComponent,
     AnnouncementResolvePagingParams,
-
     CompanyResolvePagingParams,
     CompanyService,
     CompanyTypeService,
@@ -81,6 +79,10 @@ import {
     ReportListComponent,
     SelectionProcessHomeComponent,
     SelectionProcessCompanyListComponent,
+    RoundAddComponent,
+    RoundDetailComponent,
+    RoundListComponent,
+    RoundStudentListComponent,
     AdminStudentComponent,
     AdminStudentAddComponent,
     AdminStudentDetailComponent,
@@ -130,6 +132,10 @@ import {
         ReportListComponent,
         SelectionProcessHomeComponent,
         SelectionProcessCompanyListComponent,
+        RoundAddComponent,
+        RoundDetailComponent,
+        RoundListComponent,
+        RoundStudentListComponent,
         AdminStudentComponent,
         AdminStudentAddComponent,
         AdminStudentDetailComponent,
