@@ -1,6 +1,7 @@
 package com.icl.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -20,8 +21,17 @@ public class Offer implements Serializable {
     @Id
     private String id;
 
-    @Field("title")
-    private String title;
+    @DBRef
+    private OfferType offerType;
+
+    private boolean internshipMandatory;
+
+    private boolean convertToJob;
+
+    private boolean campus;
+
+    @DBRef
+    private Company company;
 
     @Field("package_offered")
     private Integer packageOffered;
@@ -33,12 +43,10 @@ public class Offer implements Serializable {
     private LocalDate dateOfVisit;
 
     @Field("last_date")
-    private Instant lastDate;
-
-    @Field("place")
-    private String place;
+    private LocalDate lastDate;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
+
     public String getId() {
         return id;
     }
@@ -47,26 +55,48 @@ public class Offer implements Serializable {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public OfferType getOfferType() {
+        return offerType;
     }
 
-    public Offer title(String title) {
-        this.title = title;
-        return this;
+    public void setOfferType(OfferType offerType) {
+        this.offerType = offerType;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public boolean getInternshipMandatory() {
+        return internshipMandatory;
+    }
+
+    public void setInternshipMandatory(boolean internshipMandatory) {
+        this.internshipMandatory = internshipMandatory;
+    }
+
+    public boolean getConvertToJob() {
+        return convertToJob;
+    }
+
+    public void setConvertToJob(boolean convertToJob) {
+        this.convertToJob = convertToJob;
+    }
+
+    public boolean getCampus() {
+        return campus;
+    }
+
+    public void setCampus(boolean campus) {
+        this.campus = campus;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 
     public Integer getPackageOffered() {
         return packageOffered;
-    }
-
-    public Offer packageOffered(Integer packageOffered) {
-        this.packageOffered = packageOffered;
-        return this;
     }
 
     public void setPackageOffered(Integer packageOffered) {
@@ -77,11 +107,6 @@ public class Offer implements Serializable {
         return discreption;
     }
 
-    public Offer discreption(String discreption) {
-        this.discreption = discreption;
-        return this;
-    }
-
     public void setDiscreption(String discreption) {
         this.discreption = discreption;
     }
@@ -90,40 +115,18 @@ public class Offer implements Serializable {
         return dateOfVisit;
     }
 
-    public Offer dateOfVisit(LocalDate dateOfVisit) {
-        this.dateOfVisit = dateOfVisit;
-        return this;
-    }
-
     public void setDateOfVisit(LocalDate dateOfVisit) {
         this.dateOfVisit = dateOfVisit;
     }
 
-    public Instant getLastDate() {
+    public LocalDate getLastDate() {
         return lastDate;
     }
 
-    public Offer lastDate(Instant lastDate) {
-        this.lastDate = lastDate;
-        return this;
-    }
-
-    public void setLastDate(Instant lastDate) {
+    public void setLastDate(LocalDate lastDate) {
         this.lastDate = lastDate;
     }
 
-    public String getPlace() {
-        return place;
-    }
-
-    public Offer place(String place) {
-        this.place = place;
-        return this;
-    }
-
-    public void setPlace(String place) {
-        this.place = place;
-    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -149,13 +152,16 @@ public class Offer implements Serializable {
     @Override
     public String toString() {
         return "Offer{" +
-            "id=" + getId() +
-            ", title='" + getTitle() + "'" +
-            ", packageOffered=" + getPackageOffered() +
-            ", discreption='" + getDiscreption() + "'" +
-            ", dateOfVisit='" + getDateOfVisit() + "'" +
-            ", lastDate='" + getLastDate() + "'" +
-            ", place='" + getPlace() + "'" +
-            "}";
+            "id='" + id + '\'' +
+            ", offerType=" + offerType +
+            ", internshipMandatory=" + internshipMandatory +
+            ", convertToJob=" + convertToJob +
+            ", campus=" + campus +
+            ", company=" + company +
+            ", packageOffered=" + packageOffered +
+            ", discreption='" + discreption + '\'' +
+            ", dateOfVisit=" + dateOfVisit +
+            ", lastDate=" + lastDate +
+            '}';
     }
 }

@@ -4,6 +4,8 @@ import com.codahale.metrics.annotation.Timed;
 import com.icl.domain.Offer;
 
 import com.icl.repository.OfferRepository;
+import com.icl.service.OfferService;
+import com.icl.service.dto.OfferDTO;
 import com.icl.web.rest.errors.BadRequestAlertException;
 import com.icl.web.rest.util.HeaderUtil;
 import com.icl.web.rest.util.PaginationUtil;
@@ -36,50 +38,11 @@ public class OfferResource {
 
     private final OfferRepository offerRepository;
 
-    public OfferResource(OfferRepository offerRepository) {
+    private final OfferService offerService;
+
+    public OfferResource(OfferRepository offerRepository, OfferService offerService) {
         this.offerRepository = offerRepository;
-    }
-
-    /**
-     * POST  /offers : Create a new offer.
-     *
-     * @param offer the offer to create
-     * @return the ResponseEntity with status 201 (Created) and with body the new offer, or with status 400 (Bad Request) if the offer has already an ID
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
-    @PostMapping("/offers")
-    @Timed
-    public ResponseEntity<Offer> createOffer(@RequestBody Offer offer) throws URISyntaxException {
-        log.debug("REST request to save Offer : {}", offer);
-        if (offer.getId() != null) {
-            throw new BadRequestAlertException("A new offer cannot already have an ID", ENTITY_NAME, "idexists");
-        }
-        Offer result = offerRepository.save(offer);
-        return ResponseEntity.created(new URI("/api/offers/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
-            .body(result);
-    }
-
-    /**
-     * PUT  /offers : Updates an existing offer.
-     *
-     * @param offer the offer to update
-     * @return the ResponseEntity with status 200 (OK) and with body the updated offer,
-     * or with status 400 (Bad Request) if the offer is not valid,
-     * or with status 500 (Internal Server Error) if the offer couldn't be updated
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
-    @PutMapping("/offers")
-    @Timed
-    public ResponseEntity<Offer> updateOffer(@RequestBody Offer offer) throws URISyntaxException {
-        log.debug("REST request to update Offer : {}", offer);
-        if (offer.getId() == null) {
-            return createOffer(offer);
-        }
-        Offer result = offerRepository.save(offer);
-        return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, offer.getId().toString()))
-            .body(result);
+        this.offerService = offerService;
     }
 
     /**
@@ -88,13 +51,55 @@ public class OfferResource {
      * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and the list of offers in body
      */
-    @GetMapping("/offers")
+    @GetMapping("/offers/batch/{batch}")
     @Timed
     public ResponseEntity<List<Offer>> getAllOffers(Pageable pageable) {
         log.debug("REST request to get a page of Offers");
         Page<Offer> page = offerRepository.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/offers");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    /**
+     * POST  /offers : Create a new offer.
+     *
+     * @param offerDTO the offer to create
+     * @return the ResponseEntity with status 201 (Created) and with body the new offer, or with status 400 (Bad Request) if the offer has already an ID
+     * @throws URISyntaxException if the Location URI syntax is incorrect
+     */
+    @PostMapping("/offers")
+    @Timed
+    public ResponseEntity<OfferDTO> createOffer(@RequestBody OfferDTO offerDTO) throws URISyntaxException {
+        log.debug("REST request to save Offer : {}", offerDTO);
+        if (offerDTO.getId() != null) {
+            throw new BadRequestAlertException("A new offer cannot already have an ID", ENTITY_NAME, "idexists");
+        }
+        OfferDTO result = offerService.createOffer(offerDTO);
+        return ResponseEntity.created(new URI("/api/offers/" + result.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
+            .body(result);
+    }
+
+    /**
+     * PUT  /offers : Updates an existing offer.
+     *
+     * @param offerDTO the offer to update
+     * @return the ResponseEntity with status 200 (OK) and with body the updated offer,
+     * or with status 400 (Bad Request) if the offer is not valid,
+     * or with status 500 (Internal Server Error) if the offer couldn't be updated
+     * @throws URISyntaxException if the Location URI syntax is incorrect
+     */
+    @PutMapping("/offers")
+    @Timed
+    public ResponseEntity<OfferDTO> updateOffer(@RequestBody OfferDTO offerDTO) throws URISyntaxException {
+        log.debug("REST request to update Offer : {}", offerDTO);
+        if (offerDTO.getId() == null) {
+            return createOffer(offerDTO);
+        }
+        OfferDTO result = offerService.updateOffer(offerDTO);
+        return ResponseEntity.ok()
+            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, offerDTO.getId().toString()))
+            .body(result);
     }
 
     /**
