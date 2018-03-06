@@ -1,15 +1,9 @@
 package com.icl.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import com.icl.domain.Batch;
-import com.icl.domain.Criteria;
 import com.icl.domain.Offer;
 
-import com.icl.domain.OfferType;
 import com.icl.repository.OfferRepository;
-import com.icl.repository.OfferTypeRepository;
-import com.icl.service.OfferService;
-import com.icl.service.dto.UserDTO;
 import com.icl.web.rest.errors.BadRequestAlertException;
 import com.icl.web.rest.util.HeaderUtil;
 import com.icl.web.rest.util.PaginationUtil;
@@ -40,16 +34,10 @@ public class OfferResource {
 
     private static final String ENTITY_NAME = "offer";
 
-    private final OfferService offerService;
-
     private final OfferRepository offerRepository;
 
-    private final OfferTypeRepository offerTypeRepository;
-
-    public OfferResource(OfferRepository offerRepository, OfferTypeRepository offerTypeRepository, OfferService offerService) {
+    public OfferResource(OfferRepository offerRepository) {
         this.offerRepository = offerRepository;
-        this.offerTypeRepository = offerTypeRepository;
-        this.offerService = offerService;
     }
 
     /**
@@ -136,64 +124,4 @@ public class OfferResource {
         offerRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id)).build();
     }
-
-
-    /**
-     * GET  /offers/batch/{batch} : get all the offers.
-     *
-     * @param pageable the pagination information
-     * @return the ResponseEntity with status 200 (OK) and the list of offers in body
-     */
-    @GetMapping("/offers/batch/{batch}")
-    @Timed
-    public ResponseEntity<List<Offer>> getAllOffersByBatch(Pageable pageable, @RequestBody Batch batch) {
-        final Page<Offer> page = offerService.getAllOffersByBatch(pageable, batch);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/companies/batch");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
-    }
-
-    /**
-     * GET  /offers/batch/{batch} : get all the offers.
-     *
-     * @param pageable the pagination information
-     * @return the ResponseEntity with status 200 (OK) and the list of offers in body
-     */
-    @GetMapping("/offers/types/{types}")
-    @Timed
-    public ResponseEntity<List<Offer>> getAllOfferByTypes(Pageable pageable, @RequestBody OfferType offerType) {
-        log.debug("REST request to get a page of Offers");
-        Page<Offer> page = offerService.getAllOffersByOfferType(pageable, offerType);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/offer/type");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
-    }
-
-    /**
-     * GET  /offers/batch/{batch} : get all the offers.
-     *
-     * @param pageable the pagination information
-     * @return the ResponseEntity with status 200 (OK) and the list of offers in body
-     */
-    @GetMapping("/offers/types/")
-    @Timed
-    public ResponseEntity<List<OfferType>> getAllOfferTypes(Pageable pageable) {
-        log.debug("REST request to get a page of Offers");
-        Page<OfferType> page = offerTypeRepository.findAll(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/offer/type");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
-    }
-
-    /**
-     * GET  /offers/batch/{batch} : get all the offers.
-     *
-     * @param pageable the pagination information
-     * @return the ResponseEntity with status 200 (OK) and the list of offers in body
-     */
-//    @PostMapping("/general")
-//    @Timed
-//    public ResponseEntity<List<UserDTO>> getGeneralEligibility(Pageable pageable, @RequestBody Criteria criteria) {
-//        Page<UserDTO> page = offerService.getGeneralEligibility(pageable, criteria);
-//        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/general/");
-//        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
-//    }
-
 }

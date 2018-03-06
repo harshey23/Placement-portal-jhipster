@@ -1,6 +1,7 @@
 package com.icl.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
@@ -9,15 +10,26 @@ import java.util.Objects;
 /**
  * A Batch.
  */
-@Document(collection = "pl.batch")
+@Document(collection = "batch")
 public class Batch implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
+    private String id;
+
+    @Field("batch")
     private String batch;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getBatch() {
         return batch;
     }
@@ -41,21 +53,22 @@ public class Batch implements Serializable {
             return false;
         }
         Batch batch = (Batch) o;
-        if (batch.getBatch() == null || getBatch() == null) {
+        if (batch.getId() == null || getId() == null) {
             return false;
         }
-        return Objects.equals(getBatch(), batch.getBatch());
+        return Objects.equals(getId(), batch.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getBatch());
+        return Objects.hashCode(getId());
     }
 
     @Override
     public String toString() {
         return "Batch{" +
-            "batch='" + getBatch() + "'" +
+            "id=" + getId() +
+            ", batch='" + getBatch() + "'" +
             "}";
     }
 }

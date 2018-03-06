@@ -19,7 +19,6 @@ export class OfferDialogComponent implements OnInit {
     offer: Offer;
     isSaving: boolean;
     dateOfVisitDp: any;
-    lastDateDp: any;
 
     constructor(
         public activeModal: NgbActiveModal,

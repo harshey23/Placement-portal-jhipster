@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
 
@@ -13,71 +12,53 @@ import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../shared';
 })
 export class BatchComponent implements OnInit, OnDestroy {
 
-currentAccount: any;
     batches: Batch[];
-    error: any;
-    success: any;
+    currentAccount: any;
     eventSubscriber: Subscription;
-    routeData: any;
+    itemsPerPage: number;
     links: any;
-    totalItems: any;
-    queryCount: any;
-    itemsPerPage: any;
     page: any;
     predicate: any;
-    previousPage: any;
+    queryCount: any;
     reverse: any;
+    totalItems: number;
 
     constructor(
         private batchService: BatchService,
-        private parseLinks: JhiParseLinks,
         private jhiAlertService: JhiAlertService,
-        private principal: Principal,
-        private activatedRoute: ActivatedRoute,
-        private router: Router,
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+        private parseLinks: JhiParseLinks,
+        private principal: Principal
     ) {
+        this.batches = [];
         this.itemsPerPage = ITEMS_PER_PAGE;
-        this.routeData = this.activatedRoute.data.subscribe((data) => {
-            this.page = data.pagingParams.page;
-            this.previousPage = data.pagingParams.page;
-            this.reverse = data.pagingParams.ascending;
-            this.predicate = data.pagingParams.predicate;
-        });
+        this.page = 0;
+        this.links = {
+            last: 0
+        };
+        this.predicate = 'id';
+        this.reverse = true;
     }
 
     loadAll() {
         this.batchService.query({
-            page: this.page - 1,
+            page: this.page,
             size: this.itemsPerPage,
-            sort: this.sort()}).subscribe(
+            sort: this.sort()
+        }).subscribe(
             (res: ResponseWrapper) => this.onSuccess(res.json, res.headers),
             (res: ResponseWrapper) => this.onError(res.json)
         );
     }
-    loadPage(page: number) {
-        if (page !== this.previousPage) {
-            this.previousPage = page;
-            this.transition();
-        }
-    }
-    transition() {
-        this.router.navigate(['/batch'], {queryParams:
-            {
-                page: this.page,
-                size: this.itemsPerPage,
-                sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
-            }
-        });
+
+    reset() {
+        this.page = 0;
+        this.batches = [];
         this.loadAll();
     }
 
-    clear() {
-        this.page = 0;
-        this.router.navigate(['/batch', {
-            page: this.page,
-            sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
-        }]);
+    loadPage(page) {
+        this.page = page;
         this.loadAll();
     }
     ngOnInit() {
@@ -96,7 +77,7 @@ currentAccount: any;
         return item.id;
     }
     registerChangeInBatches() {
-        this.eventSubscriber = this.eventManager.subscribe('batchListModification', (response) => this.loadAll());
+        this.eventSubscriber = this.eventManager.subscribe('batchListModification', (response) => this.reset());
     }
 
     sort() {
@@ -110,10 +91,11 @@ currentAccount: any;
     private onSuccess(data, headers) {
         this.links = this.parseLinks.parse(headers.get('link'));
         this.totalItems = headers.get('X-Total-Count');
-        this.queryCount = this.totalItems;
-        // this.page = pagingParams.page;
-        this.batches = data;
+        for (let i = 0; i < data.length; i++) {
+            this.batches.push(data[i]);
+        }
     }
+
     private onError(error) {
         this.jhiAlertService.error(error.message, null, null);
     }

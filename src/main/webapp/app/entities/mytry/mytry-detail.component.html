@@ -1,0 +1,69 @@
+
+<div *ngIf="mytry">
+    <h2><span>Mytry</span> {{mytry.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>S</span></dt>
+        <dd>
+            <span>{{mytry.s}}</span>
+        </dd>
+        <dt><span>I</span></dt>
+        <dd>
+            <span>{{mytry.i}}</span>
+        </dd>
+        <dt><span>L</span></dt>
+        <dd>
+            <span>{{mytry.l}}</span>
+        </dd>
+        <dt><span>F</span></dt>
+        <dd>
+            <span>{{mytry.f}}</span>
+        </dd>
+        <dt><span>D</span></dt>
+        <dd>
+            <span>{{mytry.d}}</span>
+        </dd>
+        <dt><span>Bd</span></dt>
+        <dd>
+            <span>{{mytry.bd}}</span>
+        </dd>
+        <dt><span>Ld</span></dt>
+        <dd>
+            <span>{{mytry.ld | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Inst</span></dt>
+        <dd>
+            <span>{{mytry.inst | date:'medium'}}</span>
+        </dd>
+        <dt><span>Zdt</span></dt>
+        <dd>
+            <span>{{mytry.zdt | date:'medium'}}</span>
+        </dd>
+        <dt><span>B</span></dt>
+        <dd>
+            <span>{{mytry.b}}</span>
+        </dd>
+        <dt><span>Bl</span></dt>
+        <dd>
+            <div *ngIf="mytry.bl">
+                <a (click)="openFile(mytry.blContentType, mytry.bl)">open</a>
+                {{mytry.blContentType}}, {{byteSize(mytry.bl)}}
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'mytry/'+ mytry.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

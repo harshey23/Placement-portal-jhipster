@@ -51,12 +51,12 @@ public class BatchResource {
     @Timed
     public ResponseEntity<Batch> createBatch(@RequestBody Batch batch) throws URISyntaxException {
         log.debug("REST request to save Batch : {}", batch);
-        if (batch.getBatch() != null) {
+        if (batch.getId() != null) {
             throw new BadRequestAlertException("A new batch cannot already have an ID", ENTITY_NAME, "idexists");
         }
         Batch result = batchRepository.save(batch);
-        return ResponseEntity.created(new URI("/api/batches/" + result.getBatch()))
-            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getBatch().toString()))
+        return ResponseEntity.created(new URI("/api/batches/" + result.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
 
@@ -73,12 +73,12 @@ public class BatchResource {
     @Timed
     public ResponseEntity<Batch> updateBatch(@RequestBody Batch batch) throws URISyntaxException {
         log.debug("REST request to update Batch : {}", batch);
-        if (batch.getBatch() == null) {
+        if (batch.getId() == null) {
             return createBatch(batch);
         }
         Batch result = batchRepository.save(batch);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, batch.getBatch().toString()))
+            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, batch.getId().toString()))
             .body(result);
     }
 
@@ -100,28 +100,28 @@ public class BatchResource {
     /**
      * GET  /batches/:id : get the "id" batch.
      *
-     * @param batchId the id of the batch to retrieve
+     * @param id the id of the batch to retrieve
      * @return the ResponseEntity with status 200 (OK) and with body the batch, or with status 404 (Not Found)
      */
-    @GetMapping("/batches/{batchId}")
+    @GetMapping("/batches/{id}")
     @Timed
-    public ResponseEntity<Batch> getBatch(@PathVariable String batchId) {
-        log.debug("REST request to get Batch : {}", batchId);
-        Batch batch = batchRepository.findOne(batchId);
+    public ResponseEntity<Batch> getBatch(@PathVariable String id) {
+        log.debug("REST request to get Batch : {}", id);
+        Batch batch = batchRepository.findOne(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(batch));
     }
 
     /**
      * DELETE  /batches/:id : delete the "id" batch.
      *
-     * @param batchId the id of the batch to delete
+     * @param id the id of the batch to delete
      * @return the ResponseEntity with status 200 (OK)
      */
-    @DeleteMapping("/batches/{batchId}")
+    @DeleteMapping("/batches/{id}")
     @Timed
-    public ResponseEntity<Void> deleteBatch(@PathVariable String batchId) {
-        log.debug("REST request to delete Batch : {}", batchId);
-        batchRepository.delete(batchId);
-        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, batchId)).build();
+    public ResponseEntity<Void> deleteBatch(@PathVariable String id) {
+        log.debug("REST request to delete Batch : {}", id);
+        batchRepository.delete(id);
+        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id)).build();
     }
 }

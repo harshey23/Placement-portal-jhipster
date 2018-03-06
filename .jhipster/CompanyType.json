@@ -10,6 +10,7 @@
     "changelogDate": "20180215094153",
     "entityTableName": "company_type",
     "dto": "no",
+    "pagination": "no",
     "service": "no",
     "jpaMetamodelFiltering": false
 }
