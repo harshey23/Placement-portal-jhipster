@@ -36,9 +36,9 @@ public class CompanyService {
     }
 
 
-    public Page<Offer> getAllCompaniesByBatch(Pageable pageable, Batch batch){
-        return offerRepository.findAllByCriteria_Batch(pageable, batch.getBatch());
-    }
+//    public Page<Offer> getAllCompaniesByBatch(Pageable pageable, Batch batch){
+//        return offerRepository.findAllByCriteria_Batch(pageable, batch.getBatch());
+//    }
 
     public Page<Company> getAllCompaniesByType(Pageable pageable, CompanyType companyType){
         return companyRepository.findAllByCompanyType(pageable, companyType);
