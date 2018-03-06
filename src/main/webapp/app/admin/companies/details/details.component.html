@@ -86,7 +86,7 @@
 
 							<div class="form-group">
 								<label class="form-control-label" for="field_company_type">Company Type</label>
-								<select class="form-control" name="company_type" id="company_type" [(ngModel)]="company.companyType">
+								<select class="form-control" name="company_type" id="company_type" [(ngModel)]="company.companyType.companyType">
 									<option *ngFor="let types of companyTypes" [value]="types.companyType">{{types.companyType}}</option>
 								</select>
 							</div>

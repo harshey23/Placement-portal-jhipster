@@ -1,6 +1,7 @@
 import { Injectable, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { DatePipe } from '@angular/common';
 import { Offer } from './offer.model';
 import { OfferService } from './offer.service';
 
@@ -9,6 +10,7 @@ export class OfferPopupService {
     private ngbModalRef: NgbModalRef;
 
     constructor(
+        private datePipe: DatePipe,
         private modalService: NgbModal,
         private router: Router,
         private offerService: OfferService
@@ -33,13 +35,8 @@ export class OfferPopupService {
                             day: offer.dateOfVisit.getDate()
                         };
                     }
-                    if (offer.lastDate) {
-                        offer.lastDate = {
-                            year: offer.lastDate.getFullYear(),
-                            month: offer.lastDate.getMonth() + 1,
-                            day: offer.lastDate.getDate()
-                        };
-                    }
+                    offer.lastDate = this.datePipe
+                        .transform(offer.lastDate, 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.offerModalRef(component, offer);
                     resolve(this.ngbModalRef);
                 });

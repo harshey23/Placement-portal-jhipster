@@ -1,18 +1,18 @@
 package com.icl.domain;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Objects;
 
 /**
  * A Offer.
  */
-@Document(collection = "pl.offer")
+@Document(collection = "offer")
 public class Offer implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -26,29 +26,17 @@ public class Offer implements Serializable {
     @Field("package_offered")
     private Integer packageOffered;
 
-    @Field("description")
-    private String description;
+    @Field("discreption")
+    private String discreption;
 
     @Field("date_of_visit")
     private LocalDate dateOfVisit;
 
     @Field("last_date")
-    private LocalDate lastDate;
+    private Instant lastDate;
 
     @Field("place")
     private String place;
-
-    @DBRef
-    private Company company;
-
-    @DBRef
-    private OfferType offerType;
-
-    @DBRef
-    private Criteria criteria;
-
-    @DBRef
-    private Status status;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public String getId() {
@@ -85,17 +73,17 @@ public class Offer implements Serializable {
         this.packageOffered = packageOffered;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDiscreption() {
+        return discreption;
     }
 
-    public Offer description(String description) {
-        this.description = description;
+    public Offer discreption(String discreption) {
+        this.discreption = discreption;
         return this;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDiscreption(String discreption) {
+        this.discreption = discreption;
     }
 
     public LocalDate getDateOfVisit() {
@@ -111,16 +99,16 @@ public class Offer implements Serializable {
         this.dateOfVisit = dateOfVisit;
     }
 
-    public LocalDate getLastDate() {
+    public Instant getLastDate() {
         return lastDate;
     }
 
-    public Offer lastDate(LocalDate lastDate) {
+    public Offer lastDate(Instant lastDate) {
         this.lastDate = lastDate;
         return this;
     }
 
-    public void setLastDate(LocalDate lastDate) {
+    public void setLastDate(Instant lastDate) {
         this.lastDate = lastDate;
     }
 
@@ -136,39 +124,6 @@ public class Offer implements Serializable {
     public void setPlace(String place) {
         this.place = place;
     }
-
-    public Company getCompany() {
-        return company;
-    }
-
-    public void setCompany(Company company) {
-        this.company = company;
-    }
-
-    public OfferType getOfferType() {
-        return offerType;
-    }
-
-    public void setOfferType(OfferType offerType) {
-        this.offerType = offerType;
-    }
-
-    public Criteria getCriteria() {
-        return criteria;
-    }
-
-    public void setCriteria(Criteria criteria) {
-        this.criteria = criteria;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -197,7 +152,7 @@ public class Offer implements Serializable {
             "id=" + getId() +
             ", title='" + getTitle() + "'" +
             ", packageOffered=" + getPackageOffered() +
-            ", description='" + getDescription() + "'" +
+            ", discreption='" + getDiscreption() + "'" +
             ", dateOfVisit='" + getDateOfVisit() + "'" +
             ", lastDate='" + getLastDate() + "'" +
             ", place='" + getPlace() + "'" +

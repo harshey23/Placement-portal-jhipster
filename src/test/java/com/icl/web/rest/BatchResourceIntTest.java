@@ -106,7 +106,7 @@ public class BatchResourceIntTest {
         int databaseSizeBeforeCreate = batchRepository.findAll().size();
 
         // Create the Batch with an existing ID
-        batch.setBatch("existing_id");
+        batch.setId("existing_id");
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restBatchMockMvc.perform(post("/api/batches")
@@ -128,7 +128,7 @@ public class BatchResourceIntTest {
         restBatchMockMvc.perform(get("/api/batches?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(batch.getBatch())))
+            .andExpect(jsonPath("$.[*].id").value(hasItem(batch.getId())))
             .andExpect(jsonPath("$.[*].batch").value(hasItem(DEFAULT_BATCH.toString())));
     }
 
@@ -138,10 +138,10 @@ public class BatchResourceIntTest {
         batchRepository.save(batch);
 
         // Get the batch
-        restBatchMockMvc.perform(get("/api/batches/{id}", batch.getBatch()))
+        restBatchMockMvc.perform(get("/api/batches/{id}", batch.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.id").value(batch.getBatch()))
+            .andExpect(jsonPath("$.id").value(batch.getId()))
             .andExpect(jsonPath("$.batch").value(DEFAULT_BATCH.toString()));
     }
 
@@ -159,7 +159,7 @@ public class BatchResourceIntTest {
         int databaseSizeBeforeUpdate = batchRepository.findAll().size();
 
         // Update the batch
-        Batch updatedBatch = batchRepository.findOne(batch.getBatch());
+        Batch updatedBatch = batchRepository.findOne(batch.getId());
         updatedBatch
             .batch(UPDATED_BATCH);
 
@@ -199,7 +199,7 @@ public class BatchResourceIntTest {
         int databaseSizeBeforeDelete = batchRepository.findAll().size();
 
         // Get the batch
-        restBatchMockMvc.perform(delete("/api/batches/{id}", batch.getBatch())
+        restBatchMockMvc.perform(delete("/api/batches/{id}", batch.getId())
             .accept(TestUtil.APPLICATION_JSON_UTF8))
             .andExpect(status().isOk());
 
@@ -212,13 +212,13 @@ public class BatchResourceIntTest {
     public void equalsVerifier() throws Exception {
         TestUtil.equalsVerifier(Batch.class);
         Batch batch1 = new Batch();
-        batch1.setBatch("id1");
+        batch1.setId("id1");
         Batch batch2 = new Batch();
-        batch2.setBatch(batch1.getBatch());
+        batch2.setId(batch1.getId());
         assertThat(batch1).isEqualTo(batch2);
-        batch2.setBatch("id2");
+        batch2.setId("id2");
         assertThat(batch1).isNotEqualTo(batch2);
-        batch1.setBatch(null);
+        batch1.setId(null);
         assertThat(batch1).isNotEqualTo(batch2);
     }
 }

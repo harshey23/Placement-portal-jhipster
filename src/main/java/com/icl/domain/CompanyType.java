@@ -1,6 +1,7 @@
 package com.icl.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
@@ -9,21 +10,25 @@ import java.util.Objects;
 /**
  * A CompanyType.
  */
-@Document(collection = "pl.company_type")
+@Document(collection = "company_type")
 public class CompanyType implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
+    private String id;
+
+    @Field("company_type")
     private String companyType;
 
-    public CompanyType(){}
-
-    public CompanyType(String companyType) {
-        this.companyType = companyType;
+    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
+    public String getId() {
+        return id;
     }
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getCompanyType() {
         return companyType;
@@ -37,8 +42,6 @@ public class CompanyType implements Serializable {
     public void setCompanyType(String companyType) {
         this.companyType = companyType;
     }
-
-
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -50,21 +53,22 @@ public class CompanyType implements Serializable {
             return false;
         }
         CompanyType companyType = (CompanyType) o;
-        if (companyType.getCompanyType() == null || getCompanyType() == null) {
+        if (companyType.getId() == null || getId() == null) {
             return false;
         }
-        return Objects.equals(getCompanyType(), companyType.getCompanyType());
+        return Objects.equals(getId(), companyType.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getCompanyType());
+        return Objects.hashCode(getId());
     }
 
     @Override
     public String toString() {
         return "CompanyType{" +
-            "companyType='" + getCompanyType() + "'" +
+            "id=" + getId() +
+            ", companyType='" + getCompanyType() + "'" +
             "}";
     }
 }
