@@ -3,23 +3,10 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
-import { MatFormFieldModule } from '@angular/material';
-
 // importing Material UI components
-import {
-    MatButtonModule,
-    MatCheckboxModule,
-    MatFormField,
-    MatInputModule,
-    MatNativeDateModule,
-} from '@angular/material';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule, MatFormField, MatNativeDateModule} from '@angular/material';
 import { MatStepperModule } from '@angular/material/stepper';
-import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatRadioModule } from '@angular/material/radio';
-import { MatSelectModule } from '@angular/material/select';
 
 import { PlacementSharedModule } from '../shared';
 /* jhipster-needle-add-admin-module-import - JHipster will add admin modules imports here */
@@ -155,21 +142,11 @@ import {
         FormsModule,
         ReactiveFormsModule,
         MultiselectDropdownModule,
-        MatButtonModule,
-        MatCheckboxModule,
         MatFormFieldModule,
         MatNativeDateModule,
-        MatInputModule,
-        MatCheckboxModule,
-        MatToolbarModule,
-        MatIconModule,
         MatStepperModule,
         MatFormFieldModule,
-        MatCardModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        MatRadioModule,
-        MatSelectModule,
+        MatDatepickerModule
     ],
     providers: [
         AuditsService,
