@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
 // importing Material UI components
-import { MatFormFieldModule, MatFormField, MatNativeDateModule} from '@angular/material';
+import { MatInputModule, MatFormFieldModule, MatFormField, MatNativeDateModule} from '@angular/material';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 
@@ -143,6 +143,7 @@ import {
         ReactiveFormsModule,
         MultiselectDropdownModule,
         MatFormFieldModule,
+        MatInputModule,
         MatNativeDateModule,
         MatStepperModule,
         MatFormFieldModule,
