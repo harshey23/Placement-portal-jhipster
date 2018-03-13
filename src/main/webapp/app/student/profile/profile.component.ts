@@ -5,6 +5,7 @@ import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import PerfectScrollbar from 'perfect-scrollbar';
 import 'rxjs/add/operator/filter';
+import { Principal, AccountService } from '../../shared';
 
 declare var $: any;
 
@@ -15,6 +16,9 @@ declare var $: any;
 })
 export class ProfileComponent implements OnInit {
 
+    error: string;
+    success: string;
+    student: any;
     firstFormGroup: FormGroup;
     secondFormGroup: FormGroup;
     date = new FormControl(new Date());
@@ -40,7 +44,13 @@ export class ProfileComponent implements OnInit {
     private lastPoppedUrl: string;
     private yScrollStack: number[] = [];
 
-    constructor(public location: Location, private router: Router, private _formBuilder: FormBuilder) { }
+    constructor(
+        public location: Location,
+        private router: Router,
+        private _formBuilder: FormBuilder,
+        private account: AccountService,
+        private principal: Principal
+    ) { }
 
     ngOnInit() {
 
@@ -80,11 +90,28 @@ export class ProfileComponent implements OnInit {
             let ps = new PerfectScrollbar(elemMainPanel);
             ps = new PerfectScrollbar(elemSidebar);
         }
+
+        this.principal.identity().then((account) => {
+            this.student = account;
+        });
     }
 
     // ngAfterViewInit() {
     //     this.runOnRouteChange();
     // }
+
+    save() {
+        this.account.save(this.student).subscribe(() => {
+            this.error = null;
+            this.success = 'OK';
+            this.principal.identity(true).then((account) => {
+                this.student = account;
+            });
+        }, () => {
+            this.success = null;
+            this.error = 'ERROR';
+        });
+    }
 
     isMaps(path) {
         let titlee = this.location.prepareExternalUrl(this.location.path());

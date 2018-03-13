@@ -106,7 +106,7 @@ public class CompanyTypeResourceIntTest {
         int databaseSizeBeforeCreate = companyTypeRepository.findAll().size();
 
         // Create the CompanyType with an existing ID
-        companyType.setCompanyType("existing_id");
+        companyType.setId("existing_id");
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restCompanyTypeMockMvc.perform(post("/api/company-types")
@@ -128,7 +128,7 @@ public class CompanyTypeResourceIntTest {
         restCompanyTypeMockMvc.perform(get("/api/company-types?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(companyType.getCompanyType())))
+            .andExpect(jsonPath("$.[*].id").value(hasItem(companyType.getId())))
             .andExpect(jsonPath("$.[*].companyType").value(hasItem(DEFAULT_COMPANY_TYPE.toString())));
     }
 
@@ -138,10 +138,10 @@ public class CompanyTypeResourceIntTest {
         companyTypeRepository.save(companyType);
 
         // Get the companyType
-        restCompanyTypeMockMvc.perform(get("/api/company-types/{id}", companyType.getCompanyType()))
+        restCompanyTypeMockMvc.perform(get("/api/company-types/{id}", companyType.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.id").value(companyType.getCompanyType()))
+            .andExpect(jsonPath("$.id").value(companyType.getId()))
             .andExpect(jsonPath("$.companyType").value(DEFAULT_COMPANY_TYPE.toString()));
     }
 
@@ -159,7 +159,7 @@ public class CompanyTypeResourceIntTest {
         int databaseSizeBeforeUpdate = companyTypeRepository.findAll().size();
 
         // Update the companyType
-        CompanyType updatedCompanyType = companyTypeRepository.findOne(companyType.getCompanyType());
+        CompanyType updatedCompanyType = companyTypeRepository.findOne(companyType.getId());
         updatedCompanyType
             .companyType(UPDATED_COMPANY_TYPE);
 
@@ -199,7 +199,7 @@ public class CompanyTypeResourceIntTest {
         int databaseSizeBeforeDelete = companyTypeRepository.findAll().size();
 
         // Get the companyType
-        restCompanyTypeMockMvc.perform(delete("/api/company-types/{id}", companyType.getCompanyType())
+        restCompanyTypeMockMvc.perform(delete("/api/company-types/{id}", companyType.getId())
             .accept(TestUtil.APPLICATION_JSON_UTF8))
             .andExpect(status().isOk());
 
@@ -212,13 +212,13 @@ public class CompanyTypeResourceIntTest {
     public void equalsVerifier() throws Exception {
         TestUtil.equalsVerifier(CompanyType.class);
         CompanyType companyType1 = new CompanyType();
-        companyType1.setCompanyType("id1");
+        companyType1.setId("id1");
         CompanyType companyType2 = new CompanyType();
-        companyType2.setCompanyType(companyType1.getCompanyType());
+        companyType2.setId(companyType1.getId());
         assertThat(companyType1).isEqualTo(companyType2);
-        companyType2.setCompanyType("id2");
+        companyType2.setId("id2");
         assertThat(companyType1).isNotEqualTo(companyType2);
-        companyType1.setCompanyType(null);
+        companyType1.setId(null);
         assertThat(companyType1).isNotEqualTo(companyType2);
     }
 }

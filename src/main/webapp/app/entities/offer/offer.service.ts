@@ -65,7 +65,7 @@ export class OfferService {
         entity.dateOfVisit = this.dateUtils
             .convertLocalDateFromServer(json.dateOfVisit);
         entity.lastDate = this.dateUtils
-            .convertLocalDateFromServer(json.lastDate);
+            .convertDateTimeFromServer(json.lastDate);
         return entity;
     }
 
@@ -76,8 +76,8 @@ export class OfferService {
         const copy: Offer = Object.assign({}, offer);
         copy.dateOfVisit = this.dateUtils
             .convertLocalDateToServer(offer.dateOfVisit);
-        copy.lastDate = this.dateUtils
-            .convertLocalDateToServer(offer.lastDate);
+
+        copy.lastDate = this.dateUtils.toDate(offer.lastDate);
         return copy;
     }
 }

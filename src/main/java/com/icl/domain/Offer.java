@@ -6,13 +6,14 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Objects;
 
 /**
  * A Offer.
  */
-@Document(collection = "pl.offer")
+@Document(collection = "offer")
 public class Offer implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -20,14 +21,23 @@ public class Offer implements Serializable {
     @Id
     private String id;
 
-    @Field("title")
-    private String title;
+    @DBRef
+    private OfferType offerType;
+
+    private boolean internshipMandatory;
+
+    private boolean convertToJob;
+
+    private boolean campus;
+
+    @DBRef
+    private Company company;
 
     @Field("package_offered")
     private Integer packageOffered;
 
-    @Field("description")
-    private String description;
+    @Field("discreption")
+    private String discreption;
 
     @Field("date_of_visit")
     private LocalDate dateOfVisit;
@@ -35,114 +45,14 @@ public class Offer implements Serializable {
     @Field("last_date")
     private LocalDate lastDate;
 
-    @Field("place")
-    private String place;
-
-    @DBRef
-    private Company company;
-
-    @DBRef
-    private OfferType offerType;
-
-    @DBRef
-    private Criteria criteria;
-
-    @DBRef
-    private Status status;
-
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
+
     public String getId() {
         return id;
     }
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public Offer title(String title) {
-        this.title = title;
-        return this;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Integer getPackageOffered() {
-        return packageOffered;
-    }
-
-    public Offer packageOffered(Integer packageOffered) {
-        this.packageOffered = packageOffered;
-        return this;
-    }
-
-    public void setPackageOffered(Integer packageOffered) {
-        this.packageOffered = packageOffered;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public Offer description(String description) {
-        this.description = description;
-        return this;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public LocalDate getDateOfVisit() {
-        return dateOfVisit;
-    }
-
-    public Offer dateOfVisit(LocalDate dateOfVisit) {
-        this.dateOfVisit = dateOfVisit;
-        return this;
-    }
-
-    public void setDateOfVisit(LocalDate dateOfVisit) {
-        this.dateOfVisit = dateOfVisit;
-    }
-
-    public LocalDate getLastDate() {
-        return lastDate;
-    }
-
-    public Offer lastDate(LocalDate lastDate) {
-        this.lastDate = lastDate;
-        return this;
-    }
-
-    public void setLastDate(LocalDate lastDate) {
-        this.lastDate = lastDate;
-    }
-
-    public String getPlace() {
-        return place;
-    }
-
-    public Offer place(String place) {
-        this.place = place;
-        return this;
-    }
-
-    public void setPlace(String place) {
-        this.place = place;
-    }
-
-    public Company getCompany() {
-        return company;
-    }
-
-    public void setCompany(Company company) {
-        this.company = company;
     }
 
     public OfferType getOfferType() {
@@ -153,20 +63,68 @@ public class Offer implements Serializable {
         this.offerType = offerType;
     }
 
-    public Criteria getCriteria() {
-        return criteria;
+    public boolean getInternshipMandatory() {
+        return internshipMandatory;
     }
 
-    public void setCriteria(Criteria criteria) {
-        this.criteria = criteria;
+    public void setInternshipMandatory(boolean internshipMandatory) {
+        this.internshipMandatory = internshipMandatory;
     }
 
-    public Status getStatus() {
-        return status;
+    public boolean getConvertToJob() {
+        return convertToJob;
     }
 
-    public void setStatus(Status status) {
-        this.status = status;
+    public void setConvertToJob(boolean convertToJob) {
+        this.convertToJob = convertToJob;
+    }
+
+    public boolean getCampus() {
+        return campus;
+    }
+
+    public void setCampus(boolean campus) {
+        this.campus = campus;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+    public Integer getPackageOffered() {
+        return packageOffered;
+    }
+
+    public void setPackageOffered(Integer packageOffered) {
+        this.packageOffered = packageOffered;
+    }
+
+    public String getDiscreption() {
+        return discreption;
+    }
+
+    public void setDiscreption(String discreption) {
+        this.discreption = discreption;
+    }
+
+    public LocalDate getDateOfVisit() {
+        return dateOfVisit;
+    }
+
+    public void setDateOfVisit(LocalDate dateOfVisit) {
+        this.dateOfVisit = dateOfVisit;
+    }
+
+    public LocalDate getLastDate() {
+        return lastDate;
+    }
+
+    public void setLastDate(LocalDate lastDate) {
+        this.lastDate = lastDate;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
@@ -194,13 +152,16 @@ public class Offer implements Serializable {
     @Override
     public String toString() {
         return "Offer{" +
-            "id=" + getId() +
-            ", title='" + getTitle() + "'" +
-            ", packageOffered=" + getPackageOffered() +
-            ", description='" + getDescription() + "'" +
-            ", dateOfVisit='" + getDateOfVisit() + "'" +
-            ", lastDate='" + getLastDate() + "'" +
-            ", place='" + getPlace() + "'" +
-            "}";
+            "id='" + id + '\'' +
+            ", offerType=" + offerType +
+            ", internshipMandatory=" + internshipMandatory +
+            ", convertToJob=" + convertToJob +
+            ", campus=" + campus +
+            ", company=" + company +
+            ", packageOffered=" + packageOffered +
+            ", discreption='" + discreption + '\'' +
+            ", dateOfVisit=" + dateOfVisit +
+            ", lastDate=" + lastDate +
+            '}';
     }
 }

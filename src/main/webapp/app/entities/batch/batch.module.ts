@@ -13,7 +13,6 @@ import {
     BatchDeleteDialogComponent,
     batchRoute,
     batchPopupRoute,
-    BatchResolvePagingParams,
 } from './';
 
 const ENTITY_STATES = [
@@ -44,7 +43,6 @@ const ENTITY_STATES = [
     providers: [
         BatchService,
         BatchPopupService,
-        BatchResolvePagingParams,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

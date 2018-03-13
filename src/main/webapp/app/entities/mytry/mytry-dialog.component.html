@@ -1,0 +1,93 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myMytryLabel">Create or edit a Mytry</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!mytry.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id" [(ngModel)]="mytry.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_s">S</label>
+            <input type="text" class="form-control" name="s" id="field_s" [(ngModel)]="mytry.s" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_i">I</label>
+            <input type="number" class="form-control" name="i" id="field_i" [(ngModel)]="mytry.i" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_l">L</label>
+            <input type="number" class="form-control" name="l" id="field_l" [(ngModel)]="mytry.l" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_f">F</label>
+            <input type="number" class="form-control" name="f" id="field_f" [(ngModel)]="mytry.f" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_d">D</label>
+            <input type="number" class="form-control" name="d" id="field_d" [(ngModel)]="mytry.d" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_bd">Bd</label>
+            <input type="number" class="form-control" name="bd" id="field_bd" [(ngModel)]="mytry.bd" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_ld">Ld</label>
+            <div class="input-group">
+                <input id="field_ld" type="text" class="form-control" name="ld" ngbDatepicker #ldDp="ngbDatepicker" [(ngModel)]="mytry.ld"/>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="ldDp.toggle()">
+                        <i class="fa fa-calendar"></i>
+                    </button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_inst">Inst</label>
+            <div class="d-flex">
+                <input id="field_inst" type="datetime-local" class="form-control" name="inst" [(ngModel)]="mytry.inst" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_zdt">Zdt</label>
+            <div class="d-flex">
+                <input id="field_zdt" type="datetime-local" class="form-control" name="zdt" [(ngModel)]="mytry.zdt" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_b">B</label>
+            <input type="checkbox" class="form-control" name="b" id="field_b" [(ngModel)]="mytry.b" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_bl">Bl</label>
+            <div>
+                <div *ngIf="mytry.bl" class="form-text text-danger clearfix">
+                    <a class="pull-left" (click)="openFile(mytry.blContentType, mytry.bl)">open</a>
+                    <br>
+                    <span class="pull-left">{{mytry.blContentType}}, {{byteSize(mytry.bl)}}</span>
+                    <button type="button" (click)="mytry.bl=null;mytry.blContentType=null;" class="btn btn-secondary btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" id="file_bl" (change)="setFileData($event, mytry, 'bl', false)" />
+            </div>
+            <input type="hidden" class="form-control" name="bl" id="field_bl" [(ngModel)]="mytry.bl" />
+            <input type="hidden" class="form-control" name="blContentType" id="field_blContentType" [(ngModel)]="mytry.blContentType"
+            />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;
+            <span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;
+            <span>Save</span>
+        </button>
+    </div>
+</form>

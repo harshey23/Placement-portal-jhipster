@@ -20,7 +20,7 @@
         },
         {
             "fieldName": "lastDate",
-            "fieldType": "LocalDate"
+            "fieldType": "Instant"
         },
         {
             "fieldName": "place",

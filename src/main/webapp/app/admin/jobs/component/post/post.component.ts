@@ -1,12 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
-import { Location } from '@angular/common';
-import { Router } from '@angular/router';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { Location, LocationStrategy, PathLocationStrategy, PopStateEvent } from '@angular/common';
+import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { IMultiSelectOption, IMultiSelectSettings, IMultiSelectTexts } from 'angular-2-dropdown-multiselect';
-import { ViewChild, AfterViewInit } from '@angular/core';
-import { LocationStrategy, PathLocationStrategy, PopStateEvent } from '@angular/common';
-import { Validators, FormControl } from '@angular/forms';
-import { NavigationEnd, NavigationStart } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import PerfectScrollbar from 'perfect-scrollbar';
 import 'rxjs/add/operator/filter';
@@ -23,8 +19,7 @@ export class PostComponent implements OnInit {
   studentForm: FormGroup;
 
   isUG: boolean = true;
-  isJob: boolean = true;
-  isInternship: boolean = false;
+  offerType: string = 'job';
 
   branchesOptionsModel: number[] = [1, 2];
   pgBranchesOptionsModel: number[] = [1, 2];
@@ -101,28 +96,25 @@ export class PostComponent implements OnInit {
     allSelected: 'All selected',
   };
 
-  constructor(private router: Router,
+  constructor(
+    private router: Router,
     private fb: FormBuilder,
     private location: Location
   ) { }
 
   ngOnInit() {
     $('[data-toggle="tooltip"]').tooltip();
+    $.material.init();
+  }
+
+  changeOfferType(event: Event): void {
+    const value: string = (<HTMLSelectElement>event.srcElement).value;
+    this.offerType = value.toLowerCase();
   }
 
   selectUG(isUG) {
     this.isUG = isUG;
     console.log(isUG);
-  }
-
-  selectJob() {
-    this.isJob = !this.isJob;
-    console.log(this.isJob);
-  }
-
-  selectInternship() {
-    this.isInternship = !this.isInternship;
-    console.log(this.isInternship);
   }
 
   goBack(): void {

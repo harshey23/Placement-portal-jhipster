@@ -6,14 +6,9 @@ import com.icl.domain.CompanyType;
 import com.icl.repository.CompanyTypeRepository;
 import com.icl.web.rest.errors.BadRequestAlertException;
 import com.icl.web.rest.util.HeaderUtil;
-import com.icl.web.rest.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,36 +46,36 @@ public class CompanyTypeResource {
     @Timed
     public ResponseEntity<CompanyType> createCompanyType(@RequestBody CompanyType companyType) throws URISyntaxException {
         log.debug("REST request to save CompanyType : {}", companyType);
-        if (companyType.getCompanyType() != null) {
+        if (companyType.getId() != null) {
             throw new BadRequestAlertException("A new companyType cannot already have an ID", ENTITY_NAME, "idexists");
         }
         CompanyType result = companyTypeRepository.save(companyType);
-        return ResponseEntity.created(new URI("/api/company-types/" + result.getCompanyType()))
-            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getCompanyType().toString()))
+        return ResponseEntity.created(new URI("/api/company-types/" + result.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
 
-//    /**
-//     * PUT  /company-types : Updates an existing companyType.
-//     *
-//     * @param companyType the companyType to update
-//     * @return the ResponseEntity with status 200 (OK) and with body the updated companyType,
-//     * or with status 400 (Bad Request) if the companyType is not valid,
-//     * or with status 500 (Internal Server Error) if the companyType couldn't be updated
-//     * @throws URISyntaxException if the Location URI syntax is incorrect
-//     */
-//    @PutMapping("/company-types")
-//    @Timed
-//    public ResponseEntity<CompanyType> updateCompanyType(@RequestBody CompanyType companyType) throws URISyntaxException {
-//        log.debug("REST request to update CompanyType : {}", companyType);
-//        if (companyType.getCompanyType() == null) {
-//            return createCompanyType(companyType);
-//        }
-//        CompanyType result = companyTypeRepository.save(companyType);
-//        return ResponseEntity.ok()
-//            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, companyType.getCompanyType().toString()))
-//            .body(result);
-//    }
+    /**
+     * PUT  /company-types : Updates an existing companyType.
+     *
+     * @param companyType the companyType to update
+     * @return the ResponseEntity with status 200 (OK) and with body the updated companyType,
+     * or with status 400 (Bad Request) if the companyType is not valid,
+     * or with status 500 (Internal Server Error) if the companyType couldn't be updated
+     * @throws URISyntaxException if the Location URI syntax is incorrect
+     */
+    @PutMapping("/company-types")
+    @Timed
+    public ResponseEntity<CompanyType> updateCompanyType(@RequestBody CompanyType companyType) throws URISyntaxException {
+        log.debug("REST request to update CompanyType : {}", companyType);
+        if (companyType.getId() == null) {
+            return createCompanyType(companyType);
+        }
+        CompanyType result = companyTypeRepository.save(companyType);
+        return ResponseEntity.ok()
+            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, companyType.getId().toString()))
+            .body(result);
+    }
 
     /**
      * GET  /company-types : get all the companyTypes.
@@ -89,37 +84,36 @@ public class CompanyTypeResource {
      */
     @GetMapping("/company-types")
     @Timed
-    public ResponseEntity<List<CompanyType>> getAllCompanyTypes() {
-        log.debug("REST request to get a page of CompanyTypes");
-        List<CompanyType> page = companyTypeRepository.findAll();
-        return new ResponseEntity<>(page, HttpStatus.OK);
-    }
+    public List<CompanyType> getAllCompanyTypes() {
+        log.debug("REST request to get all CompanyTypes");
+        return companyTypeRepository.findAll();
+        }
 
     /**
-     * GET  /company-types/:type : get the "id" companyType.
+     * GET  /company-types/:id : get the "id" companyType.
      *
-     * @param type the id of the companyType to retrieve
+     * @param id the id of the companyType to retrieve
      * @return the ResponseEntity with status 200 (OK) and with body the companyType, or with status 404 (Not Found)
      */
-    @GetMapping("/company-types/{type}")
+    @GetMapping("/company-types/{id}")
     @Timed
-    public ResponseEntity<CompanyType> getCompanyType(@PathVariable String type) {
-        log.debug("REST request to get CompanyType : {}", type);
-        CompanyType companyType = companyTypeRepository.findOne(type);
+    public ResponseEntity<CompanyType> getCompanyType(@PathVariable String id) {
+        log.debug("REST request to get CompanyType : {}", id);
+        CompanyType companyType = companyTypeRepository.findOne(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(companyType));
     }
 
     /**
-     * DELETE  /company-types/:type : delete the "id" companyType.
+     * DELETE  /company-types/:id : delete the "id" companyType.
      *
-     * @param type the id of the companyType to delete
+     * @param id the id of the companyType to delete
      * @return the ResponseEntity with status 200 (OK)
      */
-    @DeleteMapping("/company-types/{type}")
+    @DeleteMapping("/company-types/{id}")
     @Timed
-    public ResponseEntity<Void> deleteCompanyType(@PathVariable String type) {
-        log.debug("REST request to delete CompanyType : {}", type);
-        companyTypeRepository.delete(type);
-        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, type)).build();
+    public ResponseEntity<Void> deleteCompanyType(@PathVariable String id) {
+        log.debug("REST request to delete CompanyType : {}", id);
+        companyTypeRepository.delete(id);
+        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id)).build();
     }
 }

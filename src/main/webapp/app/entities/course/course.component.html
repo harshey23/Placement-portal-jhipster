@@ -15,9 +15,9 @@
     <div class="table-responsive" *ngIf="courses">
         <table class="table table-striped">
             <thead>
-            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span>ID</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="course"><span>Course</span> <span class="fa fa-sort"></span></th>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Course</span></th>
             <th></th>
             </tr>
             </thead>
@@ -54,13 +54,5 @@
             </tr>
             </tbody>
         </table>
-    </div>
-    <div *ngIf="courses && courses.length">
-        <div class="row justify-content-center">
-            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
-        </div>
-        <div class="row justify-content-center">
-            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
-        </div>
     </div>
 </div>

@@ -5,7 +5,7 @@ export class Offer implements BaseEntity {
         public id?: string,
         public title?: string,
         public packageOffered?: number,
-        public description?: string,
+        public discreption?: string,
         public dateOfVisit?: any,
         public lastDate?: any,
         public place?: string,

@@ -1,0 +1,57 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "s",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "i",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "l",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "f",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "d",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "bd",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "ld",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "inst",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "zdt",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "b",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "bl",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        }
+    ],
+    "changelogDate": "20180306091849",
+    "entityTableName": "mytry",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

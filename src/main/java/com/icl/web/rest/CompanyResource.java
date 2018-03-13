@@ -130,19 +130,19 @@ public class CompanyResource {
     }
 
 
-    /**
-     * GET  /companies : get all the companies.
-     *
-     * @param pageable the pagination information
-     * @return the ResponseEntity with status 200 (OK) and the list of companies in body
-     */
-    @GetMapping("/companies/batch/{batch}")
-    @Timed
-    public ResponseEntity<List<Offer>> getAllCompaniesByBatch(Pageable pageable, @RequestBody Batch batch) {
-        final Page<Offer> page = companyService.getAllCompaniesByBatch(pageable, batch);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/companies/batch");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
-    }
+//    /**
+//     * GET  /companies : get all the companies.
+//     *
+//     * @param pageable the pagination information
+//     * @return the ResponseEntity with status 200 (OK) and the list of companies in body
+//     */
+//    @GetMapping("/companies/batch/{batch}")
+//    @Timed
+//    public ResponseEntity<List<Offer>> getAllCompaniesByBatch(Pageable pageable, @RequestBody Batch batch) {
+//        final Page<Offer> page = companyService.getAllCompaniesByBatch(pageable, batch);
+//        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/companies/batch");
+//        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+//    }
 
     /**
      * GET  /companies : get all the companies.
