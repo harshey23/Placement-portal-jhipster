@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.io.Serializable;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -28,15 +29,16 @@ public class Announcement implements Serializable {
     private String body;
 
     @Field("date")
-    private Instant date;
+    private Date date;
 
-    public Instant getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(Instant date) {
+    public void setDate(Date date) {
         this.date = date;
     }
+
 // @DBRef
     // private Status status;
 
@@ -77,7 +79,7 @@ public class Announcement implements Serializable {
 
 
 
-    public Announcement date(Instant date) {
+    public Announcement date(Date date) {
         this.date = date;
         return this;
     }
