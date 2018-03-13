@@ -149,6 +149,22 @@ public class UserResource {
     }
 
     /**
+     * GET /users : get all users i.e Coordinators only.
+     *
+     * @param pageable the pagination information
+     * @return the ResponseEntity with status 200 (OK) and with body all users
+     */
+    @GetMapping("/users/coordinators")
+    @Timed
+    public ResponseEntity<List<UserDTO>> getAllCoordinators(Pageable pageable) {
+        Authority authority = new Authority();
+        authority.setName("ROLE_COORDINATOR");
+        final Page<UserDTO> page = userService.getAllUsersByAuthority(pageable, authority);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/users/coordinators");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    /**
      * @return a string list of the all of the roles
      */
     @GetMapping("/users/authorities")

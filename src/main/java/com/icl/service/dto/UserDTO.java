@@ -3,10 +3,12 @@ package com.icl.service.dto;
 import com.icl.config.Constants;
 
 import com.icl.domain.Authority;
+import com.icl.domain.Course;
 import com.icl.domain.User;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
 import javax.validation.constraints.*;
 import java.time.Instant;
@@ -34,6 +36,11 @@ public class UserDTO {
     @Email
     @Size(min = 5, max = 100)
     private String email;
+
+
+    private String course;
+
+    private String phone;
 
     @Size(max = 256)
     private String imageUrl;
@@ -63,6 +70,9 @@ public class UserDTO {
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
         this.email = user.getEmail();
+        this.course = user.getCourse();
+        System.out.println("this.course : "+this.course);
+        this.phone = user.getPhone();
         this.activated = user.getActivated();
         this.imageUrl = user.getImageUrl();
         this.langKey = user.getLangKey();
@@ -113,6 +123,22 @@ public class UserDTO {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getCourse() {
+        return course;
+    }
+
+    public void setCourse(String course) {
+        this.course = course;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getImageUrl() {
@@ -182,18 +208,21 @@ public class UserDTO {
     @Override
     public String toString() {
         return "UserDTO{" +
-            "login='" + login + '\'' +
+            "id='" + id + '\'' +
+            ", login='" + login + '\'' +
             ", firstName='" + firstName + '\'' +
             ", lastName='" + lastName + '\'' +
             ", email='" + email + '\'' +
+            ", course=" + course +
+            ", phone='" + phone + '\'' +
             ", imageUrl='" + imageUrl + '\'' +
             ", activated=" + activated +
             ", langKey='" + langKey + '\'' +
-            ", createdBy=" + createdBy +
+            ", createdBy='" + createdBy + '\'' +
             ", createdDate=" + createdDate +
             ", lastModifiedBy='" + lastModifiedBy + '\'' +
             ", lastModifiedDate=" + lastModifiedDate +
             ", authorities=" + authorities +
-            "}";
+            '}';
     }
 }

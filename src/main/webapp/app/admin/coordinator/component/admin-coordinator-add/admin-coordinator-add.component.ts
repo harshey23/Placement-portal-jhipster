@@ -40,6 +40,8 @@ export class AdminCoordinatorAddComponent implements OnInit {
 
   save() {
     this.isSaving = true;
+    console.log(this.user);
+    console.log(this.user.course);
         this.user.langKey = 'en';
         this.user.authorities = ['ROLE_COORDINATOR'];
         this.userService.create(this.user).subscribe((response) => this.onSaveSuccess(response), () => this.onSaveError());

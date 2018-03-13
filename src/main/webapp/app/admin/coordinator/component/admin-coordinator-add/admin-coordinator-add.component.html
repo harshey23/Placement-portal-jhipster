@@ -79,6 +79,7 @@
                                 <div class="form-group">
                                     <label class="form-control-label" for="field_course">Course</label>
                                     <select class="form-control" name="course" id="course" [(ngModel)]="user.course">
+                                            <option selected>Select here</option>
                                         <option *ngFor="let course of courses">{{course.course}}</option>
                                     </select>
                                 </div>

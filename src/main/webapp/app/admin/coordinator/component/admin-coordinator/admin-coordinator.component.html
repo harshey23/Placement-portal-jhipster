@@ -27,9 +27,63 @@
         <h4 class="title">
           <b>List Of Coordinators</b>
         </h4>
-
-        <p class="category"></p>
       </div>
+        <!-- <p class="category"></p> -->
+        <div class="card-content table-responsive" *ngIf="users">
+          <table class="table">
+            <thead>
+              <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+                <th jhiSortBy="login">
+                  <span>Login id</span>
+                  <span class="fa fa-sort"></span>
+                </th>
+                <th jhiSortBy="firstName">
+                  <span>FirstName</span>
+                  <span class="fa fa-sort"></span>
+                </th>
+                <th jhiSortBy="lastName">
+                  <span>LastName</span>
+                  <span class="fa fa-sort"></span>
+                </th>
+                <th jhiSortBy="course">
+                  <span>Course </span>
+                  <span class="fa fa-sort"></span>
+                </th>
+                <th jhiSortBy="phone">
+                  <span>Phone</span>
+                  <span class="fa fa-sort"></span>
+                </th>
+                <th jhiSortBy="email">
+                  <span>Email </span>
+                  <span class="fa fa-sort"></span>
+                </th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of users ;trackBy: trackId">
+                <td>{{user.login}}</td>
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+                <td>{{user.course}}</td>
+                <td>{{user.phone}}</td>
+                <td>{{user.email}}</td>
+         
+                <td class="text-right">
+                  <button type="submit" (click)="gotoDetail(user.login)" class="btn btn-primary btn-sm">
+                    <span class="fa fa-pencil"></span>
+                    <span class="d-none d-md-inline">Details</span>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  
+        <div class="card-footer" *ngIf="users && users.length" align="center">
+          <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"
+           (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
       
     </div>
 

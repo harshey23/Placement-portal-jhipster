@@ -4,8 +4,6 @@ export class User {
     public firstName?: string;
     public lastName?: string;
     public email?: string;
-    public phone?: string;
-    public course?: string;
     public activated?: Boolean;
     public langKey?: string;
     public authorities?: any[];
@@ -13,6 +11,8 @@ export class User {
     public createdDate?: Date;
     public lastModifiedBy?: string;
     public lastModifiedDate?: Date;
+    public phone?: any;
+    public course?: string;
     public password?: string;
 
     constructor(
@@ -21,13 +21,13 @@ export class User {
         firstName?: string,
         lastName?: string,
         email?: string,
-        phone?: string,
-        course?: string,
         activated?: Boolean,
         langKey?: string,
         authorities?: any[],
         createdBy?: string,
         createdDate?: Date,
+        phone?: any,
+        course?: string,
         lastModifiedBy?: string,
         lastModifiedDate?: Date,
         password?: string
