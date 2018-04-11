@@ -28,8 +28,9 @@
                   <!-- <h5>Annoumcements List</h5> -->
                 <div *ngFor="let announcement of announcements ;trackBy: trackId">
                   <div class="alert alert-success" (click)="gotoDetail(announcement.id)">
-                      <button type="button" aria-hidden="true" class="close">{{announcement.date}}</button>
+                      <button type="button" aria-hidden="true" class="close">View</button>
                       <span><b> Title - </b>{{announcement.title}}</span>
+                      <span><b> Date - </b>{{announcement.date}}</span>
                   </div>
                 </div>
                 

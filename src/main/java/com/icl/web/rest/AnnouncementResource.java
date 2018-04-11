@@ -21,6 +21,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,7 +56,7 @@ public class AnnouncementResource {
         if (announcement.getId() != null) {
             throw new BadRequestAlertException("A new announcement cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        announcement.setDate(Instant.now());
+        System.out.println("time n date :"+announcement.getDate());
         Announcement result = announcementRepository.save(announcement);
         return ResponseEntity.created(new URI("/api/announcements/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))

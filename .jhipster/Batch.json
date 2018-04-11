@@ -10,7 +10,7 @@
     "changelogDate": "20180215094151",
     "entityTableName": "batch",
     "dto": "no",
-    "pagination": "pagination",
+    "pagination": "infinite-scroll",
     "service": "no",
     "jpaMetamodelFiltering": false
 }

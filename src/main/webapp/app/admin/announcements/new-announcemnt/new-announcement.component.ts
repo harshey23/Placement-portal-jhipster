@@ -33,6 +33,8 @@ export class NewAnnouncementComponent implements OnInit {
             this.location.back();
         }
         save() {
+            this.announcement.date = new Date();
+            console.log( this.announcement.date);
             this.isSaving = true;
             this.subscribeToSaveResponse(
                 this.announcementService.create(this.announcement));

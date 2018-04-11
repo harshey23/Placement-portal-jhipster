@@ -12,6 +12,7 @@ import { PlacementBatchModule } from './batch/batch.module';
 import { PlacementCourseModule } from './course/course.module';
 import { PlacementCompanyTypeModule } from './company-type/company-type.module';
 import { PlacementRoundTypeModule } from './round-type/round-type.module';
+import { PlacementMytryModule } from './mytry/mytry.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -28,6 +29,7 @@ import { PlacementRoundTypeModule } from './round-type/round-type.module';
         PlacementCourseModule,
         PlacementCompanyTypeModule,
         PlacementRoundTypeModule,
+        PlacementMytryModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

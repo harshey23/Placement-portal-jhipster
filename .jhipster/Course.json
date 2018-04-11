@@ -10,7 +10,7 @@
     "changelogDate": "20180215094152",
     "entityTableName": "course",
     "dto": "no",
-    "pagination": "pagination",
+    "pagination": "no",
     "service": "no",
     "jpaMetamodelFiltering": false
 }

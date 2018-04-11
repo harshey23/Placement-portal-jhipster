@@ -7,9 +7,14 @@ import { LoginService } from './login.service';
 import { StateStorageService } from '../auth/state-storage.service';
 import { Principal } from '../';
 
+declare var $: any;
+
 @Component({
     selector: 'jhi-login-modal',
-    templateUrl: './login.component.html'
+    templateUrl: './login.component.html',
+    styleUrls: [
+        './login.component.css'
+    ]
 })
 export class JhiLoginModalComponent implements AfterViewInit {
     authenticationError: boolean;
@@ -33,6 +38,13 @@ export class JhiLoginModalComponent implements AfterViewInit {
 
     ngAfterViewInit() {
         this.renderer.invokeElementMethod(this.elementRef.nativeElement.querySelector('#username'), 'focus', []);
+    }
+
+    modalclose() {
+        $('mymodal').modal('hide');
+        $('body').removeClass('modal-open');
+        $('.modal-backdrop').remove();
+        $('body').css('padding-right', '0');
     }
 
     cancel() {

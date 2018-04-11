@@ -11,6 +11,8 @@ export class User {
     public createdDate?: Date;
     public lastModifiedBy?: string;
     public lastModifiedDate?: Date;
+    public phone?: any;
+    public course?: string;
     public password?: string;
 
     constructor(
@@ -24,6 +26,8 @@ export class User {
         authorities?: any[],
         createdBy?: string,
         createdDate?: Date,
+        phone?: any,
+        course?: string,
         lastModifiedBy?: string,
         lastModifiedDate?: Date,
         password?: string
@@ -33,6 +37,8 @@ export class User {
         this.firstName = firstName ? firstName : null;
         this.lastName = lastName ? lastName : null;
         this.email = email ? email : null;
+        this.phone = phone ? phone : null;
+        this.course = course ? course : null;
         this.activated = activated ? activated : false;
         this.langKey = langKey ? langKey : null;
         this.authorities = authorities ? authorities : null;

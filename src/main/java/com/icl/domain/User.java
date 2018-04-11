@@ -75,8 +75,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @DBRef
     private Batch batch;
 
-    @DBRef
-    private Course course;
+    private String course;
 
     @DBRef
     private CourseType courseType;
@@ -257,11 +256,11 @@ public class User extends AbstractAuditingEntity implements Serializable {
         this.batch = batch;
     }
 
-    public Course getCourse() {
+    public String getCourse() {
         return course;
     }
 
-    public void setCourse(Course course) {
+    public void setCourse(String course) {
         this.course = course;
     }
 

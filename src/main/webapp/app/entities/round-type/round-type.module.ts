@@ -13,7 +13,6 @@ import {
     RoundTypeDeleteDialogComponent,
     roundTypeRoute,
     roundTypePopupRoute,
-    RoundTypeResolvePagingParams,
 } from './';
 
 const ENTITY_STATES = [
@@ -44,7 +43,6 @@ const ENTITY_STATES = [
     providers: [
         RoundTypeService,
         RoundTypePopupService,
-        RoundTypeResolvePagingParams,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

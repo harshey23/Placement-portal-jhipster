@@ -24,8 +24,8 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_discreption">Discreption</label>
-            <input type="text" class="form-control" name="description" id="field_discreption"
-                [(ngModel)]="offer.description" />
+            <input type="text" class="form-control" name="discreption" id="field_discreption"
+                [(ngModel)]="offer.discreption" />
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_dateOfVisit">Date Of Visit</label>
@@ -39,12 +39,9 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_lastDate">Last Date</label>
-            <div class="input-group">
-                <input id="field_lastDate" type="text" class="form-control" name="lastDate" ngbDatepicker  #lastDateDp="ngbDatepicker" [(ngModel)]="offer.lastDate"
+            <div class="d-flex">
+                <input id="field_lastDate" type="datetime-local" class="form-control" name="lastDate" [(ngModel)]="offer.lastDate"
                 />
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-secondary" (click)="lastDateDp.toggle()"><i class="fa fa-calendar"></i></button>
-                </span>
             </div>
         </div>
         <div class="form-group">

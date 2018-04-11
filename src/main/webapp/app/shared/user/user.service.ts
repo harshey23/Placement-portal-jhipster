@@ -29,7 +29,7 @@ export class UserService {
 
     query(req?: any): Observable<ResponseWrapper> {
         const options = createRequestOption(req);
-        return this.http.get(this.resourceUrl, options)
+        return this.http.get(SERVER_API_URL + 'api/users/coordinators', options)
             .map((res: Response) => this.convertResponse(res));
     }
 
@@ -39,6 +39,12 @@ export class UserService {
 
     authorities(): Observable<string[]> {
         return this.http.get(SERVER_API_URL + 'api/users/authorities').map((res: Response) => {
+            const json = res.json();
+            return <string[]> json;
+        });
+    }
+    courses(): Observable<string[]> {
+        return this.http.get(SERVER_API_URL + 'api/courses').map((res: Response) => {
             const json = res.json();
             return <string[]> json;
         });

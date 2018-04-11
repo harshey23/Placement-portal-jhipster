@@ -13,7 +13,6 @@ import {
     RoleDeleteDialogComponent,
     roleRoute,
     rolePopupRoute,
-    RoleResolvePagingParams,
 } from './';
 
 const ENTITY_STATES = [
@@ -44,7 +43,6 @@ const ENTITY_STATES = [
     providers: [
         RoleService,
         RolePopupService,
-        RoleResolvePagingParams,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
