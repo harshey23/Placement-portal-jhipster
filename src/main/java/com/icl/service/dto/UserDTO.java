@@ -5,6 +5,7 @@ import com.icl.config.Constants;
 import com.icl.domain.Authority;
 import com.icl.domain.Course;
 import com.icl.domain.User;
+import com.icl.domain.*;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
@@ -243,14 +244,6 @@ public class UserDTO {
         this.alternateEmail = alternateEmail;
     }
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
     public String getAlternatePhone() {
         return alternatePhone;
     }
@@ -329,14 +322,6 @@ public class UserDTO {
 
     public void setBatch(String batch) {
         this.batch = batch;
-    }
-
-    public String getCourse() {
-        return course;
-    }
-
-    public void setCourse(String course) {
-        this.course = course;
     }
 
     public String getCourseType() {

@@ -20,10 +20,10 @@ export class AdminCoordinatorAddComponent implements OnInit {
   courses: any[];
 
   constructor(
-      private location: Location,
-      public activeModal: NgbActiveModal,
-      private userService: UserService,
-      private eventManager: JhiEventManager
+    private location: Location,
+    public activeModal: NgbActiveModal,
+    private userService: UserService,
+    private eventManager: JhiEventManager
   ) { }
 
   ngOnInit() {
@@ -31,7 +31,7 @@ export class AdminCoordinatorAddComponent implements OnInit {
     this.user = new User();
     this.courses = [];
     this.userService.courses().subscribe((courses) => {
-        this.courses = courses;
+      this.courses = courses;
     });
   }
   clear() {
@@ -42,21 +42,21 @@ export class AdminCoordinatorAddComponent implements OnInit {
     this.isSaving = true;
     console.log(this.user);
     console.log(this.user.course);
-        this.user.langKey = 'en';
-        this.user.authorities = ['ROLE_COORDINATOR'];
-        this.userService.create(this.user).subscribe((response) => this.onSaveSuccess(response), () => this.onSaveError());
-        this.location.back();
-      }
+    this.user.langKey = 'en';
+    this.user.authorities = ['ROLE_COORDINATOR'];
+    this.userService.create(this.user).subscribe((response) => this.onSaveSuccess(response), () => this.onSaveError());
+    this.location.back();
+  }
 
-private onSaveSuccess(result) {
+  private onSaveSuccess(result) {
     this.eventManager.broadcast({ name: 'userListModification', content: 'OK' });
     this.isSaving = false;
     this.activeModal.dismiss(result);
-}
+  }
 
-private onSaveError() {
+  private onSaveError() {
     this.isSaving = false;
-}
+  }
 
   goBack(): void {
     this.location.back();
