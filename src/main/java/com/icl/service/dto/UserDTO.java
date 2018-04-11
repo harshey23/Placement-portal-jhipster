@@ -108,9 +108,12 @@ public class UserDTO {
         this.religion = user.getReligion();
         this.category = user.getCategory();
         this.sem = user.getSem();
-        this.batch = user.getBatch().getBatch();
-        this.course = user.getCourse().getCourse();
-        this.courseType = user.getCourseType().getCourseType();
+        if(user.getBatch() != null)
+            this.batch = user.getBatch().getBatch();
+        if(user.getCourse() != null)
+            this.course = user.getCourse().getCourse();
+        if(user.getCourseType() != null)
+            this.courseType = user.getCourseType().getCourseType();
         this.status = user.getStatus();
         this.address = user.getAddress();
         this.academic = user.getAcademic();
