@@ -43,6 +43,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
                     this.company = company;
                     console.log('detail called ', this.company);
                 });
+                console.log('after', this.company);
             }
         });
     }
