@@ -10,6 +10,9 @@ export * from './dashboard/components/student-company-detail/student-company-det
 export * from './dashboard/components/timeline/timeline.component';
 export * from './notice/notice.route';
 export * from './notice/notice.component';
+export * from './mocktest/mocktest.route';
+export * from './mocktest/mocktest.component';
+export * from './mocktest/mocktest.service';
 export * from './profile/profile.route';
 export * from './profile/profile.component';
 export * from './student.route';

@@ -6,6 +6,7 @@ import {
     companiesRoute,
     dashboardRoute,
     noticeRoute,
+    mocktestRoute,
     profileRoute
 } from './';
 
@@ -16,7 +17,8 @@ const STUDENT_ROUTES = [
     companiesRoute,
     dashboardRoute,
     noticeRoute,
-    profileRoute,
+    mocktestRoute,
+    profileRoute
 ];
 
 export const studentState: Routes = [{
