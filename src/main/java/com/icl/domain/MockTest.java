@@ -19,9 +19,6 @@ public class MockTest {
 
     private Questions[] questions;
 
-    private String[] answers;
-
-
     public String getId() {
         return id;
     }
@@ -46,21 +43,12 @@ public class MockTest {
         this.questions = questions;
     }
 
-    public String[] getAnswers() {
-        return answers;
-    }
-
-    public void setAnswers(String[] answers) {
-        this.answers = answers;
-    }
-
     @Override
     public String toString() {
         return "MockTest{" +
             "id='" + id + '\'' +
             ", name='" + name + '\'' +
             ", questions=" + Arrays.toString(questions) +
-            ", answers=" + Arrays.toString(answers) +
             '}';
     }
 }

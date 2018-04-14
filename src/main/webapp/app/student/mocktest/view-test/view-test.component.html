@@ -1,0 +1,57 @@
+<div class="main-content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+					<div class="card">
+						<div class="card-header" data-background-color="blue">
+							<h3 class="title">{{mocktest.name}} Test</h3> <strong style="color:red; font:100">{{countDown | async}} Seconds</strong>
+						</div>
+						
+						<div class="card-content">
+						<form action="#">
+								<div *ngFor="let data1 of mocktest.questions">
+							<p>
+								<label style="color:blue">
+							{{data1._id}}.	 {{data1.question}}
+								</label>
+							</p>
+								<p>
+								  <label>
+									<input class="with-gap" name="group1" type="radio"  />
+									<span>{{data1.opt1}}</span>
+								  </label>
+								</p>
+								<p>
+										<label>
+										  <input class="with-gap" name="group1" type="radio"  />
+										  <span>{{data1.opt2}}</span>
+										</label>
+									  </p>
+									  <p>
+											<label>
+											  <input class="with-gap" name="group1" type="radio"  />
+											  <span>{{data1.opt3}}</span>
+											</label>
+										  </p>
+										  <p>
+												<label>
+												  <input class="with-gap" name="group1" type="radio"  />
+												  <span>{{data1.opt4}}</span>
+												</label>
+											  </p>
+								
+						</form>
+						
+						<div class="card-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="goBack()">
+								<span class="fa fa-ban"></span>&nbsp;
+								<span>Cancel</span>
+							</button>
+						</div>
+						
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,12 +1,29 @@
 package com.icl.domain;
 
 public class Questions {
-
+    private String _id;
     private String question;
     private String opt1;
     private String opt2;
     private String opt3;
     private String opt4;
+    private String answer;
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
+    }
 
     public String getQuestion() {
         return question;
@@ -51,11 +68,13 @@ public class Questions {
     @Override
     public String toString() {
         return "Questions{" +
-            "question='" + question + '\'' +
+            "_id='" + _id + '\'' +
+            ", question='" + question + '\'' +
             ", opt1='" + opt1 + '\'' +
             ", opt2='" + opt2 + '\'' +
             ", opt3='" + opt3 + '\'' +
             ", opt4='" + opt4 + '\'' +
+            ", answer='" + answer + '\'' +
             '}';
     }
 }

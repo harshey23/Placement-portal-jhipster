@@ -16,8 +16,8 @@ const STUDENT_ROUTES = [
     analyticsRoute,
     companiesRoute,
     dashboardRoute,
-    noticeRoute,
-    mocktestRoute,
+    ...noticeRoute,
+    ...mocktestRoute,
     profileRoute
 ];
 

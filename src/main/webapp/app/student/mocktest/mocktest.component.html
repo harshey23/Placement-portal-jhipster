@@ -1,0 +1,47 @@
+<div class="main-content">
+        <div class="container-fluid">
+      
+          <div class="card">
+            <div class="card-header" data-background-color="blue">
+             <h4 class="title">
+                <b>List of Tests</b>
+              </h4>
+            </div>
+    
+            <div class="card-content">
+              <div class="row">
+                
+                    <div *ngFor="let mocktest of mocktests ;">
+                            <div class="col-lg-3"  (click)="gotoDetail(mocktest.id)">
+                                <div class="card card-stats">
+                                    <div class="card-header" data-background-color="blue">
+                                        <i class="material-icons">cloud_circle</i>
+                                    </div>
+                                    <div class="card-content">
+                                        <!-- <p class="category">fulltime</p> -->
+                                        <h3 class="title">{{mocktest.name}}
+                                            <small></small>
+                                        </h3>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div>
+                                          <p> Click to Take Test
+                                                <!-- <i class="text-success">applied </i> -->
+                                            </p>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                           
+              <br>
+          </div>
+          <div>
+              <h2 style="text-align:center"> The END </h2>
+            </div> 
+          </div>
+
+          </div>
+        </div>
+      </div>
