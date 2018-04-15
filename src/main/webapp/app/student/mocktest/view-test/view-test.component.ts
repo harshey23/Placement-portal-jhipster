@@ -20,7 +20,9 @@ export class ViewTestComponent implements OnInit, OnDestroy {
         isSaving: boolean;
         routeSub: any;
         countDown: any;
+        score: boolean = false;
         count = 120;
+        answers: any[] = ['0', '0', '0'];
 
          constructor(
             public location: Location,
@@ -68,5 +70,13 @@ export class ViewTestComponent implements OnInit, OnDestroy {
 
     private onSaveError() {
         this.isSaving = false;
+    }
+    save() {
+
+        console.log(this.answers[0]);
+        console.log(this.answers[1]);
+        console.log(this.answers[2]);
+        console.log(this.answers[3]);
+        this.score = true;
     }
 }

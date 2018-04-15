@@ -4,7 +4,8 @@ export class Mocktest implements BaseEntity {
 
    constructor(public id?: string,
                 public name?: string,
-                public questions?: Questions) {}
+                public questions?: Questions,
+                public answers?: any[]) {}
 }
 class Questions {
     constructor(public _id: string,
