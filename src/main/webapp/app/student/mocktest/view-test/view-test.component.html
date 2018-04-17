@@ -3,81 +3,83 @@
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1">
 
-					<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-							<div class="card">
-				
+				<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+					<div class="card">
+
 						<div class="card-header" data-background-color="blue">
-							<h3 class="title">{{mocktest.name}} Test</h3> <strong style="color:red; font:100">{{countDown | async}} Seconds</strong>
+							<h3 class="title">{{mocktest.name}} Test</h3>
+							<strong style="color:red; font:100">{{countDown | async}} Seconds</strong>
 						</div>
-						
+
 						<div class="card-content">
-		
-								<div *ngFor="let data1 of mocktest.questions">
-							
+
+							<div *ngFor="let data1 of mocktest.questions">
+
 								<div style="color:rgb(255, 0, 0)">
-							{{data1._id}}.	 {{data1.question}}
+									{{data1._id}}. {{data1.question}}
 								</div>
 
 								<br>
-							<p></p>
-								  <label style="color:rgb(65, 0, 245)">
-									<input name="answers[data1._id]" ng-model="data1._id" type="radio" [(ngModel)]="answers[data1._id]" value="1" />
+								<p></p>
+								<label style="color:rgb(65, 0, 245)">
+									<input name="{{data1._id}}" ng-model="data1._id" type="radio" [(ngModel)]="answers[data1._id]" value="1" />
 									<span>{{data1.opt1}}</span>
-								
-									</label>
+
+								</label>
 								</p>
 								<p>
-										<label style="color:rgb(65, 0, 245)">
-										  <input name="answers[data1._id]" ng-model="data1._id" type="radio" [(ngModel)]="answers[data1._id]" value="2" />
-											<span>{{data1.opt2}}</span>
-											
-										</label>
-										
-									</p>
-									<p>
-												<label style="color:rgb(65, 0, 245)">
-													<input name="answers[data1._id]" ng-model="data1._id" type="radio" [(ngModel)]="answers[data1._id]" value="3" />
-													<span>{{data1.opt3}}</span>
-												</label>
-												
-											</p>
-											<p>
-														<label style="color:rgb(65, 0, 245)">
-															<input name="answers[data1._id]" ng-model="data1._id" type="radio" [(ngModel)]="answers[data1._id]" value="4" />
-															<span>{{data1.opt4}}</span>
-														</label>
-													
-													</p>
-										
+									<label style="color:rgb(65, 0, 245)">
+										<input name="{{data1._id}}" ng-model="data1._id" type="radio" [(ngModel)]="answers[data1._id]" value="2" />
+										<span>{{data1.opt2}}</span>
+
+									</label>
+
+								</p>
+								<p>
+									<label style="color:rgb(65, 0, 245)">
+										<input name="{{data1._id}}" ng-model="data1._id" type="radio" [(ngModel)]="answers[data1._id]" value="3" />
+										<span>{{data1.opt3}}</span>
+									</label>
+
+								</p>
+								<p>
+									<label style="color:rgb(65, 0, 245)">
+										<input name="{{data1._id}}" ng-model="data1._id" type="radio" [(ngModel)]="answers[data1._id]" value="4" />
+										<span>{{data1.opt4}}</span>
+									</label>
+
+								</p>
+
+							</div>
+							<div class="card-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="goBack()">
+									<span class="fa fa-ban"></span>&nbsp;
+									<span>Cancel</span>
+								</button>
+								<button type="submit" class="btn btn-primary" style="float:right;">
+									<span class="fa fa-save"></span>&nbsp;
+									<span>Submit</span>
+								</button>
+							</div>
+
+						</div>
+				</form>
+
+
+				<br>
+
+				<div *ngIf="score">
+					Scores. and answers
+					<div>
+						Yours: {{answers}}
+						<br> correct: {{mocktest.answers}}
+						<br> scores: {{scores}}
 					</div>
-														<div class="card-footer">
-																<button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="goBack()">
-																	<span class="fa fa-ban"></span>&nbsp;
-																	<span>Cancel</span>
-																</button>
-																<button type="submit"  class="btn btn-primary" style="float:right;">
-																	<span class="fa fa-save"></span>&nbsp;
-																	<span>Submit</span>
-																</button>
-															</div>
-									
-								</div>
-						</form>
-						
-					
-						<br>
-						
-						<div *ngIf="score">
-							Scores. and answers
-							<div>
-							Yours:		{{answers}}<br>
-							correct:	{{mocktest.answers}}
-								</div>
-						</div>
-					
-						</div>
+				</div>
+
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 </div>

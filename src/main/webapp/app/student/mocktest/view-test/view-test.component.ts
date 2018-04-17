@@ -17,38 +17,40 @@ import { Mocktest } from '../mocktest.model';
 export class ViewTestComponent implements OnInit, OnDestroy {
 
     mocktest: Mocktest;
-        isSaving: boolean;
-        routeSub: any;
-        countDown: any;
-        score: boolean = false;
-        count = 120;
-        answers: any[] = ['0', '0', '0'];
+    isSaving: boolean;
+    routeSub: any;
+    countDown: any;
+    score: boolean = false;
+    count = 120;
+    answers: any[] = ['0', '0', '0'];
+    i: any = 0;
+    scores: any = 0;
 
-         constructor(
-            public location: Location,
-            private mocktestService: MocktestService,
-            private eventManager: JhiEventManager,
-            private route: ActivatedRoute,
-        ) {
-            this.countDown = timer(0, 1000).pipe(
-                take(this.count),
-                map(() => --this.count),
-             );
-        }
+    constructor(
+        public location: Location,
+        private mocktestService: MocktestService,
+        private eventManager: JhiEventManager,
+        private route: ActivatedRoute,
+    ) {
+        this.countDown = timer(0, 1000).pipe(
+            take(this.count),
+            map(() => --this.count),
+        );
+    }
 
-        ngOnInit() {
-            this.isSaving = false;
-            this.mocktest = new Mocktest();
-            this.routeSub = this.route.params.subscribe((params) => {
-                if (params['id']) {
-                    this.mocktestService.find(params['id']).subscribe((mocktest) => {
-                        this.mocktest = mocktest;
-                        console.log('detail called ', this.mocktest);
-                    });
-                }
-            });
+    ngOnInit() {
+        this.isSaving = false;
+        this.mocktest = new Mocktest();
+        this.routeSub = this.route.params.subscribe((params) => {
+            if (params['id']) {
+                this.mocktestService.find(params['id']).subscribe((mocktest) => {
+                    this.mocktest = mocktest;
+                    console.log('detail called ', this.mocktest);
+                });
+            }
+        });
 
-        }
+    }
 
     goBack(): void {
         this.location.back();
@@ -72,11 +74,18 @@ export class ViewTestComponent implements OnInit, OnDestroy {
         this.isSaving = false;
     }
     save() {
-
-        console.log(this.answers[0]);
-        console.log(this.answers[1]);
-        console.log(this.answers[2]);
-        console.log(this.answers[3]);
+        this.calculate();
         this.score = true;
+    }
+
+    private calculate() {
+        this.answers.forEach((element) => {
+            if (element === this.mocktest.answers[this.i]) {
+                this.scores++;
+            }
+            this.i++;
+        });
+        this.i = 0;
+        this.scores--;
     }
 }
