@@ -1,6 +1,6 @@
 <div class="main-content">
 	<div class="container-fluid">
-		<form name="editForm" role="form" novalidate (ngSubmit)="onSubmit()" #editForm="ngForm">
+		<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
 
 			<div class="row">
 				<div class="card">
@@ -11,7 +11,7 @@
 					<div class="card-content">
 
 						<!-- Offer type -->
-						<div class="row">
+						<!-- <div class="row">
 
 							<div class="row">
 								<div class="col-md-3">
@@ -89,7 +89,7 @@
 								<div class="col-md-6"></div>
 							</div>
 
-						</div>
+						</div> -->
 
 						<!-- Company Select -->
 						<div class="row">
@@ -101,7 +101,7 @@
 								</div>
 								<div class="row">
 									<div class="col-md-12">
-										<select class="form-control" id="sel1">
+										<select class="form-control" id="company" name="company" [(ngModel)]="offer.company">
 											<option>Select a Company</option>
 											<option>TCS</option>
 											<option>Siemens</option>
@@ -136,8 +136,6 @@
 							</div>
 						</div>
 
-						<!-- Offer -->
-
 					</div>
 				</div>
 			</div>
@@ -151,7 +149,7 @@
 					<div class="card-content">
 
 						<!-- UG/PG -->
-						<div class="row">
+						<!-- <div class="row">
 
 							<div class="col-md-12">
 								<div class="row">
@@ -187,25 +185,36 @@
 								</div>
 							</div>
 
-						</div>
+						</div> -->
 
 						<!-- Branches allowed for ug-->
 						<div *ngIf="isUG == true" class="row">
 							<div class="col-md-12">
 								<h3>Branches Allowed in UG:</h3>
-								<ss-multiselect-dropdown [options]="branches" [texts]="branchesTexts" [settings]="branchesSettings" [(ngModel)]="branchesOptionsModel"
-								 [ngModelOptions]="{standalone: true}"></ss-multiselect-dropdown>
+								<!-- <ss-multiselect-dropdown [options]="branches" [texts]="branchesTexts" [settings]="branchesSettings" [(ngModel)]="branchesOptionsModel"
+								 [ngModelOptions]="{standalone: true}"></ss-multiselect-dropdown> -->
+								<select class="form-control" id="course" name="course" [(ngModel)]="offer.course">
+									<option selected>Computer Science</option>
+									<option>Information Science</option>
+									<option>Mechanical</option>
+									<option>Electronics and Communication</option>
+									<option>Electrical and Electronics</option>
+									<option>Instrumentation</option>
+									<option>Civil</option>
+									<option>Bio Tech</option>
+									<option>Chemical</option>
+								</select>
 							</div>
 						</div>
 
 						<!-- Branches allowed for pg-->
-						<div *ngIf="isUG == false" class="row">
+						<!-- <div *ngIf="isUG == false" class="row">
 							<div class="col-md-12">
 								<h3>Branches Allowed in pg:</h3>
 								<ss-multiselect-dropdown [options]="pgBranches" [texts]="pgBranchesTexts" [settings]="pgBranchesSettings" [(ngModel)]="pgBranchesOptionsModel"
 								 [ngModelOptions]="{standalone: true}"></ss-multiselect-dropdown>
 							</div>
-						</div>
+						</div> -->
 
 						<!-- Criteria -->
 						<div class="row">
@@ -218,7 +227,7 @@
 								</div>
 							</div>
 
-							<div class="col-md-12">
+							<!-- <div class="col-md-12">
 								<div class="row">
 									<div class="col-md-4">
 										<div class="form-group form-black label-floating is-empty">
@@ -239,23 +248,23 @@
 										</div>
 									</div>
 								</div>
-							</div>
+							</div> -->
 
 							<div class="col-md-12">
 								<div class="row">
-									<div *ngIf="isUG == false" class="col-md-4">
+									<!-- <div *ngIf="isUG == false" class="col-md-4">
 										<div class="form-group form-black label-floating is-empty">
 											<label class="control-label">PG aggragate CGPA</label>
 											<input type="text" class="form-control">
 										</div>
-									</div>
+									</div> -->
 									<div *ngIf="isUG == true" class="col-md-4">
 										<div class="form-group form-black label-floating is-empty">
 											<label class="control-label">BE aggragate CGPA</label>
-											<input type="text" class="form-control">
+											<input type="text" class="form-control" name="cgpa" [(ngModel)]="offer.cgpa"/>
 										</div>
 									</div>
-									<div class="col-md-4">
+									<!-- <div class="col-md-4">
 										<div class="form-group form-black label-floating is-empty">
 											<label class="control-label">Each sem %</label>
 											<input type="text" class="form-control">
@@ -266,11 +275,11 @@
 											<label class="control-label">CET Rank</label>
 											<input type="text" class="form-control">
 										</div>
-									</div>
+									</div> -->
 								</div>
 							</div>
 
-							<div *ngIf="isUG == false" class="col-md-12">
+							<!-- <div *ngIf="isUG == false" class="col-md-12">
 								<div class="row">
 									<div class="col-md-4">
 										<div class="form-group form-black label-floating is-empty">
@@ -279,12 +288,12 @@
 										</div>
 									</div>
 								</div>
-							</div>
+							</div> -->
 
 						</div>
 
 						<!-- Backlogs -->
-						<div class="row">
+						<!-- <div class="row">
 
 							<div class="col-md-12">
 								<div class="row">
@@ -364,10 +373,10 @@
 								</div>
 							</div>
 
-						</div>
+						</div> -->
 
 						<!-- Groups allowed -->
-						<div class="row">
+						<!-- <div class="row">
 							<div class="col-lg-8">
 
 								<div class="row">
@@ -401,10 +410,10 @@
 								</div>
 
 							</div>
-						</div>
+						</div> -->
 
 						<!-- Genders allowed -->
-						<div class="row">
+						<!-- <div class="row">
 							<div class="col-lg-8">
 
 								<div class="row">
@@ -438,10 +447,10 @@
 								</div>
 
 							</div>
-						</div>
+						</div> -->
 
 						<!-- Companies Allowed -->
-						<div class="row">
+						<!-- <div class="row">
 							<div class="col-md-12">
 								<h3>Companies Allowed :</h3>
 								<ss-multiselect-dropdown [options]="companies" [texts]="companiesTexts" [settings]="companiesSettings" [(ngModel)]="companiesOptionsModel"
@@ -465,7 +474,7 @@
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> -->
 
 						<!-- Offer Upper Bound -->
 

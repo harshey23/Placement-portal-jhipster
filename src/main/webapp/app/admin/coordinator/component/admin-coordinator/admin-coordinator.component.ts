@@ -87,6 +87,7 @@ export class AdminCoordinatorComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+      console.log('cooooooodashboard...');
       this.loadAll();
       this.principal.identity().then((account) => {
           this.currentAccount = account;

@@ -24,112 +24,30 @@
     <!-- Dynamically add current cards here -->
     <div class="row">
 
-      <div class="col-lg-3" (click)="gotoCurrentDetails()">
-        <div class="card card-stats">
-          <div class="card-header" data-background-color="green">
-            <i class="material-icons">done_all</i>
-          </div>
-          <div class="card-content">
-            <p class="category">fulltime</p>
-            <h3 class="title">Siemens
-              <small></small>
-            </h3>
-          </div>
-          <div class="card-footer">
-            <div>
-              <p>selection process :
-                <i class="text-success"> active</i>
-              </p>
+      <div *ngFor="let off of offer">
+        <div class="col-lg-3" (click)="gotoCurrentDetails(off.id)">
+          <div class="card card-stats">
+            <div class="card-header" data-background-color="green">
+              <i class="material-icons">done_all</i>
+            </div>
+            <div class="card-content">
+              <p class="category">fulltime</p>
+              <h3 class="title">{{off.company}}
+                <small></small>
+              </h3>
+            </div>
+            <div class="card-footer">
+              <div>
+                <p>selection process :
+                  <i class="text-success"> active</i>
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="col-lg-3" (click)="gotoCurrentDetails()">
-        <div class="card card-stats">
-          <div class="card-header" data-background-color="green">
-            <i class="material-icons">done_all</i>
-          </div>
-          <div class="card-content">
-            <p class="category">fulltime</p>
-            <h3 class="title">Redbus
-              <small></small>
-            </h3>
-          </div>
-          <div class="card-footer">
-            <div>
-              <p>selection process :
-                <i class="text-success"> active</i>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-3" (click)="gotoCurrentDetails()">
-        <div class="card card-stats">
-          <div class="card-header" data-background-color="green">
-            <i class="material-icons">done_all</i>
-          </div>
-          <div class="card-content">
-            <p class="category">fulltime</p>
-            <h3 class="title overflow">Tata-elexi group
-              <small></small>
-            </h3>
-          </div>
-          <div class="card-footer">
-            <div>
-              <p>selection process :
-                <i class="text-success"> active</i>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-3" (click)="gotoCurrentDetails()">
-        <div class="card card-stats">
-          <div class="card-header" data-background-color="blue">
-            <i class="material-icons">done_all</i>
-          </div>
-          <div class="card-content">
-            <p class="category">internship</p>
-            <h3 class="title">TCS
-              <small></small>
-            </h3>
-          </div>
-          <div class="card-footer">
-            <div>
-              <p>selection process :
-                <i class="text-primary"> posted</i>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-3" (click)="gotoCurrentDetails()">
-        <div class="card card-stats">
-          <div class="card-header" data-background-color="blue">
-            <i class="material-icons">done_all</i>
-          </div>
-          <div class="card-content">
-            <p class="category">internship</p>
-            <h3 class="title overflow">Informatica
-              <small></small>
-            </h3>
-          </div>
-          <div class="card-footer">
-            <div>
-              <p>selection process :
-                <i class="text-success"> active</i>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-3" (click)="gotoCurrentDetails()">
+      <!-- <div class="col-lg-3" (click)="gotoCurrentDetails()">
         <div class="card card-stats">
           <div class="card-header" data-background-color="red">
             <i class="material-icons">done_all</i>
@@ -148,14 +66,14 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
     </div>
 
 
     <!-- Dynamically add completed into table here -->
 
-    <h3>Completed Job Offers</h3>
+    <!-- <h3>Completed Job Offers</h3>
     <div class="card">
 
       <div class="card-content table-responsive my-border">
@@ -251,7 +169,7 @@
           </tbody>
         </table>
       </div>
-    </div>
+    </div> -->
 
 
   </div>

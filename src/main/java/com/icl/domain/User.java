@@ -51,6 +51,10 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Field("email2")
     private String alternateEmail;
 
+    private String cgpa;
+
+    private String usn;
+
     private String phone;
 
     @Field("phone2")
@@ -352,6 +356,22 @@ public class User extends AbstractAuditingEntity implements Serializable {
         this.authorities = authorities;
     }
 
+    public String getCgpa() {
+        return cgpa;
+    }
+
+    public void setCgpa(String cgpa) {
+        this.cgpa = cgpa;
+    }
+
+    public String getUsn() {
+        return usn;
+    }
+
+    public void setUsn(String usn) {
+        this.usn = usn;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -373,12 +393,38 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Override
     public String toString() {
         return "User{" +
-            "login='" + login + '\'' +
+            "id='" + id + '\'' +
+            ", login='" + login + '\'' +
+            ", password='" + password + '\'' +
             ", firstName='" + firstName + '\'' +
             ", lastName='" + lastName + '\'' +
             ", email='" + email + '\'' +
-            ", activated='" + activated + '\'' +
+            ", alternateEmail='" + alternateEmail + '\'' +
+            ", cgpa='" + cgpa + '\'' +
+            ", usn='" + usn + '\'' +
+            ", phone='" + phone + '\'' +
+            ", alternatePhone='" + alternatePhone + '\'' +
+            ", fatherName='" + fatherName + '\'' +
+            ", motherName='" + motherName + '\'' +
+            ", dateOfBirth=" + dateOfBirth +
+            ", gender='" + gender + '\'' +
+            ", nationality='" + nationality + '\'' +
+            ", religion='" + religion + '\'' +
+            ", category='" + category + '\'' +
+            ", sem=" + sem +
+            ", batch=" + batch +
+            ", course='" + course + '\'' +
+            ", courseType=" + courseType +
+            ", status=" + status +
+            ", address=" + address +
+            ", academic=" + academic +
+            ", activated=" + activated +
+            ", langKey='" + langKey + '\'' +
+            ", imageUrl='" + imageUrl + '\'' +
             ", activationKey='" + activationKey + '\'' +
-            "}";
+            ", resetKey='" + resetKey + '\'' +
+            ", resetDate=" + resetDate +
+            ", authorities=" + authorities +
+            '}';
     }
 }

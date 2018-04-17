@@ -8,12 +8,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.io.Serializable;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.Objects;
 
 /**
  * A Offer.
  */
-@Document(collection = "offer")
+@Document(collection = "pl.offer")
 public class Offer implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -21,29 +22,20 @@ public class Offer implements Serializable {
     @Id
     private String id;
 
-    @DBRef
-    private OfferType offerType;
+    @Field("company")
+    private String company;
 
-    private boolean internshipMandatory;
+    @Field("course")
+    private String course;
 
-    private boolean convertToJob;
+    @Field("cgpa")
+    private String cgpa;
 
-    private boolean campus;
+    @Field("dateOfVisit")
+    private Date dateOfVisit;
 
-    @DBRef
-    private Company company;
-
-    @Field("package_offered")
-    private Integer packageOffered;
-
-    @Field("discreption")
-    private String discreption;
-
-    @Field("date_of_visit")
-    private LocalDate dateOfVisit;
-
-    @Field("last_date")
-    private LocalDate lastDate;
+    @Field("lastDate")
+    private Date lastDate;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
 
@@ -55,88 +47,51 @@ public class Offer implements Serializable {
         this.id = id;
     }
 
-    public OfferType getOfferType() {
-        return offerType;
-    }
-
-    public void setOfferType(OfferType offerType) {
-        this.offerType = offerType;
-    }
-
-    public boolean getInternshipMandatory() {
-        return internshipMandatory;
-    }
-
-    public void setInternshipMandatory(boolean internshipMandatory) {
-        this.internshipMandatory = internshipMandatory;
-    }
-
-    public boolean getConvertToJob() {
-        return convertToJob;
-    }
-
-    public void setConvertToJob(boolean convertToJob) {
-        this.convertToJob = convertToJob;
-    }
-
-    public boolean getCampus() {
-        return campus;
-    }
-
-    public void setCampus(boolean campus) {
-        this.campus = campus;
-    }
-
-    public Company getCompany() {
+    public String getCompany() {
         return company;
     }
 
-    public void setCompany(Company company) {
+    public void setCompany(String company) {
         this.company = company;
     }
 
-    public Integer getPackageOffered() {
-        return packageOffered;
+    public String getCourse() {
+        return course;
     }
 
-    public void setPackageOffered(Integer packageOffered) {
-        this.packageOffered = packageOffered;
+    public void setCourse(String course) {
+        this.course = course;
     }
 
-    public String getDiscreption() {
-        return discreption;
+    public String getCgpa() {
+        return cgpa;
     }
 
-    public void setDiscreption(String discreption) {
-        this.discreption = discreption;
+    public void setCgpa(String cgpa) {
+        this.cgpa = cgpa;
     }
 
-    public LocalDate getDateOfVisit() {
+    public Date getDateOfVisit() {
         return dateOfVisit;
     }
 
-    public void setDateOfVisit(LocalDate dateOfVisit) {
+    public void setDateOfVisit(Date dateOfVisit) {
         this.dateOfVisit = dateOfVisit;
     }
 
-    public LocalDate getLastDate() {
+    public Date getLastDate() {
         return lastDate;
     }
 
-    public void setLastDate(LocalDate lastDate) {
+    public void setLastDate(Date lastDate) {
         this.lastDate = lastDate;
     }
 
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
-
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
         Offer offer = (Offer) o;
         if (offer.getId() == null || getId() == null) {
             return false;
@@ -153,13 +108,9 @@ public class Offer implements Serializable {
     public String toString() {
         return "Offer{" +
             "id='" + id + '\'' +
-            ", offerType=" + offerType +
-            ", internshipMandatory=" + internshipMandatory +
-            ", convertToJob=" + convertToJob +
-            ", campus=" + campus +
-            ", company=" + company +
-            ", packageOffered=" + packageOffered +
-            ", discreption='" + discreption + '\'' +
+            ", company='" + company + '\'' +
+            ", course='" + course + '\'' +
+            ", cgpa='" + cgpa + '\'' +
             ", dateOfVisit=" + dateOfVisit +
             ", lastDate=" + lastDate +
             '}';

@@ -20,7 +20,7 @@ public class OfferDTO {
 
     private boolean campus;
 
-    private Company company;
+    private String company;
 
     private Integer packageOffered;
 
@@ -34,7 +34,9 @@ public class OfferDTO {
 
     private String courseType;
 
-    private Set<Course> courses = new HashSet<>();
+    private String courses;
+
+    private String cgpa;
 
     private float sslcCutOff;
 
@@ -76,6 +78,22 @@ public class OfferDTO {
         // Empty constructor needed for Jackson.
     }
 
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public void setCourses(String courses) {
+        this.courses = courses;
+    }
+
+    public String getCgpa() {
+        return cgpa;
+    }
+
+    public void setCgpa(String cgpa) {
+        this.cgpa = cgpa;
+    }
+
     public String getId() {
         return id;
     }
@@ -114,14 +132,6 @@ public class OfferDTO {
 
     public void setCampus(boolean campus) {
         this.campus = campus;
-    }
-
-    public Company getCompany() {
-        return company;
-    }
-
-    public void setCompany(Company company) {
-        this.company = company;
     }
 
     public Integer getPackageOffered() {
@@ -170,14 +180,6 @@ public class OfferDTO {
 
     public void setCourseType(String courseType) {
         this.courseType = courseType;
-    }
-
-    public Set<Course> getCourses() {
-        return courses;
-    }
-
-    public void setCourses(Set<Course> courses) {
-        this.courses = courses;
     }
 
     public float getSslcCutOff() {
@@ -332,14 +334,15 @@ public class OfferDTO {
             ", internshipMandatory=" + internshipMandatory +
             ", convertToJob=" + convertToJob +
             ", campus=" + campus +
-            ", company=" + company +
+            ", company='" + company + '\'' +
             ", packageOffered=" + packageOffered +
             ", discreption='" + discreption + '\'' +
             ", dateOfVisit=" + dateOfVisit +
             ", lastDate=" + lastDate +
             ", batch='" + batch + '\'' +
             ", courseType='" + courseType + '\'' +
-            ", courses=" + courses +
+            ", courses='" + courses + '\'' +
+            ", cgpa='" + cgpa + '\'' +
             ", sslcCutOff=" + sslcCutOff +
             ", puCutOff=" + puCutOff +
             ", diplomaCutOff=" + diplomaCutOff +

@@ -41,6 +41,10 @@ public class UserDTO {
 
     private String alternateEmail;
 
+    private String cgpa;
+
+    private String usn;
+
     private String phone;
 
     private String alternatePhone;
@@ -104,6 +108,8 @@ public class UserDTO {
         this.course = user.getCourse();
         System.out.println("this.course : "+this.course);
         this.phone = user.getPhone();
+        this.cgpa = user.getCgpa();
+        this.usn = user.getUsn();
         this.activated = user.getActivated();
         this.imageUrl = user.getImageUrl();
         this.langKey = user.getLangKey();
@@ -114,6 +120,22 @@ public class UserDTO {
         this.authorities = user.getAuthorities().stream()
             .map(Authority::getName)
             .collect(Collectors.toSet());
+    }
+
+    public String getCgpa() {
+        return cgpa;
+    }
+
+    public void setCgpa(String cgpa) {
+        this.cgpa = cgpa;
+    }
+
+    public String getUsn() {
+        return usn;
+    }
+
+    public void setUsn(String usn) {
+        this.usn = usn;
     }
 
     public String getId() {
@@ -364,8 +386,25 @@ public class UserDTO {
             ", firstName='" + firstName + '\'' +
             ", lastName='" + lastName + '\'' +
             ", email='" + email + '\'' +
-            ", course=" + course +
+            ", alternateEmail='" + alternateEmail + '\'' +
+            ", cgpa='" + cgpa + '\'' +
+            ", usn='" + usn + '\'' +
             ", phone='" + phone + '\'' +
+            ", alternatePhone='" + alternatePhone + '\'' +
+            ", fatherName='" + fatherName + '\'' +
+            ", motherName='" + motherName + '\'' +
+            ", dateOfBirth=" + dateOfBirth +
+            ", gender='" + gender + '\'' +
+            ", nationality='" + nationality + '\'' +
+            ", religion='" + religion + '\'' +
+            ", category='" + category + '\'' +
+            ", sem=" + sem +
+            ", batch='" + batch + '\'' +
+            ", course='" + course + '\'' +
+            ", courseType='" + courseType + '\'' +
+            ", status=" + status +
+            ", address=" + address +
+            ", academic=" + academic +
             ", imageUrl='" + imageUrl + '\'' +
             ", activated=" + activated +
             ", langKey='" + langKey + '\'' +

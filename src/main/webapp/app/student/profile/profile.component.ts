@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit {
 
     error: string;
     success: string;
-    student: any;
+    student: any = {};
     firstFormGroup: FormGroup;
     secondFormGroup: FormGroup;
     date = new FormControl(new Date());
@@ -61,7 +61,6 @@ export class ProfileComponent implements OnInit {
             secondCtrl: ['', Validators.required]
         });
 
-        $.material.init();
         const elemMainPanel = <HTMLElement>document.querySelector('.main-panel');
         const elemSidebar = <HTMLElement>document.querySelector('.sidebar .sidebar-wrapper');
 

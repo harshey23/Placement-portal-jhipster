@@ -51,7 +51,7 @@ public class OfferResource {
      * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and the list of offers in body
      */
-    @GetMapping("/offers/batch/{batch}")
+    @GetMapping("/offers")
     @Timed
     public ResponseEntity<List<Offer>> getAllOffers(Pageable pageable) {
         log.debug("REST request to get a page of Offers");
@@ -63,18 +63,18 @@ public class OfferResource {
     /**
      * POST  /offers : Create a new offer.
      *
-     * @param offerDTO the offer to create
+     * @param offer the offer to create
      * @return the ResponseEntity with status 201 (Created) and with body the new offer, or with status 400 (Bad Request) if the offer has already an ID
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PostMapping("/offers")
     @Timed
-    public ResponseEntity<OfferDTO> createOffer(@RequestBody OfferDTO offerDTO) throws URISyntaxException {
-        log.debug("REST request to save Offer : {}", offerDTO);
-        if (offerDTO.getId() != null) {
+    public ResponseEntity<Offer> createOffer(@RequestBody Offer offer) throws URISyntaxException {
+        log.debug("REST request to save Offer : {}", offer);
+        if (offer.getId() != null) {
             throw new BadRequestAlertException("A new offer cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        OfferDTO result = offerService.createOffer(offerDTO);
+        Offer result = offerRepository.save(offer);
         return ResponseEntity.created(new URI("/api/offers/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -83,7 +83,7 @@ public class OfferResource {
     /**
      * PUT  /offers : Updates an existing offer.
      *
-     * @param offerDTO the offer to update
+     * @param offer the offer to update
      * @return the ResponseEntity with status 200 (OK) and with body the updated offer,
      * or with status 400 (Bad Request) if the offer is not valid,
      * or with status 500 (Internal Server Error) if the offer couldn't be updated
@@ -91,14 +91,14 @@ public class OfferResource {
      */
     @PutMapping("/offers")
     @Timed
-    public ResponseEntity<OfferDTO> updateOffer(@RequestBody OfferDTO offerDTO) throws URISyntaxException {
-        log.debug("REST request to update Offer : {}", offerDTO);
-        if (offerDTO.getId() == null) {
-            return createOffer(offerDTO);
+    public ResponseEntity<Offer> updateOffer(@RequestBody Offer offer) throws URISyntaxException {
+        log.debug("REST request to update Offer : {}", offer);
+        if (offer.getId() == null) {
+            return createOffer(offer);
         }
-        OfferDTO result = offerService.updateOffer(offerDTO);
+        Offer result = offerRepository.save(offer);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, offerDTO.getId().toString()))
+            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, offer.getId().toString()))
             .body(result);
     }
 

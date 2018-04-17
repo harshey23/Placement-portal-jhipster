@@ -4,87 +4,28 @@
         <h4>Current Openings </h4>
         <div class="row">
 
-
-            <div class="col-lg-3">
-                <div class="card card-stats">
-                    <div class="card-header" data-background-color="green">
-                        <i class="material-icons">cloud_circle</i>
-                    </div>
-                    <div class="card-content">
-                        <p class="category">fulltime</p>
-                        <h3 class="title">Siemens
-                            <small></small>
-                        </h3>
-                    </div>
-                    <div class="card-footer">
-                        <div>
-                            <p> status :
-                                <i class="text-success">applied </i><i class="material-icons my-status">beenhere</i>
-                            </p>
-                            
+            <div *ngFor="let offer of offers">
+                <div class="col-lg-3">
+                    <div class="card card-stats">
+                        <div class="card-header" data-background-color="green">
+                            <i class="material-icons">cloud_circle</i>
+                        </div>
+                        <div class="card-content">
+                            <p class="category">fulltime</p>
+                            <h3 class="title">{{offer.company}}
+                                <small></small>
+                            </h3>
+                        </div>
+                        <div class="card-footer">
+                            <div>
+                                <!-- <p> status :
+                                    <i class="text-success">applied </i><i class="material-icons my-status">beenhere</i>
+                                </p> -->
+                                
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="card card-stats">
-                    <div class="card-header" data-background-color="green">
-                        <i class="material-icons">directions_bus</i>
-                    </div>
-                    <div class="card-content">
-                        <p class="category">fulltime</p>
-                        <h3 class="title">Redbus
-                            <small></small>
-                        </h3>
-                    </div>
-                    <div class="card-footer">
-                        <div>
-                            <p> status :
-                                <i class="text-success">applied </i><i class="material-icons my-status">beenhere</i>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="card card-stats">
-                    <div class="card-header" data-background-color="blue">
-                        <i class="material-icons">public</i>
-                    </div>
-                    <div class="card-content">
-                        <p class="category">internship</p>
-                        <h3 class="title">TCS
-                            <small></small>
-                        </h3>
-                    </div>
-                    <div class="card-footer">
-                        <div>
-                            <p> status :
-                                <i class="text-success">applied </i><i class="material-icons my-status">beenhere</i>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="card card-stats">
-                    <div class="card-header" data-background-color="green">
-                        <i class="material-icons">directions_car</i>
-                    </div>
-                    <div class="card-content">
-                        <p class="category">IT/ITeS</p>
-                        <h3 class="title">
-                            <small>Tech-Mahindra</small>
-                        </h3>
-                    </div>
-                    <div class="card-footer">
-                        <div>
-                            <p> status :
-                                <i class="text-success">applied </i><i class="material-icons my-status">beenhere</i>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                </div>    
             </div>
 
         </div>
