@@ -60,6 +60,7 @@ import {
     GeneralEligibalListComponent,
     CompletedDetailComponent,
     CurrentDetailComponent,
+    OfferService,
     JobHomeComponent,
     PostComponent,
     ReportHomeComponent,
@@ -162,7 +163,8 @@ import {
         CompanyResolvePagingParams,
         AnnouncementService,
         AnnouncementResolvePagingParams,
-        CompanyTypeService
+        CompanyTypeService,
+        OfferService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

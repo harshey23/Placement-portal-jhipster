@@ -34,7 +34,7 @@
                                 <div class="form-group">
                                     <label class="form-control-label" for="login">Username</label>
                                     <input type="text" class="form-control" [(ngModel)]="registerAccount.login" id="login" name="login" #login="ngModel" placeholder="Your username"
-                                           required minlength="1" maxlength="50" pattern="^[_'.@A-Za-z0-9-]*$">
+                                        required minlength="1" maxlength="50" pattern="^[_'.@A-Za-z0-9-]*$">
                                     <div *ngIf="login.dirty && login.invalid">
                                         <small class="form-text text-danger" *ngIf="login.errors.required">
                                             Your username is required.
@@ -51,9 +51,47 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label class="form-control-label" for="name">Name</label>
+                                    <input type="text" class="form-control" id="name" name="name" #name="ngModel" placeholder="Your Name" [(ngModel)]="registerAccount.firstName"
+                                        required minlength="1" maxlength="50" pattern="^[_'.@A-Za-z0-9-]*$">
+                                    <div *ngIf="name.dirty && name.invalid">
+                                        <small class="form-text text-danger" *ngIf="name.errors.required">
+                                            Your name is required.
+                                        </small>
+                                        <small class="form-text text-danger" *ngIf="name.errors.invalid">
+                                            Your name is invalid.
+                                        </small>
+                                        <small class="form-text text-danger" *ngIf="name.errors.minlength">
+                                            Your name is required to be at least 5 characters.
+                                        </small>
+                                        <small class="form-text text-danger" *ngIf="name.errors.maxlength">
+                                            Your name cannot be longer than 100 characters.
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label" for="usn">USN</label>
+                                    <input type="text" class="form-control" id="usn" name="usn" #usn="ngModel" placeholder="Your usn" [(ngModel)]="registerAccount.usn"
+                                        required minlength="10" maxlength="10" pattern="^[_'.@A-Za-z0-9-]*$">
+                                    <div *ngIf="usn.dirty && usn.invalid">
+                                        <small class="form-text text-danger" *ngIf="usn.errors.required">
+                                            Your usn is required.
+                                        </small>
+                                        <small class="form-text text-danger" *ngIf="usn.errors.invalid">
+                                            Your usn is invalid.
+                                        </small>
+                                        <small class="form-text text-danger" *ngIf="usn.errors.minlength">
+                                            Your usn is required to be at least 5 characters.
+                                        </small>
+                                        <small class="form-text text-danger" *ngIf="usn.errors.maxlength">
+                                            Your usn cannot be longer than 100 characters.
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label class="form-control-label" for="email">Email</label>
                                     <input type="email" class="form-control" id="email" name="email" #email="ngModel" placeholder="Your email" [(ngModel)]="registerAccount.email"
-                                           minlength=5 maxlength=100 email required>
+                                        minlength=5 maxlength=100 email required>
                                     <div *ngIf="email.dirty && email.invalid">
                                         <small class="form-text text-danger" *ngIf="email.errors.required">
                                             Your email is required.
@@ -70,9 +108,61 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label class="form-control-label" for="phone">Contact number</label>
+                                    <input type="text" class="form-control" id="phone" name="phone" #phone="ngModel" placeholder="Your phone" [(ngModel)]="registerAccount.phone"
+                                        required minlength="10" maxlength="10" pattern="^[0-9]*$">
+                                    <div *ngIf="phone.dirty && phone.invalid">
+                                        <small class="form-text text-danger" *ngIf="phone.errors.required">
+                                            Your contact number is required.
+                                        </small>
+                                        <small class="form-text text-danger" *ngIf="phone.errors.invalid">
+                                            Your contact number is invalid.
+                                        </small>
+                                        <small class="form-text text-danger" *ngIf="phone.errors.minlength">
+                                            Your contact number is required to be at least 5 characters.
+                                        </small>
+                                        <small class="form-text text-danger" *ngIf="phone.errors.maxlength">
+                                            Your contact number cannot be longer than 100 characters.
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label" for="course">Course</label>
+                                    <select class="form-control" id="course" name="course" #course="ngModel" placeholder="Your course" [(ngModel)]="registerAccount.course">
+                                        <option selected>Computer Science</option>
+                                        <option>Information Science</option>
+                                        <option>Mechanical</option>
+                                        <option>Electronics and Communication</option>
+                                        <option>Electrical and Electronics</option>
+                                        <option>Instrumentation</option>
+                                        <option>Civil</option>
+                                        <option>Bio Tech</option>
+                                        <option>Chemical</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label" for="cgpa">CGPA</label>
+                                    <input type="text" class="form-control" id="cgpa" name="cgpa" #cgpa="ngModel" placeholder="Your cgpa" [(ngModel)]="registerAccount.cgpa"
+                                        required pattern="^[0-9].[0-9][0-9]$">
+                                    <div *ngIf="cgpa.dirty && cgpa.invalid">
+                                        <small class="form-text text-danger" *ngIf="cgpa.errors.required">
+                                            Your cgpa is required.
+                                        </small>
+                                        <small class="form-text text-danger" *ngIf="cgpa.errors.invalid">
+                                            Your cgpa is invalid.
+                                        </small>
+                                        <small class="form-text text-danger" *ngIf="cgpa.errors.minlength">
+                                            Your cgpa is required to be at least 5 characters.
+                                        </small>
+                                        <small class="form-text text-danger" *ngIf="cgpa.errors.maxlength">
+                                            Your cgpa cannot be longer than 100 characters.
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label class="form-control-label" for="password">New password</label>
                                     <input type="password" class="form-control" id="password" name="password" #password="ngModel" placeholder="New password"
-                                           [(ngModel)]="registerAccount.password" minlength=4 maxlength=50 required>
+                                        [(ngModel)]="registerAccount.password" minlength=4 maxlength=50 required>
                                     <div *ngIf="password.dirty && password.invalid">
                                         <small class="form-text text-danger" *ngIf="password.errors.required">
                                             Your password is required.
@@ -89,7 +179,7 @@
                                 <div class="form-group">
                                     <label class="form-control-label" for="confirmPassword">New password confirmation</label>
                                     <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" #confirmPasswordInput="ngModel" placeholder="Confirm the new password"
-                                           [(ngModel)]="confirmPassword" minlength=4 maxlength=50 required>
+                                        [(ngModel)]="confirmPassword" minlength=4 maxlength=50 required>
                                     <div *ngIf="confirmPasswordInput.dirty && confirmPasswordInput.invalid">
                                         <small class="form-text text-danger" *ngIf="confirmPasswordInput.errors.required">
                                             Your confirmation password is required.
@@ -106,13 +196,13 @@
                                 <button type="submit" [disabled]="registerForm.form.invalid" class="btn btn-primary">Register</button>
                             </form>
                             <p></p>
-                            <div class="alert alert-warning">
+                            <!-- <div class="alert alert-warning">
                                 <span>If you want to </span>
                                 <a class="alert-link" (click)="openLogin()">sign in</a>
                                 <span>, you can try the default accounts:
-                    <br/>- Administrator (login="admin" and password="admin")
-                    <br/>- User (login="user" and password="user").</span>
-                            </div>
+                                    <br/>- Administrator (login="admin" and password="admin")
+                                    <br/>- User (login="user" and password="user").</span>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -122,4 +212,3 @@
 
 
 </div>
-

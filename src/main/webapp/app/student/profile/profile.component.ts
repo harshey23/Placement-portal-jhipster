@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit {
 
     error: string;
     success: string;
-    student: any;
+    student: any = {};
     firstFormGroup: FormGroup;
     secondFormGroup: FormGroup;
     date = new FormControl(new Date());

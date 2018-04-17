@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Response } from '@angular/http';
 import { FormArray, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Location, LocationStrategy, PathLocationStrategy, PopStateEvent } from '@angular/common';
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
@@ -6,6 +7,12 @@ import { IMultiSelectOption, IMultiSelectSettings, IMultiSelectTexts } from 'ang
 import { Subscription } from 'rxjs/Subscription';
 import PerfectScrollbar from 'perfect-scrollbar';
 import 'rxjs/add/operator/filter';
+
+import { Observable } from 'rxjs/Observable';
+import { JhiEventManager } from 'ng-jhipster';
+
+import { Offer } from '../../offer.model';
+import { OfferService } from '../../offer.service';
 declare var $: any;
 
 @Component({
@@ -96,15 +103,21 @@ export class PostComponent implements OnInit {
     allSelected: 'All selected',
   };
 
+  offer: Offer;
+  isSaving: boolean;
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private location: Location
+    private location: Location,
+    private offerService: OfferService,
+    private eventManager: JhiEventManager
   ) { }
 
   ngOnInit() {
     $('[data-toggle="tooltip"]').tooltip();
     $.material.init();
+    this.isSaving = false;
+    this.offer = new Offer();
   }
 
   changeOfferType(event: Event): void {
@@ -119,6 +132,26 @@ export class PostComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+  save() {
+      this.isSaving = true;
+      this.subscribeToSaveResponse(
+          this.offerService.create(this.offer));
+          this.location.back();
+  }
+
+  private subscribeToSaveResponse(result: Observable<Offer>) {
+      result.subscribe((res: Offer) =>
+          this.onSaveSuccess(res), (res: Response) => this.onSaveError());
+  }
+
+  private onSaveSuccess(result: Offer) {
+      this.eventManager.broadcast({ name: 'offerListModification', content: 'OK'});
+      this.isSaving = false;
+  }
+
+  private onSaveError() {
+      this.isSaving = false;
   }
 
 }

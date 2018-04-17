@@ -45,6 +45,7 @@ export * from './jobs/component/completed-detail/completed-detail.component';
 export * from './jobs/component/current-detail/current-detail.component';
 export * from './jobs/component/job-home/job-home.component';
 export * from './jobs/component/post/post.component';
+export * from './jobs/offer.service';
 export * from './report/report.route';
 export * from './report/component/report-home/report-home.component';
 export * from './report/component/report-list/report-list.component';

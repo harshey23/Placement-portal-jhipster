@@ -101,6 +101,10 @@ public class UserService {
         // new user gets initially a generated password
         newUser.setPassword(encryptedPassword);
         newUser.setFirstName(userDTO.getFirstName());
+        newUser.setUsn(userDTO.getUsn());
+        newUser.setPhone(userDTO.getPhone());
+        newUser.setCourse(userDTO.getCourse());
+        newUser.setCgpa(userDTO.getCgpa());
         newUser.setLastName(userDTO.getLastName());
         newUser.setEmail(userDTO.getEmail());
         newUser.setImageUrl(userDTO.getImageUrl());
