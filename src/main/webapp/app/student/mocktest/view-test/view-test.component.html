@@ -7,8 +7,17 @@
 					<div class="card">
 
 						<div class="card-header" data-background-color="blue">
-							<h3 class="title">{{mocktest.name}} Test</h3>
-							<strong style="color:red; font:100">{{countDown | async}} Seconds</strong>
+
+							<div class="row">
+								<div class="col-lg-6">
+										<h3 class="title" style="font-weight:bold;">{{mocktest.name}} Test</h3>
+								</div>
+								<div class="col-lg-6">
+										<strong style="color:red; font-size:1.8em;padding-left:240px;margin-top:20px;">{{countDown | async}} Seconds</strong>
+								</div>
+							</div>
+							
+							
 						</div>
 
 						<div class="card-content">
@@ -69,13 +78,22 @@
 				<br>
 
 				<div *ngIf="score">
-					Scores. and answers
-					<div>
-						Yours: {{answers}}
-						<br> correct: {{mocktest.answers}}
-						<br> scores: {{scores}}
+					<div class="card">
+						<div class="card-content">
+							<h3 style="font-weight:bold;color:green;">Scores</h3>
+							
+							<div style="font-weight:bold;">
+								<!-- Yours: {{answers}}
+								<br> correct: {{mocktest.answers}} -->
+								<br><h4 style="font-weight:bold;">Correct answers : {{scores}}</h4>
+							</div>
+						</div>
 					</div>
 				</div>
+
+
+
+
 
 				</div>
 			</div>
