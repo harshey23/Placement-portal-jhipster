@@ -37,6 +37,10 @@ import {
   TimelineComponent,
   StudentCompanyDetailComponent,
   NoticeComponent,
+  ViewNoticeComponent,
+  MocktestComponent,
+  MocktestService,
+  ViewTestComponent,
   ProfileComponent
 } from './';
 
@@ -75,7 +79,13 @@ import {
     TimelineComponent,
     StudentCompanyDetailComponent,
     NoticeComponent,
+    ViewNoticeComponent,
+    MocktestComponent,
+    ViewTestComponent,
     ProfileComponent
+  ],
+  providers: [
+    MocktestService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

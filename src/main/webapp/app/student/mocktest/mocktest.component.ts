@@ -5,17 +5,18 @@ import { Subscription } from 'rxjs/Subscription';
 import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
 
 import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../shared';
-import { AnnouncementService } from '../../admin/announcements/announcements.service';
-import { Announcement } from '../../admin/announcements/announcement.model';
+import { MocktestService} from './mocktest.service';
+import { Mocktest} from './mocktest.model';
+
 @Component({
-  selector: 'jhi-student-notice',
-  templateUrl: './notice.component.html',
-  styleUrls: ['./notice.component.scss']
+  selector: 'jhi-student-mocktest',
+  templateUrl: './mocktest.component.html',
+  styleUrls: ['./mocktest.component.scss']
 })
-export class NoticeComponent implements OnInit, OnDestroy {
+export class MocktestComponent implements OnInit, OnDestroy {
 
   currentAccount: any;
-  announcements: Announcement[];
+  mocktests: Mocktest[];
   error: any;
   success: any;
   eventSubscriber: Subscription;
@@ -30,7 +31,7 @@ export class NoticeComponent implements OnInit, OnDestroy {
   reverse: any;
 
 constructor(
-  private announcementService: AnnouncementService,
+  private mocktestService: MocktestService,
   private parseLinks: JhiParseLinks,
   private jhiAlertService: JhiAlertService,
   private principal: Principal,
@@ -48,10 +49,7 @@ constructor(
   });
 }
 loadAll() {
-  this.announcementService.query({
-      page: this.page - 1,
-      size: this.itemsPerPage,
-      sort: this.sort()
+  this.mocktestService.query({
   }).subscribe(
       (res: ResponseWrapper) => this.onSuccess(res.json, res.headers),
       (res: ResponseWrapper) => this.onError(res.json)
@@ -65,7 +63,7 @@ loadPage(page: number) {
 }
 
 transition() {
-  this.router.navigate(['/notice'], {
+  this.router.navigate(['/mocktest'], {
       queryParams:
           {
               page: this.page,
@@ -78,7 +76,7 @@ transition() {
 
 clear() {
   this.page = 0;
-  this.router.navigate(['/notice', {
+  this.router.navigate(['/mocktest', {
       page: this.page,
       sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
   }]);
@@ -90,19 +88,19 @@ ngOnInit() {
   this.principal.identity().then((account) => {
       this.currentAccount = account;
   });
-  this.registerChangeInAnnouncement();
+  this.registerChangeInMocktest();
 }
 
 ngOnDestroy() {
   this.eventManager.destroy(this.eventSubscriber);
 }
 
-trackId(index: number, item: Announcement) {
-  return item.title;
+trackId(index: number, item: Mocktest) {
+  return item.name;
 }
 
-registerChangeInAnnouncement() {
-  this.eventSubscriber = this.eventManager.subscribe('announcementListModification', (response) => this.loadAll());
+registerChangeInMocktest() {
+  this.eventSubscriber = this.eventManager.subscribe('mocktestListModification', (response) => this.loadAll());
 }
 
 sort() {
@@ -118,16 +116,17 @@ private onSuccess(data, headers) {
   this.totalItems = headers.get('X-Total-Count');
   this.queryCount = this.totalItems;
   // this.page = pagingParams.page;
-  this.announcements = data;
+  this.mocktests = data;
 }
 
 private onError(error) {
-  this.jhiAlertService.error(error.message, null, null);
+  console.log('error');
+ // this.jhiAlertService.error(error.any, null, null);
 }
 
 gotoDetail(id: any): void {
   console.log(id);
-  this.router.navigate(['/student/notice/view', id]);
+  this.router.navigate(['/student/mocktest/view', id]);
 }
 
 }
