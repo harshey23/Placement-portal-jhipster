@@ -17,7 +17,10 @@ export const ROUTES: RouteInfo[] = [
     // { path: 'report/home', title: 'Reports', icon: 'library_books', class: '' },
     // { path: 'analytics', title: 'Analytics', icon: 'multiline_chart', class: '' },
     { path: 'cord/home', title: 'Co-Ordinators', icon: 'people', class: '' },
-    { path: 'announcements', title: 'Announcements', icon: 'people', class: '' }
+    { path: 'announcements', title: 'Announcements', icon: 'people', class: '' },
+    { path: 'analytic', title: 'New Feature 1', icon: 'multiline_chart', class: '' }
+   // { path: 'analytics', title: 'New Feature 2', icon: 'multiline_chart', class: '' }
+
 ];
 
 @Component({

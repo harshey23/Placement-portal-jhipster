@@ -12,7 +12,8 @@ export const ROUTES: RouteInfo[] = [
     { path: 'notice', title: 'Notice', icon: 'featured_play_list', class: '' },
     { path: 'profile', title: 'Profile', icon: 'person', class: '' },
     { path: 'companies', title: 'Companies', icon: 'domain', class: '' },
-    { path: 'mocktest', title: 'Mock Test', icon: 'dashboard', class: '' }
+    { path: 'mocktest', title: 'Mock Test', icon: 'dashboard', class: '' },
+    { path: 'newf', title: 'New Feature', icon: 'featured_play_list', class: '' }
 
     // { path: 'analytics', title: 'Analytics', icon: 'multiline_chart', class: '' },
 ];
